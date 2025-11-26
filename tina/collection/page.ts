@@ -7,6 +7,16 @@ import { videoBlockSchema } from '@/components/blocks/video';
 import { calloutBlockSchema } from '@/components/blocks/callout';
 import { statsBlockSchema } from '@/components/blocks/stats';
 import { ctaBlockSchema } from '@/components/blocks/call-to-action';
+import { fbcHeroBlockSchema } from '@/components/blocks/fbc-hero';
+import { fbcSkillsBlockSchema } from '@/components/blocks/fbc-skills';
+import { fbcVideoBlockSchema } from '@/components/blocks/fbc-video';
+import { fbcTabsBlockSchema } from '@/components/blocks/fbc-tabs';
+import { fbcCertificationBlockSchema } from '@/components/blocks/fbc-certification';
+import { fbcPricingBlockSchema } from '@/components/blocks/fbc-pricing';
+import { fbcTestimonialSliderBlockSchema } from '@/components/blocks/fbc-testimonial-slider';
+import { fbcTeamBlockSchema } from '@/components/blocks/fbc-team';
+import { fbcFaqBlockSchema } from '@/components/blocks/fbc-faq';
+import { fbcCtaBannerBlockSchema } from '@/components/blocks/fbc-cta-banner';
 
 const Page: Collection = {
   label: 'Pages',
@@ -40,6 +50,16 @@ const Page: Collection = {
         contentBlockSchema,
         testimonialBlockSchema,
         videoBlockSchema,
+        fbcHeroBlockSchema,
+        fbcSkillsBlockSchema,
+        fbcVideoBlockSchema,
+        fbcTabsBlockSchema,
+        fbcCertificationBlockSchema,
+        fbcPricingBlockSchema,
+        fbcTestimonialSliderBlockSchema,
+        fbcTeamBlockSchema,
+        fbcFaqBlockSchema,
+        fbcCtaBannerBlockSchema,
       ],
     },
   ],

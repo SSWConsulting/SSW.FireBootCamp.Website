@@ -1,7 +1,5 @@
 import type { Collection } from "tinacms";
 import { ColorPickerInput } from "../fields/color";
-import { iconSchema } from "../fields/icon";
-import { icon } from "mermaid/dist/rendering-util/rendering-elements/shapes/icon.js";
 
 const Global: Collection = {
   label: "Global",
@@ -17,7 +15,11 @@ const Global: Collection = {
       label: "Header",
       name: "header",
       fields: [
-        iconSchema as any,
+        {
+          type: "image",
+          label: "Logo",
+          name: "logo",
+        },
         {
           type: "string",
           label: "Name",
@@ -25,12 +27,13 @@ const Global: Collection = {
         },
         {
           type: "string",
-          label: "Color",
-          name: "color",
-          options: [
-            { label: "Default", value: "default" },
-            { label: "Primary", value: "primary" },
-          ],
+          label: "CTA Label",
+          name: "ctaLabel",
+        },
+        {
+          type: "string",
+          label: "CTA Link",
+          name: "ctaLink",
         },
         {
           type: "object",
@@ -42,7 +45,7 @@ const Global: Collection = {
               return { label: item?.label };
             },
             defaultItem: {
-              href: "home",
+              href: "/",
               label: "Home",
             },
           },
@@ -57,6 +60,45 @@ const Global: Collection = {
               label: "Label",
               name: "label",
             },
+            {
+              type: "boolean",
+              label: "Has Dropdown",
+              name: "hasDropdown",
+            },
+          ],
+        },
+        {
+          type: "object",
+          label: "Mega Menu Items",
+          name: "megaMenu",
+          list: true,
+          ui: {
+            itemProps: (item) => {
+              return { label: item?.title };
+            },
+          },
+          fields: [
+            {
+              type: "string",
+              label: "Icon",
+              name: "icon",
+              options: ["live_tv", "developer_mode_tv", "local_fire_department", "start"],
+            },
+            {
+              type: "string",
+              label: "Title",
+              name: "title",
+            },
+            {
+              type: "string",
+              label: "Description",
+              name: "description",
+            },
+            {
+              type: "string",
+              label: "Link",
+              name: "href",
+            },
           ],
         },
       ],
@@ -67,20 +109,94 @@ const Global: Collection = {
       name: "footer",
       fields: [
         {
+          type: "string",
+          label: "Headline",
+          name: "headline",
+        },
+        {
+          type: "string",
+          label: "Description",
+          name: "description",
+          ui: {
+            component: "textarea",
+          },
+        },
+        {
+          type: "string",
+          label: "Primary CTA Label",
+          name: "primaryCtaLabel",
+        },
+        {
+          type: "string",
+          label: "Primary CTA Link",
+          name: "primaryCtaLink",
+        },
+        {
+          type: "string",
+          label: "Secondary CTA Label",
+          name: "secondaryCtaLabel",
+        },
+        {
+          type: "string",
+          label: "Secondary CTA Link",
+          name: "secondaryCtaLink",
+        },
+        {
+          type: "object",
+          label: "Link Columns",
+          name: "linkColumns",
+          list: true,
+          fields: [
+            {
+              type: "object",
+              label: "Links",
+              name: "links",
+              list: true,
+              ui: {
+                itemProps: (item) => {
+                  return { label: item?.label };
+                },
+              },
+              fields: [
+                {
+                  type: "string",
+                  label: "Label",
+                  name: "label",
+                },
+                {
+                  type: "string",
+                  label: "Link",
+                  name: "href",
+                },
+                {
+                  type: "boolean",
+                  label: "Is Heading",
+                  name: "isHeading",
+                },
+              ],
+            },
+          ],
+        },
+        {
           type: "object",
           label: "Social Links",
           name: "social",
           list: true,
           ui: {
             itemProps: (item) => {
-              return { label: item?.icon?.name || 'undefined' };
+              return { label: item?.platform };
             },
           },
           fields: [
-            iconSchema as any,
             {
               type: "string",
-              label: "Url",
+              label: "Platform",
+              name: "platform",
+              options: ["facebook", "instagram", "twitter", "linkedin", "youtube"],
+            },
+            {
+              type: "string",
+              label: "URL",
               name: "url",
             },
           ],
@@ -91,7 +207,6 @@ const Global: Collection = {
       type: "object",
       label: "Theme",
       name: "theme",
-      // @ts-ignore
       fields: [
         {
           type: "string",

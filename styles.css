@@ -5,6 +5,13 @@
 @plugin "@tailwindcss/typography";
 
 @theme inline {
+  --font-family-oswald: var(--font-oswald), ui-sans-serif, system-ui, sans-serif;
+  --font-family-jetbrains: var(--font-jetbrains), ui-monospace, monospace;
+  --color-fbc-red: #cc4141;
+  --color-fbc-red-dark: #a33434;
+  --color-fbc-dark: #242424;
+  --color-fbc-dark-foreground: #303030;
+  --color-fbc-gray: #f2f2f2;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);

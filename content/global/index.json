@@ -1,57 +1,128 @@
 {
   "header": {
-    "icon": {
-      "name": "Tina",
-      "color": "orange",
-      "style": "float"
-    },
-    "name": "Tina Starter",
-    "color": "default",
+    "logo": "/uploads/firebootcamp-logo.png",
+    "name": "SSW FireBootCamp",
+    "ctaLabel": "Apply now",
+    "ctaLink": "/apply",
     "nav": [
       {
-        "href": "/",
-        "label": "Home"
+        "href": "#program",
+        "label": "Program"
       },
       {
-        "href": "/about",
-        "label": "About"
+        "href": "#pricing",
+        "label": "Pricing"
       },
       {
-        "href": "/posts",
-        "label": "Blog"
+        "href": "#faqs",
+        "label": "FAQs"
+      },
+      {
+        "label": "Courses & Events",
+        "hasDropdown": true
+      }
+    ],
+    "megaMenu": [
+      {
+        "icon": "live_tv",
+        "title": "1-Day Dev Superpowers",
+        "description": "One day seminars where you watch our developers build an app live.",
+        "href": "/courses/dev-superpowers"
+      },
+      {
+        "icon": "developer_mode_tv",
+        "title": "2-Day Workshops",
+        "description": "Two day workshops where you get your hands dirty and build an app.",
+        "href": "/courses/workshops"
+      },
+      {
+        "icon": "local_fire_department",
+        "title": "SSW Internship",
+        "description": "We'll cover your fee for SSW's FireBootCamp completely.",
+        "href": "/internship"
+      },
+      {
+        "icon": "start",
+        "title": "Something Else?",
+        "description": "Explore our full list of courses and events at SSW.",
+        "href": "/courses"
       }
     ]
   },
   "footer": {
+    "headline": "Start your developer journey today",
+    "description": "We're independent and Oceanic-based. We run webinars, live events, in-house and online courses.",
+    "primaryCtaLabel": "Apply now",
+    "primaryCtaLink": "/apply",
+    "secondaryCtaLabel": "Go to SSW Events",
+    "secondaryCtaLink": "https://www.ssw.com.au/events",
+    "linkColumns": [
+      {
+        "links": [
+          {
+            "label": "Program",
+            "href": "#program",
+            "isHeading": true
+          },
+          {
+            "label": "Pricing",
+            "href": "#pricing",
+            "isHeading": true
+          },
+          {
+            "label": "FAQs",
+            "href": "#faqs",
+            "isHeading": true
+          }
+        ]
+      },
+      {
+        "links": [
+          {
+            "label": "Courses & Events",
+            "href": "/courses",
+            "isHeading": true
+          },
+          {
+            "label": "1-Day Dev Superpowers",
+            "href": "/courses/dev-superpowers"
+          },
+          {
+            "label": "2-Day Workshops",
+            "href": "/courses/workshops"
+          },
+          {
+            "label": "SSW Internship",
+            "href": "/internship"
+          }
+        ]
+      }
+    ],
     "social": [
       {
-        "icon": {
-          "name": "FaLinkedin"
-        },
-        "url": "https://www.linkedin.com/company/tinacms"
+        "platform": "facebook",
+        "url": "https://www.facebook.com/SSW.com.au"
       },
       {
-        "icon": {
-          "name": "FaGithub"
-        },
-        "url": "https://github.com/tinacms/tinacms"
+        "platform": "instagram",
+        "url": "https://www.instagram.com/ssaborina"
       },
       {
-        "icon": {
-          "name": "FaYoutube"
-        },
-        "url": "https://www.youtube.com/@TinaCMS"
+        "platform": "twitter",
+        "url": "https://twitter.com/SSW_TV"
       },
       {
-        "icon": {
-          "name": "FaXTwitter"
-        },
-        "url": "https://x.com/TinaCMS"
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/company/ssw"
+      },
+      {
+        "platform": "youtube",
+        "url": "https://www.youtube.com/ssaborina"
       }
     ]
   },
   "theme": {
-    "color": "blue",
+    "color": "red",
     "font": "sans",
     "darkMode": "light"
   }

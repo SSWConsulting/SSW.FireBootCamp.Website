@@ -10,6 +10,10 @@ export const Header = () => {
   const { globalSettings } = useLayout();
   const header = globalSettings?.header;
   const megaMenu = globalSettings?.header?.megaMenu;
+  
+  const contactEmail = globalSettings?.contactEmail || 'pennywalker@ssw.com.au';
+  const contactSubject = globalSettings?.contactSubject || "SSW Firebootcamp - Let's chat";
+  const mailtoLink = `mailto:${contactEmail}?subject=${encodeURIComponent(contactSubject)}`;
 
   const [menuState, setMenuState] = React.useState(false);
   const [megaMenuOpen, setMegaMenuOpen] = React.useState(false);
@@ -85,7 +89,7 @@ export const Header = () => {
               {/* CTA Button - Right aligned */}
               <div className="flex items-center gap-4 shrink-0">
                 <Button asChild className="hidden lg:flex bg-red hover:bg-red-dark text-white">
-                  <Link href={header?.ctaLink || '/apply'}>{header?.ctaLabel || 'Apply now'}</Link>
+                  <a href={mailtoLink}>{header?.ctaLabel || 'Apply now'}</a>
                 </Button>
 
                 <button
@@ -171,7 +175,7 @@ export const Header = () => {
               ))}
               <li className="pt-4">
                 <Button asChild className="w-full bg-red hover:bg-red-dark text-white">
-                  <Link href={header?.ctaLink || '/apply'}>{header?.ctaLabel || 'Apply now'}</Link>
+                  <a href={mailtoLink}>{header?.ctaLabel || 'Apply now'}</a>
                 </Button>
               </li>
             </ul>

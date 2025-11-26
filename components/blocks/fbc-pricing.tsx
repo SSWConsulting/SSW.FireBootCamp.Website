@@ -1,12 +1,17 @@
 'use client';
 import Image from 'next/image';
-import Link from 'next/link';
 import type { Template } from 'tinacms';
 import { tinaField } from 'tinacms/dist/react';
 import type { PageBlocksFbcPricing, PageBlocksFbcPricingPlans, PageBlocksFbcPricingPlansFeatures } from '../../tina/__generated__/types';
 import { Button } from '../ui/button';
+import { useLayout } from '../layout/layout-context';
 
 export const FbcPricing = ({ data }: { data: PageBlocksFbcPricing }) => {
+  const { globalSettings } = useLayout();
+  const contactEmail = globalSettings?.contactEmail || 'pennywalker@ssw.com.au';
+  const contactSubject = globalSettings?.contactSubject || "SSW Firebootcamp - Let's chat";
+  const mailtoLink = `mailto:${contactEmail}?subject=${encodeURIComponent(contactSubject)}`;
+  
   return (
     <section id="pricing" className="bg-scheme-3-background px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32">
       <div className="max-w-[1440px] mx-auto flex flex-col gap-10 md:gap-16 lg:gap-20 items-center">
@@ -27,7 +32,7 @@ export const FbcPricing = ({ data }: { data: PageBlocksFbcPricing }) => {
 
         <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
           {data.plans?.map((plan, index) => (
-            <PricingCard key={index} plan={plan!} />
+            <PricingCard key={index} plan={plan!} mailtoLink={mailtoLink} />
           ))}
         </div>
       </div>
@@ -35,7 +40,7 @@ export const FbcPricing = ({ data }: { data: PageBlocksFbcPricing }) => {
   );
 };
 
-const PricingCard = ({ plan }: { plan: PageBlocksFbcPricingPlans }) => {
+const PricingCard = ({ plan, mailtoLink }: { plan: PageBlocksFbcPricingPlans; mailtoLink: string }) => {
   return (
     <div className="bg-scheme-1-background rounded-lg p-6 md:p-8 flex flex-col h-full">
       <div className="flex flex-col gap-6 md:gap-8 flex-1">
@@ -84,7 +89,7 @@ const PricingCard = ({ plan }: { plan: PageBlocksFbcPricingPlans }) => {
         asChild
         className="w-full bg-red hover:bg-red-dark text-white mt-6 md:mt-8"
       >
-        <Link href={plan.ctaLink || '/apply'}>{plan.ctaLabel || 'Apply now'}</Link>
+        <a href={mailtoLink}>{plan.ctaLabel || 'Apply now'}</a>
       </Button>
     </div>
   );

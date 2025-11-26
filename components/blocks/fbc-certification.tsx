@@ -4,8 +4,14 @@ import type { Template } from 'tinacms';
 import { tinaField } from 'tinacms/dist/react';
 import type { PageBlocksFbcCertification } from '../../tina/__generated__/types';
 import { Button } from '../ui/button';
+import { useLayout } from '../layout/layout-context';
 
 export const FbcCertification = ({ data }: { data: PageBlocksFbcCertification }) => {
+  const { globalSettings } = useLayout();
+  const contactEmail = globalSettings?.contactEmail || 'pennywalker@ssw.com.au';
+  const contactSubject = globalSettings?.contactSubject || "SSW Firebootcamp - Let's chat";
+  const mailtoLink = `mailto:${contactEmail}?subject=${encodeURIComponent(contactSubject)}`;
+  
   return (
     <section className="bg-scheme-1-background px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32">
       <div className="max-w-[1440px] mx-auto">
@@ -39,8 +45,8 @@ export const FbcCertification = ({ data }: { data: PageBlocksFbcCertification })
                   placeholder={data.emailPlaceholder || 'Enter your email address'}
                   className="w-full sm:flex-1 sm:min-w-0 h-10 md:h-12 px-3 bg-black/5 rounded-md font-sans text-[14px] md:text-[16px] lg:text-[18px] leading-[1.5] border-0 placeholder:text-black/60"
                 />
-                <Button className="bg-red hover:bg-red-dark text-white whitespace-nowrap shrink-0">
-                  {data.buttonLabel || 'Commit'}
+                <Button asChild className="bg-red hover:bg-red-dark text-white whitespace-nowrap shrink-0">
+                  <a href={mailtoLink}>{data.buttonLabel || 'Commit'}</a>
                 </Button>
               </div>
               <p

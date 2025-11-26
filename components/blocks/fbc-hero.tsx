@@ -1,12 +1,17 @@
 'use client';
 import Image from 'next/image';
-import Link from 'next/link';
 import type { Template } from 'tinacms';
 import { tinaField } from 'tinacms/dist/react';
 import type { PageBlocksFbcHero } from '../../tina/__generated__/types';
 import { Button } from '../ui/button';
+import { useLayout } from '../layout/layout-context';
 
 export const FbcHero = ({ data }: { data: PageBlocksFbcHero }) => {
+  const { globalSettings } = useLayout();
+  const contactEmail = globalSettings?.contactEmail || 'pennywalker@ssw.com.au';
+  const contactSubject = globalSettings?.contactSubject || "SSW Firebootcamp - Let's chat";
+  const mailtoLink = `mailto:${contactEmail}?subject=${encodeURIComponent(contactSubject)}`;
+  
   const hasVideo = !!data.backgroundVideo;
   const hasImage = !!data.backgroundImage;
 
@@ -66,7 +71,7 @@ export const FbcHero = ({ data }: { data: PageBlocksFbcHero }) => {
                 data-tina-field={tinaField(data, 'ctaLabel')}
                 className="bg-red hover:bg-red-dark text-white"
               >
-                <Link href={data.ctaLink || '#'}>{data.ctaLabel}</Link>
+                <a href={mailtoLink}>{data.ctaLabel}</a>
               </Button>
             )}
           </div>

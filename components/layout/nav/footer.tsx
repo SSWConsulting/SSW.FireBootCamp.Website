@@ -7,6 +7,10 @@ import { Button } from "@/components/ui/button";
 export const Footer = () => {
   const { globalSettings } = useLayout();
   const { header, footer } = globalSettings || {};
+  
+  const contactEmail = globalSettings?.contactEmail || 'pennywalker@ssw.com.au';
+  const contactSubject = globalSettings?.contactSubject || "SSW Firebootcamp - Let's chat";
+  const mailtoLink = `mailto:${contactEmail}?subject=${encodeURIComponent(contactSubject)}`;
 
   return (
     <footer className="bg-scheme-2-background px-4 md:px-8 lg:px-16 py-10 md:py-16 lg:py-20">
@@ -24,7 +28,7 @@ export const Footer = () => {
 
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
               <Button asChild className="bg-red hover:bg-red-dark text-white">
-                <Link href={footer?.primaryCtaLink || '/apply'}>{footer?.primaryCtaLabel || 'Apply now'}</Link>
+                <a href={mailtoLink}>{footer?.primaryCtaLabel || 'Apply now'}</a>
               </Button>
               <Button asChild variant="ghost" className="bg-scheme-2-border hover:bg-scheme-2-border/80 text-scheme-2-text">
                 <Link href={footer?.secondaryCtaLink || '#'}>{footer?.secondaryCtaLabel || 'Go to SSW Events'}</Link>

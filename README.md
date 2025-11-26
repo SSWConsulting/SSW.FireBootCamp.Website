@@ -1,21 +1,25 @@
-# Tina Starter 🦙
+# SSW FireBootCamp Website
 
-![tina-nextjs-starter-demo](https://user-images.githubusercontent.com/103008/130587027-995ccc45-a852-4f90-b658-13e8e0517339.gif)
+The official website for SSW FireBootCamp - a 12-week intensive fullstack developer training program that transforms aspiring developers into industry-ready professionals.
 
-This Next.js starter is powered by [TinaCMS](https://app.tina.io) for you and your team to visually live edit the structured content of your website. ✨
-
-The content is managed through Markdown and JSON files stored in your GitHub repository, and queried through Tina GraphQL API.
+This website is built with [Next.js](https://nextjs.org) and powered by [TinaCMS](https://app.tina.io) for content management, allowing the team to visually edit content directly from the browser.
 
 ### Features
 
-- [Tina Headless CMS](https://app.tina.io) for authentication, content modeling, visual editing and team management.
-- [Vercel](https://vercel.com) deployment to visually edit your site from the `/admin` route.
-- Local development workflow from the filesystem with a local GraqhQL server.
+- **Next.js 15** with React 18 and TypeScript
+- **TinaCMS** for visual content editing and management
+- **Tailwind CSS 4** for styling with custom FireBootCamp components
+- **GitHub Pages** deployment support
+- Custom components for program features (hero, skills, pricing, team, testimonials, FAQs)
+- Responsive design with modern UI components (Radix UI, Motion animations)
+- Mermaid diagram support for technical content
 
 ## Requirements
 
-- Git, [Node.js Active LTS](https://nodejs.org/en/about/releases/), pnpm installed for local development.
-- A [TinaCMS](https://app.tina.io) account for live editing.
+- Git
+- [Node.js Active LTS](https://nodejs.org/en/about/releases/)
+- [pnpm](https://pnpm.io) package manager
+- A [TinaCMS](https://app.tina.io) account for live editing
 
 ## Local Development
 
@@ -37,35 +41,33 @@ pnpm dev
 
 ### Local URLs
 
-- http://localhost:3000 : browse the website
-- http://localhost:3000/admin : connect to Tina Cloud and go in edit mode
-- http://localhost:3000/exit-admin : log out of Tina Cloud
-- http://localhost:4001/altair/ : GraphQL playground to test queries and browse the API documentation
+- http://localhost:3000 - Browse the FireBootCamp website
+- http://localhost:3000/admin - Connect to Tina Cloud and enter edit mode
+- http://localhost:3000/exit-admin - Log out of Tina Cloud
+- http://localhost:4001/altair/ - GraphQL playground to test queries and browse the API documentation
 
 ## Deployment
 
 ### GitHub Pages
 
-This starter can be deployed to GitHub Pages. A GitHub Actions workflow is included that handles the build and deployment process. 
-
-To deploy to GitHub Pages:
+This site can be deployed to GitHub Pages as a static site. To set up deployment:
 
 1. In your repository settings, ensure GitHub Pages is enabled and set to deploy from the `gh-pages` branch
-2. Push changes to your main branch - the workflow will automatically build and deploy the site
+2. Set up a GitHub Actions workflow (if not already present) to handle the build and deployment process
+3. Configure the required secrets in Settings | Secrets and variables | Actions:
+   - `NEXT_PUBLIC_TINA_CLIENT_ID`
+   - `TINA_TOKEN`
+   - `NEXT_PUBLIC_TINA_BRANCH` (optional, defaults to main)
 
 > [!NOTE]
-> When deploying to GitHub Pages, you'll need to update your secrets in Settings | Secrets and variables | Actions to include:
-> - `NEXT_PUBLIC_TINA_CLIENT_ID`
-> - `TINA_TOKEN`
->
-> You get these from your TinaCloud project - [read the docs](https://tina.io/docs/tina-cloud/deployment-options/github-pages)
+> Get your TinaCMS credentials from your [TinaCloud project](https://app.tina.io) - [read the docs](https://tina.io/docs/tina-cloud/deployment-options/github-pages)
 
 > [!IMPORTANT]
-> GitHub Pages does not support server side code, so this will run as a static site. If you don't want to deploy to GitHub pages, just delete `.github/workflows/build-and-deploy.yml`
+> GitHub Pages does not support server-side code, so this will run as a static site. Ensure your Next.js configuration is set up for static export.
 
-### Building the Starter Locally (Using the hosted content API)
+### Building Locally (Using the hosted content API)
 
-Replace the `.env.example`, with `.env`
+Create a `.env` file in the root directory with your TinaCMS credentials:
 
 ```
 NEXT_PUBLIC_TINA_CLIENT_ID=<get this from the project you create at app.tina.io>
@@ -77,6 +79,12 @@ Build the project:
 
 ```bash
 pnpm build
+```
+
+For local development without Tina Cloud:
+
+```bash
+pnpm build-local
 ```
 
 ## Getting Help
@@ -91,22 +99,45 @@ To get help with any TinaCMS challenges you may have:
 - [Search or open an issue](https://github.com/tinacms/tinacms/issues) if something is not working.
 - Reach out on Twitter at [@tina_cms](https://twitter.com/tina_cms).
 
-## Development tips
+## Development
 
-### Visual Studio Code GraphQL extension
+### Code Quality
 
-[Install the GraphQL extension](https://marketplace.visualstudio.com/items?itemName=GraphQL.vscode-graphql) to benefit from type auto-completion.
+This project uses [Biome](https://biomejs.dev) for linting and formatting:
 
-### Typescript
+```bash
+pnpm lint
+```
 
-A good way to ensure your components match the shape of your data is to leverage the auto-generated TypeScript types.
-These are rebuilt when your `tina` config changes.
+### TypeScript
+
+TypeScript types are auto-generated from the TinaCMS schema. These are rebuilt automatically when your `tina` configuration changes.
+
+### Visual Studio Code
+
+[Install the GraphQL extension](https://marketplace.visualstudio.com/items?itemName=GraphQL.vscode-graphql) to benefit from type auto-completion and GraphQL syntax highlighting.
+
+### Project Structure
+
+- `app/` - Next.js app router pages and layouts
+- `components/` - React components including FireBootCamp-specific blocks
+- `content/` - Markdown and JSON content files managed by TinaCMS
+- `tina/` - TinaCMS configuration and schema definitions
+- `public/` - Static assets (images, videos, etc.)
+
+## Technology Stack
+
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS 4
+- **CMS**: TinaCMS
+- **UI Components**: Radix UI, Headless UI
+- **Animations**: Motion (Framer Motion)
+- **Code Highlighting**: Shiki
+- **Diagrams**: Mermaid
+- **Package Manager**: pnpm
 
 ## LICENSE
 
 Licensed under the [Apache 2.0 license](./LICENSE).
-
-
-# Repository cleaned of LFS content
-# Repository cleaned of LFS content - Wed Sep 17 15:00:42 AEST 2025
 

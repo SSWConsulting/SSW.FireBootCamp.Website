@@ -1,4 +1,6 @@
 {
+  "contactEmail": "pennywalker@ssw.com.au",
+  "contactSubject": "SSW Firebootcamp - Let's chat",
   "header": {
     "logo": "/uploads/fbc_logo-dm.svg",
     "name": "SSW FireBootCamp",
@@ -35,12 +37,6 @@
         "title": "2-Day Workshops",
         "description": "Two day workshops where you get your hands dirty and build an app.",
         "href": "/courses/workshops"
-      },
-      {
-        "icon": "local_fire_department",
-        "title": "SSW Internship",
-        "description": "We'll cover your fee for SSW's FireBootCamp completely.",
-        "href": "/internship"
       },
       {
         "icon": "start",

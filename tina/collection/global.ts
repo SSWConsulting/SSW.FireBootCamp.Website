@@ -11,6 +11,18 @@ const Global: Collection = {
   },
   fields: [
     {
+      type: "string",
+      label: "Contact Email",
+      name: "contactEmail",
+      description: "Email address for Apply Now and Commit buttons",
+    },
+    {
+      type: "string",
+      label: "Contact Email Subject",
+      name: "contactSubject",
+      description: "Subject line for Apply Now and Commit emails",
+    },
+    {
       type: "object",
       label: "Header",
       name: "header",

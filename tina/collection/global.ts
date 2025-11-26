@@ -1,6 +1,5 @@
 import type { Collection } from "tinacms";
 import { ColorPickerInput } from "../fields/color";
-import { SliderInput } from "../fields/slider";
 
 const Global: Collection = {
   label: "Global",
@@ -20,17 +19,6 @@ const Global: Collection = {
           type: "image",
           label: "Logo",
           name: "logo",
-        },
-        {
-          type: "number",
-          label: "Logo Scale",
-          name: "logoScale",
-          description: "Scale the logo size (0.5 = 50%, 1 = 100%, 2 = 200%)",
-          ui: {
-            component: "slider",
-            parse: (val: number) => Number(val),
-            step: 0.1,
-          },
         },
         {
           type: "string",
@@ -148,16 +136,6 @@ const Global: Collection = {
       label: "Footer",
       name: "footer",
       fields: [
-        {
-          type: "number",
-          label: "Logo Scale",
-          name: "logoScale",
-          description: "Scale the logo size (0.5 = 50%, 1 = 100%, 2 = 200%)",
-          ui: {
-            // @ts-ignore
-            component: SliderInput,
-          },
-        },
         {
           type: "string",
           label: "Headline",

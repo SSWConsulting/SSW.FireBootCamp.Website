@@ -14,10 +14,6 @@ export const Header = () => {
   const [menuState, setMenuState] = React.useState(false);
   const [megaMenuOpen, setMegaMenuOpen] = React.useState(false);
 
-  const logoScale = header?.logoScale ?? 1;
-  const baseLogoHeight = 32;
-  const logoHeight = Math.round(baseLogoHeight * logoScale);
-
   return (
     <>
       {/* Spacer to push content below fixed header */}
@@ -37,7 +33,7 @@ export const Header = () => {
                     <img 
                       src={header.logo} 
                       alt={header.name || 'FireBootCamp'} 
-                      style={{ height: `${logoHeight}px`, width: 'auto' }}
+                      className="h-8 w-auto"
                     />
                   ) : (
                     <span className="text-scheme-2-text font-bold font-sans text-[20px]">{header?.name || 'FireBootCamp'}</span>

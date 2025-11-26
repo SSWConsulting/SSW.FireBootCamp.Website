@@ -8,10 +8,6 @@ export const Footer = () => {
   const { globalSettings } = useLayout();
   const { header, footer } = globalSettings || {};
 
-  const logoScale = footer?.logoScale ?? 1;
-  const baseLogoHeight = 34;
-  const logoHeight = Math.round(baseLogoHeight * logoScale);
-
   return (
     <footer className="bg-scheme-2-background px-4 md:px-8 lg:px-16 py-10 md:py-16 lg:py-20">
       <div className="max-w-[1440px] mx-auto flex flex-col gap-10 md:gap-16 lg:gap-20">
@@ -60,7 +56,7 @@ export const Footer = () => {
                 <img 
                   src={header.logo} 
                   alt={header.name || 'FireBootCamp'} 
-                  style={{ height: `${logoHeight}px`, width: 'auto' }}
+                  className="h-8 w-auto"
                 />
               ) : (
                 <span className="text-scheme-2-text font-bold font-sans text-[20px] md:text-[26px]">{header?.name || 'FireBootCamp'}</span>

@@ -6,24 +6,24 @@ import type { PageBlocksFbcFaq, PageBlocksFbcFaqFaqs } from '../../tina/__genera
 
 export const FbcFaq = ({ data }: { data: PageBlocksFbcFaq }) => {
   return (
-    <section className="bg-scheme-2-background px-16 py-32">
-      <div className="max-w-[1440px] mx-auto flex flex-col gap-20 items-center">
-        <div className="max-w-[768px] text-center flex flex-col gap-6">
+    <section className="bg-scheme-2-background px-2 sm:px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32">
+      <div className="max-w-[1440px] mx-auto flex flex-col gap-10 md:gap-16 lg:gap-20 items-center">
+        <div className="max-w-full md:max-w-[768px] text-center flex flex-col gap-4 md:gap-6 px-2 sm:px-0">
           <h2
             data-tina-field={tinaField(data, 'title')}
-            className="font-oswald font-bold text-[60px] uppercase tracking-[-0.6px] leading-none text-scheme-2-text"
+            className="font-oswald font-bold text-[32px] sm:text-[40px] md:text-[50px] lg:text-[60px] uppercase tracking-[-0.6px] leading-none text-scheme-2-text"
           >
             {data.title}
           </h2>
           <p
             data-tina-field={tinaField(data, 'description')}
-            className="font-sans text-[20px] leading-[1.5] text-scheme-2-text"
+            className="font-sans text-[14px] md:text-[16px] lg:text-[20px] leading-[1.5] text-scheme-2-text"
           >
             {data.description}
           </p>
         </div>
 
-        <div className="w-full max-w-[768px] flex flex-col gap-4">
+        <div className="w-full max-w-full md:max-w-[768px] flex flex-col gap-3 md:gap-4">
           {data.faqs?.map((faq, index) => (
             <FaqItem key={index} faq={faq!} />
           ))}
@@ -40,16 +40,16 @@ const FaqItem = ({ faq }: { faq: PageBlocksFbcFaqFaqs }) => {
     <div className="bg-scheme-2-foreground rounded-lg overflow-hidden">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex justify-between items-center gap-6 px-6 py-5"
+        className="w-full flex justify-between items-center gap-3 md:gap-6 px-4 md:px-6 py-4 md:py-5"
       >
         <p
           data-tina-field={tinaField(faq, 'question')}
-          className="font-sans text-[20px] font-bold leading-[1.5] text-scheme-2-text text-left"
+          className="font-sans text-[16px] md:text-[18px] lg:text-[20px] font-bold leading-[1.5] text-scheme-2-text text-left"
         >
           {faq.question}
         </p>
         <svg
-          className={`w-6 h-6 text-scheme-2-text shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-45' : ''}`}
+          className={`w-5 h-5 md:w-6 md:h-6 text-scheme-2-text shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-45' : ''}`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -64,10 +64,10 @@ const FaqItem = ({ faq }: { faq: PageBlocksFbcFaqFaqs }) => {
         }`}
       >
         <div className="overflow-hidden">
-          <div className="px-6 pb-6">
+          <div className="px-4 md:px-6 pb-4 md:pb-6">
             <p
               data-tina-field={tinaField(faq, 'answer')}
-              className="font-sans text-[18px] leading-[1.5] text-scheme-2-text"
+              className="font-sans text-[14px] md:text-[16px] lg:text-[18px] leading-[1.5] text-scheme-2-text"
             >
               {faq.answer}
             </p>

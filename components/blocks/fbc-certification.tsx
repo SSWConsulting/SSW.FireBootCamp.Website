@@ -37,9 +37,9 @@ export const FbcCertification = ({ data }: { data: PageBlocksFbcCertification })
                 <input
                   type="email"
                   placeholder={data.emailPlaceholder || 'Enter your email address'}
-                  className="flex-1 px-3 py-2 bg-black/5 rounded-md font-sans text-[14px] md:text-[16px] lg:text-[18px] leading-[1.5] border-0 placeholder:text-black/60"
+                  className="w-full sm:flex-1 sm:min-w-0 h-10 md:h-12 px-3 bg-black/5 rounded-md font-sans text-[14px] md:text-[16px] lg:text-[18px] leading-[1.5] border-0 placeholder:text-black/60"
                 />
-                <Button className="bg-red hover:bg-red-dark text-white whitespace-nowrap">
+                <Button className="bg-red hover:bg-red-dark text-white whitespace-nowrap shrink-0">
                   {data.buttonLabel || 'Commit'}
                 </Button>
               </div>

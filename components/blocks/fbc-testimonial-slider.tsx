@@ -48,11 +48,11 @@ export const FbcTestimonialSlider = ({ data }: { data: PageBlocksFbcTestimonialS
   if (!currentTestimonial) return null;
 
   return (
-    <section ref={sectionRef} className="bg-scheme-1-background px-16 py-32 overflow-hidden">
-      <div className="max-w-[1440px] mx-auto flex flex-col gap-8">
-        <div className="h-[640px] relative">
+    <section ref={sectionRef} className="bg-scheme-1-background px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32 overflow-hidden">
+      <div className="max-w-[1440px] mx-auto flex flex-col gap-6 md:gap-8">
+        <div className="min-h-[400px] md:min-h-[500px] lg:h-[640px] relative">
           <div 
-            className={`flex gap-20 items-center h-full transition-all duration-300 ease-in-out ${
+            className={`flex flex-col lg:flex-row gap-6 md:gap-10 lg:gap-20 items-center h-full transition-all duration-300 ease-in-out ${
               isAnimating 
                 ? direction === 'right' 
                   ? '-translate-x-8 opacity-0' 
@@ -61,7 +61,7 @@ export const FbcTestimonialSlider = ({ data }: { data: PageBlocksFbcTestimonialS
             }`}
           >
             {currentTestimonial.image && (
-              <div className="w-[616px] h-[640px] relative rounded-lg overflow-hidden shrink-0">
+              <div className="w-full h-[250px] sm:h-[300px] md:h-[350px] lg:w-[616px] lg:h-[640px] relative rounded-lg overflow-hidden shrink-0">
                 <Image
                   src={currentTestimonial.image}
                   alt={currentTestimonial.author || ''}
@@ -72,10 +72,10 @@ export const FbcTestimonialSlider = ({ data }: { data: PageBlocksFbcTestimonialS
               </div>
             )}
 
-            <div className="flex-1 flex flex-col gap-8">
+            <div className="flex-1 flex flex-col gap-4 md:gap-6 lg:gap-8">
               <div className="flex gap-1">
                 {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                  <svg key={i} className="w-4 h-4 md:w-5 md:h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
                 ))}
@@ -83,7 +83,7 @@ export const FbcTestimonialSlider = ({ data }: { data: PageBlocksFbcTestimonialS
 
               <blockquote
                 data-tina-field={tinaField(currentTestimonial, 'quote')}
-                className="font-oswald font-bold text-[32px] uppercase tracking-[-0.32px] leading-[1.1] text-scheme-1-text"
+                className="font-oswald font-bold text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] uppercase tracking-[-0.32px] leading-[1.1] text-scheme-1-text"
               >
                 {currentTestimonial.quote}
               </blockquote>
@@ -92,13 +92,13 @@ export const FbcTestimonialSlider = ({ data }: { data: PageBlocksFbcTestimonialS
                 <div className="flex flex-col">
                   <p
                     data-tina-field={tinaField(currentTestimonial, 'author')}
-                    className="font-sans text-[18px] font-semibold leading-[1.5] text-scheme-1-text"
+                    className="font-sans text-[14px] md:text-[16px] lg:text-[18px] font-semibold leading-[1.5] text-scheme-1-text"
                   >
                     {currentTestimonial.author}
                   </p>
                   <p
                     data-tina-field={tinaField(currentTestimonial, 'role')}
-                    className="font-sans text-[18px] leading-[1.5] text-scheme-1-text"
+                    className="font-sans text-[14px] md:text-[16px] lg:text-[18px] leading-[1.5] text-scheme-1-text"
                   >
                     {currentTestimonial.role}
                   </p>
@@ -121,20 +121,20 @@ export const FbcTestimonialSlider = ({ data }: { data: PageBlocksFbcTestimonialS
             ))}
           </div>
 
-          <div className="flex gap-4">
+          <div className="flex gap-2 md:gap-4">
             <button
               onClick={goToPrevious}
-              className="p-3 bg-scheme-3-background hover:bg-scheme-1-border rounded transition-colors"
+              className="p-2 md:p-3 bg-scheme-3-background hover:bg-scheme-1-border rounded transition-colors"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
             <button
               onClick={goToNext}
-              className="p-3 bg-scheme-3-background hover:bg-scheme-1-border rounded transition-colors"
+              className="p-2 md:p-3 bg-scheme-3-background hover:bg-scheme-1-border rounded transition-colors"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>

@@ -67,9 +67,9 @@ export const FbcTeam = ({ data }: { data: PageBlocksFbcTeam }) => {
 
 const TeamMemberCard = ({ member }: { member: PageBlocksFbcTeamMembers }) => {
   return (
-    <div className="flex flex-col gap-6 items-center text-center">
+    <div className="h-full flex flex-col gap-6 items-center text-center">
       {member.image && (
-        <div className="w-full aspect-square relative rounded-lg overflow-hidden">
+        <div className="w-full aspect-square relative rounded-lg overflow-hidden shrink-0">
           <Image
             src={member.image}
             alt={member.name || ''}
@@ -80,7 +80,7 @@ const TeamMemberCard = ({ member }: { member: PageBlocksFbcTeamMembers }) => {
         </div>
       )}
 
-      <div className="flex flex-col gap-4 w-full">
+      <div className="flex flex-col gap-4 w-full flex-1">
         <div className="flex flex-col">
           <p
             data-tina-field={tinaField(member, 'name')}
@@ -105,7 +105,7 @@ const TeamMemberCard = ({ member }: { member: PageBlocksFbcTeamMembers }) => {
       </div>
 
       {member.socials && member.socials.length > 0 && (
-        <div className="flex gap-3.5">
+        <div className="flex gap-3.5 mt-auto">
           {member.socials.map((social, index) => (
             <SocialLink key={index} social={social!} />
           ))}

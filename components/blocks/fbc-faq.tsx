@@ -6,7 +6,7 @@ import type { PageBlocksFbcFaq, PageBlocksFbcFaqFaqs } from '../../tina/__genera
 
 export const FbcFaq = ({ data }: { data: PageBlocksFbcFaq }) => {
   return (
-    <section className="bg-scheme-2-background px-2 sm:px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32">
+    <section id="faqs" className="bg-scheme-2-background px-2 sm:px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32">
       <div className="max-w-[1440px] mx-auto flex flex-col gap-10 md:gap-16 lg:gap-20 items-center">
         <div className="max-w-full md:max-w-[768px] text-center flex flex-col gap-4 md:gap-6 px-2 sm:px-0">
           <h2

@@ -36,13 +36,33 @@ export const Footer = () => {
             {footer?.linkColumns?.map((column, colIndex) => (
               <div key={colIndex} className="flex-1 min-w-[120px] flex flex-col">
                 {column?.links?.map((link, linkIndex) => (
-                  <Link
-                    key={linkIndex}
-                    href={link?.href || '#'}
-                    className={`py-1 md:py-2 text-scheme-2-text hover:text-scheme-2-text/80 font-sans text-[14px] md:text-[16px] leading-[1.5] ${link?.isHeading ? 'font-semibold' : ''}`}
-                  >
-                    {link?.label}
-                  </Link>
+                  link?.href?.startsWith('#') ? (
+                    <a
+                      key={linkIndex}
+                      href={link.href}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        const target = document.querySelector(link.href!);
+                        if (target) {
+                          const headerOffset = 72;
+                          const elementPosition = target.getBoundingClientRect().top;
+                          const offsetPosition = elementPosition + window.scrollY - headerOffset;
+                          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                        }
+                      }}
+                      className={`py-1 md:py-2 text-scheme-2-text hover:text-scheme-2-text/80 font-sans text-[14px] md:text-[16px] leading-[1.5] cursor-pointer ${link?.isHeading ? 'font-semibold' : ''}`}
+                    >
+                      {link?.label}
+                    </a>
+                  ) : (
+                    <Link
+                      key={linkIndex}
+                      href={link?.href || '#'}
+                      className={`py-1 md:py-2 text-scheme-2-text hover:text-scheme-2-text/80 font-sans text-[14px] md:text-[16px] leading-[1.5] ${link?.isHeading ? 'font-semibold' : ''}`}
+                    >
+                      {link?.label}
+                    </Link>
+                  )
                 ))}
               </div>
             ))}

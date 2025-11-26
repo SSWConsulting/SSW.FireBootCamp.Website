@@ -29,7 +29,7 @@ export const FbcCtaBanner = ({ data }: { data: PageBlocksFbcCtaBanner }) => {
               <input
                 type="email"
                 placeholder={data.emailPlaceholder || 'Enter your email address'}
-                className="w-full sm:flex-1 sm:min-w-0 h-10 md:h-12 px-3 bg-scheme-4-border rounded-md font-sans text-[14px] md:text-[16px] lg:text-[18px] leading-[1.5] text-scheme-4-text border-0 placeholder:text-scheme-4-text/60"
+                className="w-full sm:flex-1 sm:min-w-0 h-10 md:h-12 px-3 bg-scheme-4-border rounded-md font-sans text-[14px] md:text-[16px] lg:text-[18px] leading-[1.5] text-scheme-4-text border-0 placeholder:text-white/70"
               />
               <Button className="bg-scheme-4-accent hover:bg-scheme-4-accent/90 text-scheme-4-background whitespace-nowrap shrink-0">
                 {data.buttonLabel || 'Commit'}

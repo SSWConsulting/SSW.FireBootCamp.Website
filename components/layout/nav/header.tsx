@@ -24,10 +24,10 @@ export const Header = () => {
         onMouseLeave={() => setMegaMenuOpen(false)}
       >
         <nav>
-          <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-16">
+          <div className="max-w-[1920px] mx-auto px-4 md:px-8 lg:px-16">
             <div className="flex items-center justify-between h-[72px]">
               {/* Logo - Left aligned */}
-              <div className="shrink-0">
+              <div className="shrink-0 pb-[6px]">
                 <Link href="/" aria-label="home" className="flex items-center">
                   {header?.logo ? (
                     <img 
@@ -53,6 +53,23 @@ export const Header = () => {
                         <span>{item.label}</span>
                         <ChevronDown className={`w-6 h-6 transition-transform ${megaMenuOpen ? 'rotate-180' : ''}`} />
                       </div>
+                    ) : item?.href?.startsWith('#') ? (
+                      <a
+                        href={item.href}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          const target = document.querySelector(item.href!);
+                          if (target) {
+                            const headerOffset = 72;
+                            const elementPosition = target.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.scrollY - headerOffset;
+                            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                          }
+                        }}
+                        className="text-scheme-2-text font-sans text-[18px] leading-[1.5] hover:text-scheme-2-text/80 transition-colors cursor-pointer"
+                      >
+                        {item?.label}
+                      </a>
                     ) : (
                       <Link
                         href={item?.href || '#'}
@@ -123,13 +140,33 @@ export const Header = () => {
             <ul className="space-y-4">
               {header?.nav?.map((item, index) => (
                 <li key={index}>
-                  <Link
-                    href={item?.href || '#'}
-                    className="text-scheme-2-text font-sans text-[18px] leading-[1.5] block py-2"
-                    onClick={() => setMenuState(false)}
-                  >
-                    {item?.label}
-                  </Link>
+                  {item?.href?.startsWith('#') ? (
+                    <a
+                      href={item.href}
+                      className="text-scheme-2-text font-sans text-[18px] leading-[1.5] block py-2"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setMenuState(false);
+                        const target = document.querySelector(item.href!);
+                        if (target) {
+                          const headerOffset = 72;
+                          const elementPosition = target.getBoundingClientRect().top;
+                          const offsetPosition = elementPosition + window.scrollY - headerOffset;
+                          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                        }
+                      }}
+                    >
+                      {item?.label}
+                    </a>
+                  ) : (
+                    <Link
+                      href={item?.href || '#'}
+                      className="text-scheme-2-text font-sans text-[18px] leading-[1.5] block py-2"
+                      onClick={() => setMenuState(false)}
+                    >
+                      {item?.label}
+                    </Link>
+                  )}
                 </li>
               ))}
               <li className="pt-4">

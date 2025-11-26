@@ -8,7 +8,7 @@ import { Button } from '../ui/button';
 
 export const FbcPricing = ({ data }: { data: PageBlocksFbcPricing }) => {
   return (
-    <section className="bg-scheme-3-background px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32">
+    <section id="pricing" className="bg-scheme-3-background px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32">
       <div className="max-w-[1440px] mx-auto flex flex-col gap-10 md:gap-16 lg:gap-20 items-center">
         <div className="max-w-full md:max-w-[768px] text-center flex flex-col gap-4 md:gap-6">
           <h2

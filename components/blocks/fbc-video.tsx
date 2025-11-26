@@ -9,25 +9,25 @@ import HeroVideoDialog from '../ui/hero-video-dialog';
 
 export const FbcVideo = ({ data }: { data: PageBlocksFbcVideo }) => {
   return (
-    <section className="bg-scheme-3-background px-16 py-32">
-      <div className="max-w-[1440px] mx-auto flex flex-col gap-20 items-center">
-        <div className="max-w-[768px] text-center flex flex-col gap-8 items-center">
-          <div className="flex flex-col gap-6">
+    <section className="bg-scheme-3-background px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32">
+      <div className="max-w-[1440px] mx-auto flex flex-col gap-10 md:gap-16 lg:gap-20 items-center">
+        <div className="max-w-full md:max-w-[768px] text-center flex flex-col gap-6 md:gap-8 items-center">
+          <div className="flex flex-col gap-4 md:gap-6">
             <h2
               data-tina-field={tinaField(data, 'title')}
-              className="font-oswald font-bold text-[60px] uppercase tracking-[-0.6px] leading-none text-scheme-3-text"
+              className="font-oswald font-bold text-[32px] sm:text-[40px] md:text-[50px] lg:text-[60px] uppercase tracking-[-0.6px] leading-none text-scheme-3-text"
             >
               {data.title}
             </h2>
             <p
               data-tina-field={tinaField(data, 'description')}
-              className="font-sans text-[20px] leading-[1.5] text-scheme-3-text"
+              className="font-sans text-[14px] md:text-[16px] lg:text-[20px] leading-[1.5] text-scheme-3-text"
             >
               {data.description}
             </p>
           </div>
 
-          <div className="flex gap-6 items-center">
+          <div className="flex flex-col sm:flex-row gap-4 md:gap-6 items-center">
             {data.watchLabel && (
               <Button
                 variant="ghost"
@@ -41,10 +41,10 @@ export const FbcVideo = ({ data }: { data: PageBlocksFbcVideo }) => {
               <Link
                 href={data.secondaryLink || '#'}
                 data-tina-field={tinaField(data, 'secondaryLabel')}
-                className="flex items-center gap-2 font-sans text-[18px] font-medium leading-[1.5] text-scheme-3-text hover:underline"
+                className="flex items-center gap-2 font-sans text-[14px] md:text-[16px] lg:text-[18px] font-medium leading-[1.5] text-scheme-3-text hover:underline"
               >
                 {data.secondaryLabel}
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </Link>

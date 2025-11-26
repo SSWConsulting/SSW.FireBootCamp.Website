@@ -21,9 +21,31 @@ const Global: Collection = {
           name: "logo",
         },
         {
+          type: "number",
+          label: "Logo Scale",
+          name: "logoScale",
+          description: "Scale the logo size (0.5 = 50%, 1 = 100%, 2 = 200%)",
+          ui: {
+            component: "slider",
+            parse: (val: number) => Number(val),
+            step: 0.1,
+          },
+        },
+        {
           type: "string",
           label: "Name",
           name: "name",
+        },
+        {
+          type: "string",
+          label: "Nav Alignment",
+          name: "navAlignment",
+          description: "Alignment of navigation items",
+          options: [
+            { label: "Left", value: "left" },
+            { label: "Center", value: "center" },
+            { label: "Right", value: "right" },
+          ],
         },
         {
           type: "string",
@@ -125,6 +147,17 @@ const Global: Collection = {
       label: "Footer",
       name: "footer",
       fields: [
+        {
+          type: "number",
+          label: "Logo Scale",
+          name: "logoScale",
+          description: "Scale the logo size (0.5 = 50%, 1 = 100%, 2 = 200%)",
+          ui: {
+            component: "slider",
+            parse: (val: number) => Number(val),
+            step: 0.1,
+          },
+        },
         {
           type: "string",
           label: "Headline",

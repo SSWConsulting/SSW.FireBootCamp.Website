@@ -25,7 +25,7 @@ export const FbcFaq = ({ data }: { data: PageBlocksFbcFaq }) => {
 
         <div className="w-full max-w-[768px] flex flex-col gap-4">
           {data.faqs?.map((faq, index) => (
-            <FaqItem key={index} faq={faq!} defaultOpen={index === 0} />
+            <FaqItem key={index} faq={faq!} />
           ))}
         </div>
       </div>
@@ -33,8 +33,8 @@ export const FbcFaq = ({ data }: { data: PageBlocksFbcFaq }) => {
   );
 };
 
-const FaqItem = ({ faq, defaultOpen }: { faq: PageBlocksFbcFaqFaqs; defaultOpen?: boolean }) => {
-  const [isOpen, setIsOpen] = useState(defaultOpen || false);
+const FaqItem = ({ faq }: { faq: PageBlocksFbcFaqFaqs }) => {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="bg-scheme-2-foreground rounded-lg overflow-hidden">
@@ -49,25 +49,31 @@ const FaqItem = ({ faq, defaultOpen }: { faq: PageBlocksFbcFaqFaqs; defaultOpen?
           {faq.question}
         </p>
         <svg
-          className={`w-6 h-6 text-scheme-2-text shrink-0 transition-transform ${isOpen ? 'rotate-45' : ''}`}
+          className={`w-6 h-6 text-scheme-2-text shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-45' : ''}`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v12M6 12h12" />
         </svg>
       </button>
 
-      {isOpen && (
-        <div className="px-6 pb-6">
-          <p
-            data-tina-field={tinaField(faq, 'answer')}
-            className="font-sans text-[18px] leading-[1.5] text-scheme-2-text"
-          >
-            {faq.answer}
-          </p>
+      <div 
+        className={`grid transition-all duration-200 ease-in-out ${
+          isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+        }`}
+      >
+        <div className="overflow-hidden">
+          <div className="px-6 pb-6">
+            <p
+              data-tina-field={tinaField(faq, 'answer')}
+              className="font-sans text-[18px] leading-[1.5] text-scheme-2-text"
+            >
+              {faq.answer}
+            </p>
+          </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };

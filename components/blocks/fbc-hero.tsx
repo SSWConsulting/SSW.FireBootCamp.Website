@@ -11,7 +11,7 @@ export const FbcHero = ({ data }: { data: PageBlocksFbcHero }) => {
   const hasImage = !!data.backgroundImage;
 
   return (
-    <section className="relative min-h-[800px] flex flex-col gap-20 items-start justify-center px-16 py-32 overflow-hidden">
+    <section className="relative min-h-[500px] md:min-h-[600px] lg:min-h-[800px] flex flex-col gap-10 md:gap-16 lg:gap-20 items-start justify-center px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32 overflow-hidden">
       {(hasVideo || hasImage) && (
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0 bg-black" />
@@ -38,24 +38,24 @@ export const FbcHero = ({ data }: { data: PageBlocksFbcHero }) => {
         </div>
       )}
 
-      <div className="relative z-10 max-w-[1440px] w-full mx-auto flex flex-col gap-20">
-        <div className="max-w-[1024px]">
+      <div className="relative z-10 max-w-[1440px] w-full mx-auto flex flex-col gap-10 md:gap-16 lg:gap-20">
+        <div className="max-w-full lg:max-w-[1024px]">
           <h1
             data-tina-field={tinaField(data, 'headline')}
             className="font-oswald font-bold text-white uppercase tracking-tight leading-none"
           >
-            <span className="font-jetbrains font-thin text-[108px] text-white tracking-[-1.08px]">&lt;</span>
-            <span className="text-fbc-red text-[84px] tracking-[-0.84px]">Code</span>
-            <span className="font-jetbrains font-thin text-[108px] text-white tracking-[-1.08px]">&gt;</span>
-            <span className="text-[84px] tracking-[-0.84px]"> {data.headline}</span>
+            <span className="font-jetbrains font-thin text-[40px] sm:text-[60px] md:text-[80px] lg:text-[108px] text-white tracking-[-1.08px]">&lt;</span>
+            <span className="text-fbc-red text-[32px] sm:text-[48px] md:text-[64px] lg:text-[84px] tracking-[-0.84px]">Code</span>
+            <span className="font-jetbrains font-thin text-[40px] sm:text-[60px] md:text-[80px] lg:text-[108px] text-white tracking-[-1.08px]">&gt;</span>
+            <span className="text-[32px] sm:text-[48px] md:text-[64px] lg:text-[84px] tracking-[-0.84px]"> {data.headline}</span>
           </h1>
         </div>
 
-        <div className="flex flex-col gap-4 items-end w-full">
-          <div className="flex flex-col gap-8 items-start max-w-[560px]">
+        <div className="flex flex-col gap-4 items-start lg:items-end w-full">
+          <div className="flex flex-col gap-6 md:gap-8 items-start max-w-full lg:max-w-[560px]">
             <p
               data-tina-field={tinaField(data, 'description')}
-              className="font-sans text-white text-[20px] leading-[1.5]"
+              className="font-sans text-white text-[16px] md:text-[18px] lg:text-[20px] leading-[1.5]"
             >
               {data.description}
             </p>

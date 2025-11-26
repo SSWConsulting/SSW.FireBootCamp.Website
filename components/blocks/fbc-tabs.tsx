@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import type { Template } from 'tinacms';
 import { tinaField } from 'tinacms/dist/react';
@@ -7,33 +7,48 @@ import type { PageBlocksFbcTabs, PageBlocksFbcTabsTabs } from '../../tina/__gene
 
 export const FbcTabs = ({ data }: { data: PageBlocksFbcTabs }) => {
   const [activeTab, setActiveTab] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [displayedTab, setDisplayedTab] = useState(0);
   const tabs = data.tabs || [];
 
+  const handleTabChange = (index: number) => {
+    if (index === activeTab || isTransitioning) return;
+    
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setDisplayedTab(index);
+      setActiveTab(index);
+      setTimeout(() => {
+        setIsTransitioning(false);
+      }, 50);
+    }, 200);
+  };
+
   return (
-    <section className="bg-scheme-1-background px-16 py-32">
-      <div className="max-w-[1280px] mx-auto flex flex-col gap-16 items-center">
-        <div className="max-w-[768px] text-center flex flex-col gap-8">
+    <section className="bg-scheme-1-background px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32">
+      <div className="max-w-[1280px] mx-auto flex flex-col gap-8 md:gap-12 lg:gap-16 items-center">
+        <div className="max-w-full md:max-w-[768px] text-center flex flex-col gap-4 md:gap-6 lg:gap-8">
           <h2
             data-tina-field={tinaField(data, 'title')}
-            className="font-oswald font-bold text-[60px] uppercase tracking-[-0.6px] leading-none text-scheme-1-text"
+            className="font-oswald font-bold text-[32px] sm:text-[40px] md:text-[50px] lg:text-[60px] uppercase tracking-[-0.6px] leading-none text-scheme-1-text"
           >
             {data.title}
           </h2>
           <p
             data-tina-field={tinaField(data, 'description')}
-            className="font-sans text-[20px] leading-[1.5] text-scheme-1-text"
+            className="font-sans text-[16px] md:text-[18px] lg:text-[20px] leading-[1.5] text-scheme-1-text"
           >
             {data.description}
           </p>
         </div>
 
-        <div className="w-full flex flex-col gap-16 items-center">
-          <div className="flex gap-6 items-center justify-center">
+        <div className="w-full flex flex-col gap-8 md:gap-12 lg:gap-16 items-center">
+          <div className="flex flex-wrap gap-3 md:gap-6 items-center justify-center">
             {tabs.map((tab, index) => (
               <button
                 key={index}
-                onClick={() => setActiveTab(index)}
-                className={`px-0 py-2 font-sans text-[18px] font-medium leading-[1.5] transition-colors ${
+                onClick={() => handleTabChange(index)}
+                className={`px-2 md:px-0 py-2 font-sans text-[14px] md:text-[16px] lg:text-[18px] font-medium leading-[1.5] transition-colors ${
                   activeTab === index
                     ? 'text-red border-b-2 border-red font-bold'
                     : 'text-scheme-1-text hover:text-red'
@@ -44,8 +59,14 @@ export const FbcTabs = ({ data }: { data: PageBlocksFbcTabs }) => {
             ))}
           </div>
 
-          <div className="w-full h-[640px] bg-scheme-3-background rounded-lg overflow-hidden">
-            {tabs[activeTab] && <TabContent tab={tabs[activeTab]!} />}
+          <div className="w-full min-h-[400px] md:min-h-[500px] lg:h-[640px] bg-scheme-3-background rounded-lg overflow-hidden">
+            <div 
+              className={`h-full transition-opacity duration-200 ease-in-out ${
+                isTransitioning ? 'opacity-0' : 'opacity-100'
+              }`}
+            >
+              {tabs[displayedTab] && <TabContent tab={tabs[displayedTab]!} />}
+            </div>
           </div>
         </div>
       </div>
@@ -55,8 +76,8 @@ export const FbcTabs = ({ data }: { data: PageBlocksFbcTabs }) => {
 
 const TabContent = ({ tab }: { tab: PageBlocksFbcTabsTabs }) => {
   return (
-    <div className="flex h-full">
-      <div className="flex-1 relative">
+    <div className="flex flex-col lg:flex-row h-full">
+      <div className="h-[200px] md:h-[250px] lg:h-auto lg:flex-1 relative">
         {tab.image && (
           <Image
             src={tab.image}
@@ -67,19 +88,19 @@ const TabContent = ({ tab }: { tab: PageBlocksFbcTabsTabs }) => {
           />
         )}
       </div>
-      <div className="flex-1 flex flex-col gap-8 p-12 justify-center">
-        <div className="flex flex-col gap-4 max-w-[560px]">
-          <span className="font-sans text-[16px] font-semibold leading-[1.5] text-scheme-3-text">{tab.title}</span>
-          <div className="flex flex-col gap-6">
+      <div className="flex-1 flex flex-col gap-4 md:gap-6 lg:gap-8 p-6 md:p-8 lg:p-12 justify-center">
+        <div className="flex flex-col gap-3 md:gap-4 max-w-full lg:max-w-[560px]">
+          <span className="font-sans text-[14px] md:text-[16px] font-semibold leading-[1.5] text-scheme-3-text">{tab.title}</span>
+          <div className="flex flex-col gap-4 md:gap-6">
             <h3
               data-tina-field={tinaField(tab, 'headline')}
-              className="font-oswald font-bold text-[48px] uppercase tracking-[-0.48px] leading-none text-scheme-3-text"
+              className="font-oswald font-bold text-[24px] sm:text-[32px] md:text-[40px] lg:text-[48px] uppercase tracking-[-0.48px] leading-none text-scheme-3-text"
             >
               {tab.headline}
             </h3>
             <p
               data-tina-field={tinaField(tab, 'content')}
-              className="font-sans text-[20px] leading-[1.5] text-scheme-3-text"
+              className="font-sans text-[14px] md:text-[16px] lg:text-[20px] leading-[1.5] text-scheme-3-text"
             >
               {tab.content}
             </p>

@@ -8,21 +8,25 @@ export const Footer = () => {
   const { globalSettings } = useLayout();
   const { header, footer } = globalSettings || {};
 
+  const logoScale = footer?.logoScale ?? 1;
+  const baseLogoHeight = 34;
+  const logoHeight = Math.round(baseLogoHeight * logoScale);
+
   return (
-    <footer className="bg-scheme-2-background px-16 py-20">
-      <div className="max-w-[1440px] mx-auto flex flex-col gap-20">
-        <div className="flex flex-col lg:flex-row items-start justify-between gap-12">
-          <div className="flex-1 max-w-[560px] flex flex-col gap-8">
-            <div className="flex flex-col gap-6">
-              <h2 className="font-oswald font-bold text-[84px] uppercase tracking-[-0.84px] leading-none text-scheme-2-text">
+    <footer className="bg-scheme-2-background px-4 md:px-8 lg:px-16 py-10 md:py-16 lg:py-20">
+      <div className="max-w-[1440px] mx-auto flex flex-col gap-10 md:gap-16 lg:gap-20">
+        <div className="flex flex-col lg:flex-row items-start justify-between gap-8 md:gap-12">
+          <div className="flex-1 max-w-full lg:max-w-[560px] flex flex-col gap-6 md:gap-8">
+            <div className="flex flex-col gap-4 md:gap-6">
+              <h2 className="font-oswald font-bold text-[32px] sm:text-[48px] md:text-[64px] lg:text-[84px] uppercase tracking-[-0.84px] leading-none text-scheme-2-text">
                 {footer?.headline || 'Start your developer journey today'}
               </h2>
-              <p className="font-sans text-[18px] leading-[1.5] text-scheme-2-text">
+              <p className="font-sans text-[14px] md:text-[16px] lg:text-[18px] leading-[1.5] text-scheme-2-text">
                 {footer?.description || "We're independent and Oceanic-based. We run webinars, live events, in-house and online courses."}
               </p>
             </div>
 
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
               <Button asChild className="bg-red hover:bg-red-dark text-white">
                 <Link href={footer?.primaryCtaLink || '/apply'}>{footer?.primaryCtaLabel || 'Apply now'}</Link>
               </Button>
@@ -32,14 +36,14 @@ export const Footer = () => {
             </div>
           </div>
 
-          <div className="flex gap-8 max-w-[400px]">
+          <div className="flex flex-wrap sm:flex-nowrap gap-6 md:gap-8 w-full lg:w-auto lg:max-w-[400px]">
             {footer?.linkColumns?.map((column, colIndex) => (
-              <div key={colIndex} className="flex-1 flex flex-col">
+              <div key={colIndex} className="flex-1 min-w-[120px] flex flex-col">
                 {column?.links?.map((link, linkIndex) => (
                   <Link
                     key={linkIndex}
                     href={link?.href || '#'}
-                    className={`py-2 text-scheme-2-text hover:text-scheme-2-text/80 font-sans text-[16px] leading-[1.5] ${link?.isHeading ? 'font-semibold' : ''}`}
+                    className={`py-1 md:py-2 text-scheme-2-text hover:text-scheme-2-text/80 font-sans text-[14px] md:text-[16px] leading-[1.5] ${link?.isHeading ? 'font-semibold' : ''}`}
                   >
                     {link?.label}
                   </Link>
@@ -49,21 +53,25 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-8">
-          <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-6 md:gap-8">
+          <div className="flex items-center justify-start">
             <Link href="/" aria-label="home">
               {header?.logo ? (
-                <img src={header.logo} alt={header.name || 'FireBootCamp'} width={180} height={34} className="h-[34px] w-auto" />
+                <img 
+                  src={header.logo} 
+                  alt={header.name || 'FireBootCamp'} 
+                  style={{ height: `${logoHeight}px`, width: 'auto' }}
+                />
               ) : (
-                <span className="text-scheme-2-text font-bold font-sans text-[26px]">{header?.name || 'FireBootCamp'}</span>
+                <span className="text-scheme-2-text font-bold font-sans text-[20px] md:text-[26px]">{header?.name || 'FireBootCamp'}</span>
               )}
             </Link>
           </div>
 
           <div className="h-px bg-scheme-2-border" />
 
-          <div className="flex items-center justify-between">
-            <p className="text-scheme-2-text font-sans text-[16px] leading-[1.5]">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <p className="text-scheme-2-text font-sans text-[12px] md:text-[14px] lg:text-[16px] leading-[1.5]">
               © {new Date().getFullYear()} SSW FireBootCamp. All rights reserved.
             </p>
 

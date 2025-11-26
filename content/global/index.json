@@ -1,7 +1,9 @@
 {
   "header": {
     "logo": "/uploads/fbc_logo-dm.svg",
+    "logoScale": 1.2,
     "name": "SSW FireBootCamp",
+    "navAlignment": "center",
     "ctaLabel": "Apply now",
     "ctaLink": "/apply",
     "nav": [
@@ -53,6 +55,7 @@
     "megaMenuBannerLinkUrl": "/apply"
   },
   "footer": {
+    "logoScale": 1,
     "headline": "Start your developer journey today",
     "description": "We're independent and Oceanic-based. We run webinars, live events, in-house and online courses.",
     "primaryCtaLabel": "Apply now",

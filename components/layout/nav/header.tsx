@@ -14,6 +14,10 @@ export const Header = () => {
   const [menuState, setMenuState] = React.useState(false);
   const [megaMenuOpen, setMegaMenuOpen] = React.useState(false);
 
+  const logoScale = header?.logoScale ?? 1;
+  const baseLogoHeight = 32;
+  const logoHeight = Math.round(baseLogoHeight * logoScale);
+
   return (
     <>
       {/* Spacer to push content below fixed header */}
@@ -24,42 +28,49 @@ export const Header = () => {
         onMouseLeave={() => setMegaMenuOpen(false)}
       >
         <nav>
-          <div className="max-w-[1440px] mx-auto px-16">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-16">
             <div className="flex items-center justify-between h-[72px]">
-              <div className="flex items-center gap-6">
+              {/* Logo - Left aligned */}
+              <div className="shrink-0">
                 <Link href="/" aria-label="home" className="flex items-center">
                   {header?.logo ? (
-                    <img src={header.logo} alt={header.name || 'FireBootCamp'} width={140} height={26} className="h-[26px] w-auto" />
+                    <img 
+                      src={header.logo} 
+                      alt={header.name || 'FireBootCamp'} 
+                      style={{ height: `${logoHeight}px`, width: 'auto' }}
+                    />
                   ) : (
                     <span className="text-scheme-2-text font-bold font-sans text-[20px]">{header?.name || 'FireBootCamp'}</span>
                   )}
                 </Link>
-
-                <div className="hidden lg:flex items-center gap-8 ml-8">
-                  {header?.nav?.map((item, index) => (
-                    <React.Fragment key={index}>
-                      {item?.hasDropdown ? (
-                        <div
-                          onMouseEnter={() => setMegaMenuOpen(true)}
-                          className="flex items-center gap-1 text-scheme-2-text font-sans text-[18px] leading-[1.5] hover:text-scheme-2-text/80 transition-colors cursor-pointer"
-                        >
-                          <span>{item.label}</span>
-                          <ChevronDown className={`w-6 h-6 transition-transform ${megaMenuOpen ? 'rotate-180' : ''}`} />
-                        </div>
-                      ) : (
-                        <Link
-                          href={item?.href || '#'}
-                          className="text-scheme-2-text font-sans text-[18px] leading-[1.5] hover:text-scheme-2-text/80 transition-colors"
-                        >
-                          {item?.label}
-                        </Link>
-                      )}
-                    </React.Fragment>
-                  ))}
-                </div>
               </div>
 
-              <div className="flex items-center gap-4 ml-auto">
+              {/* Nav items - Centered */}
+              <div className="hidden lg:flex items-center justify-center gap-8 flex-1">
+                {header?.nav?.map((item, index) => (
+                  <React.Fragment key={index}>
+                    {item?.hasDropdown ? (
+                      <div
+                        onMouseEnter={() => setMegaMenuOpen(true)}
+                        className="flex items-center gap-1 text-scheme-2-text font-sans text-[18px] leading-[1.5] hover:text-scheme-2-text/80 transition-colors cursor-pointer"
+                      >
+                        <span>{item.label}</span>
+                        <ChevronDown className={`w-6 h-6 transition-transform ${megaMenuOpen ? 'rotate-180' : ''}`} />
+                      </div>
+                    ) : (
+                      <Link
+                        href={item?.href || '#'}
+                        className="text-scheme-2-text font-sans text-[18px] leading-[1.5] hover:text-scheme-2-text/80 transition-colors"
+                      >
+                        {item?.label}
+                      </Link>
+                    )}
+                  </React.Fragment>
+                ))}
+              </div>
+
+              {/* CTA Button - Right aligned */}
+              <div className="flex items-center gap-4 shrink-0">
                 <Button asChild className="hidden lg:flex bg-red hover:bg-red-dark text-white">
                   <Link href={header?.ctaLink || '/apply'}>{header?.ctaLabel || 'Apply now'}</Link>
                 </Button>
@@ -77,7 +88,7 @@ export const Header = () => {
 
           {megaMenuOpen && megaMenu && megaMenu.length > 0 && (
             <div className="hidden lg:block bg-scheme-2-background">
-              <div className="max-w-[1440px] mx-auto px-16 py-8">
+              <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-16 py-8">
                 <div className="grid grid-cols-4 gap-8">
                   {megaMenu.map((item, index) => (
                     <Link
@@ -99,7 +110,7 @@ export const Header = () => {
                   ))}
                 </div>
               </div>
-              <div className="bg-scheme-2-foreground px-16 py-4">
+              <div className="bg-scheme-2-foreground px-4 md:px-8 lg:px-16 py-4">
                 <div className="max-w-[1440px] mx-auto flex justify-center items-center gap-2 text-scheme-2-text font-sans text-[18px] leading-[1.5]">
                   <span>{header?.megaMenuBannerText || 'Transform your tech career now'}</span>
                   <Link href={header?.megaMenuBannerLinkUrl || '/apply'} className="underline hover:no-underline">

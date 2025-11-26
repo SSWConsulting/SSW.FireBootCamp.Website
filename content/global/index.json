@@ -21,6 +21,7 @@
         "label": "FAQs"
       },
       {
+        "href": "https://www.ssw.com.au/events",
         "label": "Courses & Events",
         "hasDropdown": true
       }
@@ -42,7 +43,7 @@
         "icon": "start",
         "title": "Something Else?",
         "description": "Explore our full list of courses and events at SSW.",
-        "href": "/courses"
+        "href": "www.ssw.com.au/events#courses"
       }
     ],
     "megaMenuBannerText": "Transform your tech career now",

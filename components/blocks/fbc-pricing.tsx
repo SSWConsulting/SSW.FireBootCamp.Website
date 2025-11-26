@@ -8,18 +8,18 @@ import { Button } from '../ui/button';
 
 export const FbcPricing = ({ data }: { data: PageBlocksFbcPricing }) => {
   return (
-    <section className="bg-fbc-gray px-16 py-32">
+    <section className="bg-scheme-3-background px-16 py-32">
       <div className="max-w-[1440px] mx-auto flex flex-col gap-20 items-center">
         <div className="max-w-[768px] text-center flex flex-col gap-6">
           <h2
             data-tina-field={tinaField(data, 'title')}
-            className="font-oswald font-bold text-6xl uppercase tracking-tight leading-none text-black"
+            className="font-oswald font-bold text-[60px] uppercase tracking-[-0.6px] leading-none text-scheme-3-text"
           >
             {data.title}
           </h2>
           <p
             data-tina-field={tinaField(data, 'description')}
-            className="text-xl leading-relaxed text-black"
+            className="font-sans text-[20px] leading-[1.5] text-scheme-3-text"
           >
             {data.description}
           </p>
@@ -37,8 +37,8 @@ export const FbcPricing = ({ data }: { data: PageBlocksFbcPricing }) => {
 
 const PricingCard = ({ plan }: { plan: PageBlocksFbcPricingPlans }) => {
   return (
-    <div className="bg-white rounded-lg p-8 flex flex-col gap-8">
-      <div className="flex flex-col gap-8">
+    <div className="bg-scheme-1-background rounded-lg p-8 flex flex-col h-full">
+      <div className="flex flex-col gap-8 flex-1">
         <div className="flex gap-4 items-center">
           {plan.icon && (
             <div className="w-12 h-[42px] relative" data-tina-field={tinaField(plan, 'icon')}>
@@ -47,7 +47,7 @@ const PricingCard = ({ plan }: { plan: PageBlocksFbcPricingPlans }) => {
           )}
           <h3
             data-tina-field={tinaField(plan, 'name')}
-            className="font-oswald font-bold text-[26px] uppercase tracking-tight leading-tight text-black"
+            className="font-oswald font-bold text-[26px] uppercase tracking-[-0.26px] leading-[1.1] text-scheme-1-text"
           >
             {plan.name}
           </h3>
@@ -56,22 +56,22 @@ const PricingCard = ({ plan }: { plan: PageBlocksFbcPricingPlans }) => {
         <div className="flex flex-col gap-4">
           <p
             data-tina-field={tinaField(plan, 'price')}
-            className="font-oswald font-bold text-[84px] uppercase tracking-tight leading-none text-black"
+            className="font-oswald font-bold text-[84px] uppercase tracking-[-0.84px] leading-none text-scheme-1-text"
           >
             {plan.price}
           </p>
           <p
             data-tina-field={tinaField(plan, 'subtitle')}
-            className="text-lg leading-relaxed text-black"
+            className="font-sans text-[18px] leading-[1.5] text-scheme-1-text"
           >
             {plan.subtitle}
           </p>
         </div>
 
-        <div className="h-px bg-black/15" />
+        <div className="h-px bg-scheme-1-border" />
 
         <div className="flex flex-col gap-4">
-          <p className="text-lg text-black">Includes</p>
+          <p className="font-sans text-[18px] leading-[1.5] text-scheme-1-text">Includes</p>
           <div className="flex flex-col gap-4 py-2">
             {plan.features?.map((feature, index) => (
               <FeatureItem key={index} feature={feature!} />
@@ -82,7 +82,7 @@ const PricingCard = ({ plan }: { plan: PageBlocksFbcPricingPlans }) => {
 
       <Button
         asChild
-        className="w-full bg-fbc-red hover:bg-fbc-red-dark text-white px-6 py-2.5 rounded-md text-lg font-medium"
+        className="w-full bg-red hover:bg-red-dark text-white mt-8"
       >
         <Link href={plan.ctaLink || '/apply'}>{plan.ctaLabel || 'Apply now'}</Link>
       </Button>
@@ -93,10 +93,10 @@ const PricingCard = ({ plan }: { plan: PageBlocksFbcPricingPlans }) => {
 const FeatureItem = ({ feature }: { feature: PageBlocksFbcPricingPlansFeatures }) => {
   return (
     <div className="flex gap-4 items-start">
-      <svg className="w-6 h-6 text-fbc-red shrink-0" fill="currentColor" viewBox="0 0 24 24">
+      <svg className="w-6 h-6 text-red shrink-0" fill="currentColor" viewBox="0 0 24 24">
         <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" />
       </svg>
-      <p className="text-lg leading-relaxed text-black">{feature.text}</p>
+      <p className="font-sans text-[18px] leading-[1.5] text-scheme-1-text">{feature.text}</p>
     </div>
   );
 };

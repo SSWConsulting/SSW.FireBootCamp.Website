@@ -10,18 +10,18 @@ export const FbcTabs = ({ data }: { data: PageBlocksFbcTabs }) => {
   const tabs = data.tabs || [];
 
   return (
-    <section className="bg-white px-16 py-32">
+    <section className="bg-scheme-1-background px-16 py-32">
       <div className="max-w-[1280px] mx-auto flex flex-col gap-16 items-center">
         <div className="max-w-[768px] text-center flex flex-col gap-8">
           <h2
             data-tina-field={tinaField(data, 'title')}
-            className="font-oswald font-bold text-6xl uppercase tracking-tight leading-none text-black"
+            className="font-oswald font-bold text-[60px] uppercase tracking-[-0.6px] leading-none text-scheme-1-text"
           >
             {data.title}
           </h2>
           <p
             data-tina-field={tinaField(data, 'description')}
-            className="text-xl leading-relaxed text-black"
+            className="font-sans text-[20px] leading-[1.5] text-scheme-1-text"
           >
             {data.description}
           </p>
@@ -33,10 +33,10 @@ export const FbcTabs = ({ data }: { data: PageBlocksFbcTabs }) => {
               <button
                 key={index}
                 onClick={() => setActiveTab(index)}
-                className={`px-0 py-2 text-lg font-medium transition-colors ${
+                className={`px-0 py-2 font-sans text-[18px] font-medium leading-[1.5] transition-colors ${
                   activeTab === index
-                    ? 'text-fbc-red border-b-2 border-fbc-red font-bold'
-                    : 'text-black hover:text-fbc-red'
+                    ? 'text-red border-b-2 border-red font-bold'
+                    : 'text-scheme-1-text hover:text-red'
                 }`}
               >
                 {tab?.title}
@@ -44,7 +44,7 @@ export const FbcTabs = ({ data }: { data: PageBlocksFbcTabs }) => {
             ))}
           </div>
 
-          <div className="w-full h-[640px] bg-fbc-gray rounded-lg overflow-hidden">
+          <div className="w-full h-[640px] bg-scheme-3-background rounded-lg overflow-hidden">
             {tabs[activeTab] && <TabContent tab={tabs[activeTab]!} />}
           </div>
         </div>
@@ -69,17 +69,17 @@ const TabContent = ({ tab }: { tab: PageBlocksFbcTabsTabs }) => {
       </div>
       <div className="flex-1 flex flex-col gap-8 p-12 justify-center">
         <div className="flex flex-col gap-4 max-w-[560px]">
-          <span className="text-base font-semibold text-black">{tab.title}</span>
+          <span className="font-sans text-[16px] font-semibold leading-[1.5] text-scheme-3-text">{tab.title}</span>
           <div className="flex flex-col gap-6">
             <h3
               data-tina-field={tinaField(tab, 'headline')}
-              className="font-oswald font-bold text-5xl uppercase tracking-tight leading-none text-black"
+              className="font-oswald font-bold text-[48px] uppercase tracking-[-0.48px] leading-none text-scheme-3-text"
             >
               {tab.headline}
             </h3>
             <p
               data-tina-field={tinaField(tab, 'content')}
-              className="text-xl leading-relaxed text-black"
+              className="font-sans text-[20px] leading-[1.5] text-scheme-3-text"
             >
               {tab.content}
             </p>

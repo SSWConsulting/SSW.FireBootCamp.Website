@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { useLayout } from "../layout-context";
 import { Button } from "@/components/ui/button";
 
@@ -10,24 +9,24 @@ export const Footer = () => {
   const { header, footer } = globalSettings || {};
 
   return (
-    <footer className="bg-fbc-dark px-16 py-20">
+    <footer className="bg-scheme-2-background px-16 py-20">
       <div className="max-w-[1440px] mx-auto flex flex-col gap-20">
         <div className="flex flex-col lg:flex-row items-start justify-between gap-12">
           <div className="flex-1 max-w-[560px] flex flex-col gap-8">
             <div className="flex flex-col gap-6">
-              <h2 className="font-oswald font-bold text-[84px] uppercase tracking-tight leading-none text-white">
+              <h2 className="font-oswald font-bold text-[84px] uppercase tracking-[-0.84px] leading-none text-scheme-2-text">
                 {footer?.headline || 'Start your developer journey today'}
               </h2>
-              <p className="text-lg leading-relaxed text-white">
+              <p className="font-sans text-[18px] leading-[1.5] text-scheme-2-text">
                 {footer?.description || "We're independent and Oceanic-based. We run webinars, live events, in-house and online courses."}
               </p>
             </div>
 
             <div className="flex gap-4">
-              <Button asChild className="bg-fbc-red hover:bg-fbc-red-dark text-white px-6 py-2.5 rounded-md text-lg font-medium">
+              <Button asChild className="bg-red hover:bg-red-dark text-white">
                 <Link href={footer?.primaryCtaLink || '/apply'}>{footer?.primaryCtaLabel || 'Apply now'}</Link>
               </Button>
-              <Button asChild variant="ghost" className="bg-white/10 hover:bg-white/20 text-white px-6 py-2.5 rounded-md text-lg font-medium">
+              <Button asChild variant="ghost" className="bg-scheme-2-border hover:bg-scheme-2-border/80 text-scheme-2-text">
                 <Link href={footer?.secondaryCtaLink || '#'}>{footer?.secondaryCtaLabel || 'Go to SSW Events'}</Link>
               </Button>
             </div>
@@ -40,7 +39,7 @@ export const Footer = () => {
                   <Link
                     key={linkIndex}
                     href={link?.href || '#'}
-                    className={`py-2 text-white hover:text-white/80 ${link?.isHeading ? 'font-semibold text-base' : 'text-base'}`}
+                    className={`py-2 text-scheme-2-text hover:text-scheme-2-text/80 font-sans text-[16px] leading-[1.5] ${link?.isHeading ? 'font-semibold' : ''}`}
                   >
                     {link?.label}
                   </Link>
@@ -54,17 +53,17 @@ export const Footer = () => {
           <div className="flex items-center justify-between">
             <Link href="/" aria-label="home">
               {header?.logo ? (
-                <Image src={header.logo} alt={header.name || 'FireBootCamp'} width={336} height={64} className="h-16 w-auto" />
+                <img src={header.logo} alt={header.name || 'FireBootCamp'} width={180} height={34} className="h-[34px] w-auto" />
               ) : (
-                <span className="text-white font-bold text-2xl">{header?.name || 'FireBootCamp'}</span>
+                <span className="text-scheme-2-text font-bold font-sans text-[26px]">{header?.name || 'FireBootCamp'}</span>
               )}
             </Link>
           </div>
 
-          <div className="h-px bg-white/20" />
+          <div className="h-px bg-scheme-2-border" />
 
           <div className="flex items-center justify-between">
-            <p className="text-white text-base">
+            <p className="text-scheme-2-text font-sans text-[16px] leading-[1.5]">
               © {new Date().getFullYear()} SSW FireBootCamp. All rights reserved.
             </p>
 
@@ -75,7 +74,7 @@ export const Footer = () => {
                   href={link?.url || '#'}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white hover:text-white/80 transition-colors"
+                  className="text-scheme-2-text hover:text-scheme-2-text/80 transition-colors"
                 >
                   <SocialIcon name={link?.platform || ''} />
                 </Link>

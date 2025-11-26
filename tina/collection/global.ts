@@ -101,6 +101,23 @@ const Global: Collection = {
             },
           ],
         },
+        {
+          type: "string",
+          label: "Mega Menu Banner Text",
+          name: "megaMenuBannerText",
+          description: "Text shown in the banner below the mega menu",
+        },
+        {
+          type: "string",
+          label: "Mega Menu Banner Link Text",
+          name: "megaMenuBannerLinkText",
+          description: "Link text in the mega menu banner",
+        },
+        {
+          type: "string",
+          label: "Mega Menu Banner Link URL",
+          name: "megaMenuBannerLinkUrl",
+        },
       ],
     },
     {
@@ -213,6 +230,7 @@ const Global: Collection = {
           label: "Primary Color",
           name: "color",
           ui: {
+            // @ts-ignore
             component: ColorPickerInput,
           },
         },

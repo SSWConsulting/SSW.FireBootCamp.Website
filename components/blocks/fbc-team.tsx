@@ -8,18 +8,18 @@ import { Button } from '../ui/button';
 
 export const FbcTeam = ({ data }: { data: PageBlocksFbcTeam }) => {
   return (
-    <section className="bg-fbc-gray px-16 py-32">
+    <section className="bg-scheme-3-background px-16 py-32">
       <div className="max-w-[1440px] mx-auto flex flex-col gap-20 items-center">
         <div className="max-w-[768px] text-center flex flex-col gap-6">
           <h2
             data-tina-field={tinaField(data, 'title')}
-            className="font-oswald font-bold text-6xl uppercase tracking-tight leading-none text-black"
+            className="font-oswald font-bold text-[60px] uppercase tracking-[-0.6px] leading-none text-scheme-3-text"
           >
             {data.title}
           </h2>
           <p
             data-tina-field={tinaField(data, 'description')}
-            className="text-xl leading-relaxed text-black"
+            className="font-sans text-[20px] leading-[1.5] text-scheme-3-text"
           >
             {data.description}
           </p>
@@ -36,7 +36,7 @@ export const FbcTeam = ({ data }: { data: PageBlocksFbcTeam }) => {
             {data.ctaTitle && (
               <h3
                 data-tina-field={tinaField(data, 'ctaTitle')}
-                className="font-oswald font-bold text-[40px] uppercase tracking-tight leading-none text-black"
+                className="font-oswald font-bold text-[40px] uppercase tracking-[-0.4px] leading-none text-scheme-3-text"
               >
                 {data.ctaTitle}
               </h3>
@@ -44,7 +44,7 @@ export const FbcTeam = ({ data }: { data: PageBlocksFbcTeam }) => {
             {data.ctaDescription && (
               <p
                 data-tina-field={tinaField(data, 'ctaDescription')}
-                className="text-xl leading-relaxed text-black max-w-[488px]"
+                className="font-sans text-[20px] leading-[1.5] text-scheme-3-text max-w-[488px]"
               >
                 {data.ctaDescription}
               </p>
@@ -53,7 +53,7 @@ export const FbcTeam = ({ data }: { data: PageBlocksFbcTeam }) => {
               <Button
                 asChild
                 variant="ghost"
-                className="bg-black/5 hover:bg-black/10 text-black px-6 py-2.5 rounded-md text-lg font-medium"
+                className="bg-scheme-3-border hover:bg-scheme-1-border text-scheme-3-text"
               >
                 <Link href={data.ctaLink || '#'}>{data.ctaLabel}</Link>
               </Button>
@@ -84,13 +84,13 @@ const TeamMemberCard = ({ member }: { member: PageBlocksFbcTeamMembers }) => {
         <div className="flex flex-col">
           <p
             data-tina-field={tinaField(member, 'name')}
-            className="text-[26px] font-semibold text-black"
+            className="font-sans text-[26px] font-semibold leading-[1.5] text-scheme-3-text"
           >
             {member.name}
           </p>
           <p
             data-tina-field={tinaField(member, 'role')}
-            className="text-xl text-black"
+            className="font-sans text-[20px] leading-[1.5] text-scheme-3-text"
           >
             {member.role}
           </p>
@@ -98,7 +98,7 @@ const TeamMemberCard = ({ member }: { member: PageBlocksFbcTeamMembers }) => {
 
         <p
           data-tina-field={tinaField(member, 'bio')}
-          className="text-lg leading-relaxed text-black"
+          className="font-sans text-[18px] leading-[1.5] text-scheme-3-text"
         >
           {member.bio}
         </p>
@@ -143,7 +143,7 @@ const SocialLink = ({ social }: { social: PageBlocksFbcTeamMembersSocials }) => 
   };
 
   return (
-    <Link href={social.url || '#'} className="text-black hover:text-fbc-red transition-colors">
+    <Link href={social.url || '#'} className="text-scheme-3-text hover:text-red transition-colors">
       {getIcon(social.platform)}
     </Link>
   );

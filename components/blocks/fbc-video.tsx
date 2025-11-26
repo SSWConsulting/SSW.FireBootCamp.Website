@@ -9,19 +9,19 @@ import HeroVideoDialog from '../ui/hero-video-dialog';
 
 export const FbcVideo = ({ data }: { data: PageBlocksFbcVideo }) => {
   return (
-    <section className="bg-fbc-gray px-16 py-32">
+    <section className="bg-scheme-3-background px-16 py-32">
       <div className="max-w-[1440px] mx-auto flex flex-col gap-20 items-center">
         <div className="max-w-[768px] text-center flex flex-col gap-8 items-center">
           <div className="flex flex-col gap-6">
             <h2
               data-tina-field={tinaField(data, 'title')}
-              className="font-oswald font-bold text-6xl uppercase tracking-tight leading-none text-black"
+              className="font-oswald font-bold text-[60px] uppercase tracking-[-0.6px] leading-none text-scheme-3-text"
             >
               {data.title}
             </h2>
             <p
               data-tina-field={tinaField(data, 'description')}
-              className="text-xl leading-relaxed text-black"
+              className="font-sans text-[20px] leading-[1.5] text-scheme-3-text"
             >
               {data.description}
             </p>
@@ -32,7 +32,7 @@ export const FbcVideo = ({ data }: { data: PageBlocksFbcVideo }) => {
               <Button
                 variant="ghost"
                 data-tina-field={tinaField(data, 'watchLabel')}
-                className="bg-black/5 hover:bg-black/10 text-black px-6 py-2.5 rounded-md text-lg font-medium"
+                className="bg-black/5 hover:bg-black/10 text-scheme-3-text"
               >
                 {data.watchLabel}
               </Button>
@@ -41,7 +41,7 @@ export const FbcVideo = ({ data }: { data: PageBlocksFbcVideo }) => {
               <Link
                 href={data.secondaryLink || '#'}
                 data-tina-field={tinaField(data, 'secondaryLabel')}
-                className="flex items-center gap-2 text-lg font-medium text-black hover:underline"
+                className="flex items-center gap-2 font-sans text-[18px] font-medium leading-[1.5] text-scheme-3-text hover:underline"
               >
                 {data.secondaryLabel}
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

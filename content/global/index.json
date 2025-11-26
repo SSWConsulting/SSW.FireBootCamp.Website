@@ -1,6 +1,6 @@
 {
   "header": {
-    "logo": "/uploads/firebootcamp-logo.png",
+    "logo": "/uploads/fbc_logo-dm.svg",
     "name": "SSW FireBootCamp",
     "ctaLabel": "Apply now",
     "ctaLink": "/apply",
@@ -47,7 +47,10 @@
         "description": "Explore our full list of courses and events at SSW.",
         "href": "/courses"
       }
-    ]
+    ],
+    "megaMenuBannerText": "Transform your tech career now",
+    "megaMenuBannerLinkText": "Start your path",
+    "megaMenuBannerLinkUrl": "/apply"
   },
   "footer": {
     "headline": "Start your developer journey today",

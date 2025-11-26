@@ -2,7 +2,6 @@
 
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { useLayout } from "../layout-context";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -16,115 +15,126 @@ export const Header = () => {
   const [megaMenuOpen, setMegaMenuOpen] = React.useState(false);
 
   return (
-    <header className="bg-fbc-dark fixed z-50 w-full">
-      <nav className="border-b border-white/10">
-        <div className="max-w-[1440px] mx-auto px-16">
-          <div className="flex items-center justify-between h-[72px]">
-            <div className="flex items-center gap-6">
-              <Link href="/" aria-label="home" className="flex items-center">
-                {header?.logo ? (
-                  <Image src={header.logo} alt={header.name || 'FireBootCamp'} width={252} height={48} className="h-12 w-auto" />
-                ) : (
-                  <span className="text-white font-bold text-xl">{header?.name || 'FireBootCamp'}</span>
-                )}
-              </Link>
+    <>
+      {/* Spacer to push content below fixed header */}
+      <div className="h-[72px] bg-scheme-2-background" />
+      
+      <header 
+        className="bg-scheme-2-background fixed top-0 z-50 w-full"
+        onMouseLeave={() => setMegaMenuOpen(false)}
+      >
+        <nav>
+          <div className="max-w-[1440px] mx-auto px-16">
+            <div className="flex items-center justify-between h-[72px]">
+              <div className="flex items-center gap-6">
+                <Link href="/" aria-label="home" className="flex items-center">
+                  {header?.logo ? (
+                    <img src={header.logo} alt={header.name || 'FireBootCamp'} width={140} height={26} className="h-[26px] w-auto" />
+                  ) : (
+                    <span className="text-scheme-2-text font-bold font-sans text-[20px]">{header?.name || 'FireBootCamp'}</span>
+                  )}
+                </Link>
 
-              <div className="hidden lg:flex items-center gap-8">
-                {header?.nav?.map((item, index) => (
-                  <React.Fragment key={index}>
-                    {item?.hasDropdown ? (
-                      <button
-                        onClick={() => setMegaMenuOpen(!megaMenuOpen)}
-                        className="flex items-center gap-1 text-white text-lg hover:text-white/80 transition-colors"
-                      >
-                        <span>{item.label}</span>
-                        <ChevronDown className={`w-6 h-6 transition-transform ${megaMenuOpen ? 'rotate-180' : ''}`} />
-                      </button>
-                    ) : (
-                      <Link
-                        href={item?.href || '#'}
-                        className="text-white text-lg hover:text-white/80 transition-colors"
-                      >
-                        {item?.label}
-                      </Link>
-                    )}
-                  </React.Fragment>
-                ))}
+                <div className="hidden lg:flex items-center gap-8 ml-8">
+                  {header?.nav?.map((item, index) => (
+                    <React.Fragment key={index}>
+                      {item?.hasDropdown ? (
+                        <div
+                          onMouseEnter={() => setMegaMenuOpen(true)}
+                          className="flex items-center gap-1 text-scheme-2-text font-sans text-[18px] leading-[1.5] hover:text-scheme-2-text/80 transition-colors cursor-pointer"
+                        >
+                          <span>{item.label}</span>
+                          <ChevronDown className={`w-6 h-6 transition-transform ${megaMenuOpen ? 'rotate-180' : ''}`} />
+                        </div>
+                      ) : (
+                        <Link
+                          href={item?.href || '#'}
+                          className="text-scheme-2-text font-sans text-[18px] leading-[1.5] hover:text-scheme-2-text/80 transition-colors"
+                        >
+                          {item?.label}
+                        </Link>
+                      )}
+                    </React.Fragment>
+                  ))}
+                </div>
               </div>
-            </div>
 
-            <div className="flex items-center gap-4">
-              <Button asChild className="hidden lg:flex bg-fbc-red hover:bg-fbc-red-dark text-white px-5 py-2 rounded-md text-lg font-medium">
-                <Link href={header?.ctaLink || '/apply'}>{header?.ctaLabel || 'Apply now'}</Link>
-              </Button>
+              <div className="flex items-center gap-4 ml-auto">
+                <Button asChild className="hidden lg:flex bg-red hover:bg-red-dark text-white">
+                  <Link href={header?.ctaLink || '/apply'}>{header?.ctaLabel || 'Apply now'}</Link>
+                </Button>
 
-              <button
-                onClick={() => setMenuState(!menuState)}
-                aria-label={menuState ? 'Close Menu' : 'Open Menu'}
-                className="lg:hidden p-2.5 text-white"
-              >
-                {menuState ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              </button>
+                <button
+                  onClick={() => setMenuState(!menuState)}
+                  aria-label={menuState ? 'Close Menu' : 'Open Menu'}
+                  className="lg:hidden p-2.5 text-scheme-2-text"
+                >
+                  {menuState ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                </button>
+              </div>
             </div>
           </div>
-        </div>
 
-        {megaMenuOpen && megaMenu && megaMenu.length > 0 && (
-          <div className="hidden lg:block bg-fbc-dark border-t border-white/10">
-            <div className="max-w-[1440px] mx-auto px-16 py-8">
-              <div className="grid grid-cols-4 gap-8">
-                {megaMenu.map((item, index) => (
-                  <Link
-                    key={index}
-                    href={item?.href || '#'}
-                    className="flex gap-3 py-2 group"
-                  >
-                    {item?.icon && (
-                      <div className="w-6 h-6 text-white shrink-0">
-                        <MegaMenuIcon name={item.icon} />
+          {megaMenuOpen && megaMenu && megaMenu.length > 0 && (
+            <div className="hidden lg:block bg-scheme-2-background">
+              <div className="max-w-[1440px] mx-auto px-16 py-8">
+                <div className="grid grid-cols-4 gap-8">
+                  {megaMenu.map((item, index) => (
+                    <Link
+                      key={index}
+                      href={item?.href || '#'}
+                      className="flex gap-3 py-2 group"
+                      onClick={() => setMegaMenuOpen(false)}
+                    >
+                      {item?.icon && (
+                        <div className="w-6 h-6 text-scheme-2-text shrink-0">
+                          <MegaMenuIcon name={item.icon} />
+                        </div>
+                      )}
+                      <div className="flex flex-col gap-1 text-scheme-2-text">
+                        <span className="font-sans text-[18px] font-semibold leading-[1.5] group-hover:text-scheme-2-text/80">{item?.title}</span>
+                        <span className="font-sans text-[16px] leading-[1.5] opacity-80">{item?.description}</span>
                       </div>
-                    )}
-                    <div className="flex flex-col gap-1 text-white">
-                      <span className="font-semibold text-lg group-hover:text-white/80">{item?.title}</span>
-                      <span className="text-base opacity-80">{item?.description}</span>
-                    </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+              <div className="bg-scheme-2-foreground px-16 py-4">
+                <div className="max-w-[1440px] mx-auto flex justify-center items-center gap-2 text-scheme-2-text font-sans text-[18px] leading-[1.5]">
+                  <span>{header?.megaMenuBannerText || 'Transform your tech career now'}</span>
+                  <Link href={header?.megaMenuBannerLinkUrl || '/apply'} className="underline hover:no-underline">
+                    {header?.megaMenuBannerLinkText || 'Start your path'}
                   </Link>
-                ))}
+                </div>
               </div>
             </div>
-            <div className="bg-fbc-dark-foreground border-t border-white/10 px-16 py-4">
-              <div className="max-w-[1440px] mx-auto flex gap-2 text-white text-lg">
-                <span>Transform your tech career now</span>
-                <Link href="/apply" className="underline hover:no-underline">Start your path</Link>
-              </div>
-            </div>
+          )}
+        </nav>
+
+        {menuState && (
+          <div className="lg:hidden bg-scheme-2-background px-6 py-6">
+            <ul className="space-y-4">
+              {header?.nav?.map((item, index) => (
+                <li key={index}>
+                  <Link
+                    href={item?.href || '#'}
+                    className="text-scheme-2-text font-sans text-[18px] leading-[1.5] block py-2"
+                    onClick={() => setMenuState(false)}
+                  >
+                    {item?.label}
+                  </Link>
+                </li>
+              ))}
+              <li className="pt-4">
+                <Button asChild className="w-full bg-red hover:bg-red-dark text-white">
+                  <Link href={header?.ctaLink || '/apply'}>{header?.ctaLabel || 'Apply now'}</Link>
+                </Button>
+              </li>
+            </ul>
           </div>
         )}
-      </nav>
-
-      {menuState && (
-        <div className="lg:hidden bg-fbc-dark border-t border-white/10 px-6 py-6">
-          <ul className="space-y-4">
-            {header?.nav?.map((item, index) => (
-              <li key={index}>
-                <Link
-                  href={item?.href || '#'}
-                  className="text-white text-lg block py-2"
-                  onClick={() => setMenuState(false)}
-                >
-                  {item?.label}
-                </Link>
-              </li>
-            ))}
-            <li className="pt-4">
-              <Button asChild className="w-full bg-fbc-red hover:bg-fbc-red-dark text-white px-5 py-2 rounded-md text-lg font-medium">
-                <Link href={header?.ctaLink || '/apply'}>{header?.ctaLabel || 'Apply now'}</Link>
-              </Button>
-            </li>
-          </ul>
-        </div>
-      )}
-    </header>
+      </header>
+    </>
   );
 };
 

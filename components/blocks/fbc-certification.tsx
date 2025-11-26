@@ -7,7 +7,7 @@ import { Button } from '../ui/button';
 
 export const FbcCertification = ({ data }: { data: PageBlocksFbcCertification }) => {
   return (
-    <section className="bg-white px-16 py-32">
+    <section className="bg-scheme-1-background px-16 py-32">
       <div className="max-w-[1440px] mx-auto">
         <div className="flex gap-12 items-start justify-center">
           {data.badgeImage && (
@@ -20,13 +20,13 @@ export const FbcCertification = ({ data }: { data: PageBlocksFbcCertification })
             <div className="flex flex-col gap-6">
               <h2
                 data-tina-field={tinaField(data, 'title')}
-                className="font-oswald font-bold text-6xl uppercase tracking-tight leading-none text-black"
+                className="font-oswald font-bold text-[60px] uppercase tracking-[-0.6px] leading-none text-scheme-1-text"
               >
                 {data.title}
               </h2>
               <p
                 data-tina-field={tinaField(data, 'description')}
-                className="text-xl leading-relaxed text-black whitespace-pre-line"
+                className="font-sans text-[20px] leading-[1.5] text-scheme-1-text whitespace-pre-line"
               >
                 {data.description}
               </p>
@@ -37,15 +37,15 @@ export const FbcCertification = ({ data }: { data: PageBlocksFbcCertification })
                 <input
                   type="email"
                   placeholder={data.emailPlaceholder || 'Enter your email address'}
-                  className="flex-1 px-3 py-2 bg-black/5 rounded-md text-lg border-0 placeholder:text-black/60"
+                  className="flex-1 px-3 py-2 bg-black/5 rounded-md font-sans text-[18px] leading-[1.5] border-0 placeholder:text-black/60"
                 />
-                <Button className="bg-fbc-red hover:bg-fbc-red-dark text-white px-6 py-2.5 rounded-md text-lg font-medium">
+                <Button className="bg-red hover:bg-red-dark text-white">
                   {data.buttonLabel || 'Commit'}
                 </Button>
               </div>
               <p
                 data-tina-field={tinaField(data, 'disclaimer')}
-                className="text-xs text-black"
+                className="font-sans text-[12px] leading-[1.5] text-scheme-1-text"
               >
                 {data.disclaimer}
               </p>

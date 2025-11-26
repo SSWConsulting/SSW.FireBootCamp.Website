@@ -6,18 +6,18 @@ import type { PageBlocksFbcFaq, PageBlocksFbcFaqFaqs } from '../../tina/__genera
 
 export const FbcFaq = ({ data }: { data: PageBlocksFbcFaq }) => {
   return (
-    <section className="bg-fbc-dark px-16 py-32">
+    <section className="bg-scheme-2-background px-16 py-32">
       <div className="max-w-[1440px] mx-auto flex flex-col gap-20 items-center">
         <div className="max-w-[768px] text-center flex flex-col gap-6">
           <h2
             data-tina-field={tinaField(data, 'title')}
-            className="font-oswald font-bold text-6xl uppercase tracking-tight leading-none text-white"
+            className="font-oswald font-bold text-[60px] uppercase tracking-[-0.6px] leading-none text-scheme-2-text"
           >
             {data.title}
           </h2>
           <p
             data-tina-field={tinaField(data, 'description')}
-            className="text-xl leading-relaxed text-white"
+            className="font-sans text-[20px] leading-[1.5] text-scheme-2-text"
           >
             {data.description}
           </p>
@@ -37,19 +37,19 @@ const FaqItem = ({ faq, defaultOpen }: { faq: PageBlocksFbcFaqFaqs; defaultOpen?
   const [isOpen, setIsOpen] = useState(defaultOpen || false);
 
   return (
-    <div className="bg-fbc-dark-foreground rounded-lg overflow-hidden">
+    <div className="bg-scheme-2-foreground rounded-lg overflow-hidden">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full flex justify-between items-center gap-6 px-6 py-5"
       >
         <p
           data-tina-field={tinaField(faq, 'question')}
-          className="text-xl font-bold text-white text-left"
+          className="font-sans text-[20px] font-bold leading-[1.5] text-scheme-2-text text-left"
         >
           {faq.question}
         </p>
         <svg
-          className={`w-6 h-6 text-white shrink-0 transition-transform ${isOpen ? 'rotate-45' : ''}`}
+          className={`w-6 h-6 text-scheme-2-text shrink-0 transition-transform ${isOpen ? 'rotate-45' : ''}`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -62,7 +62,7 @@ const FaqItem = ({ faq, defaultOpen }: { faq: PageBlocksFbcFaqFaqs; defaultOpen?
         <div className="px-6 pb-6">
           <p
             data-tina-field={tinaField(faq, 'answer')}
-            className="text-lg leading-relaxed text-white"
+            className="font-sans text-[18px] leading-[1.5] text-scheme-2-text"
           >
             {faq.answer}
           </p>

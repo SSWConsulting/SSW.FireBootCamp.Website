@@ -6,18 +6,18 @@ import type { PageBlocksFbcSkills, PageBlocksFbcSkillsSkills } from '../../tina/
 
 export const FbcSkills = ({ data }: { data: PageBlocksFbcSkills }) => {
   return (
-    <section className="bg-white px-16 py-32">
+    <section className="bg-scheme-1-background px-16 py-32">
       <div className="max-w-[1440px] mx-auto flex flex-col gap-20">
         <div className="max-w-[768px] flex flex-col gap-6">
           <h2
             data-tina-field={tinaField(data, 'title')}
-            className="font-oswald font-bold text-6xl uppercase tracking-tight leading-none text-black"
+            className="font-oswald font-bold text-[60px] uppercase tracking-[-0.6px] leading-none text-scheme-1-text"
           >
             {data.title}
           </h2>
           <p
             data-tina-field={tinaField(data, 'description')}
-            className="text-xl leading-relaxed text-black"
+            className="font-sans text-[20px] leading-[1.5] text-scheme-1-text"
           >
             {data.description}
           </p>
@@ -26,7 +26,7 @@ export const FbcSkills = ({ data }: { data: PageBlocksFbcSkills }) => {
         <div className="w-full">
           <div className="border-t border-black/15 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             {data.skills?.map((skill, index) => (
-              <SkillItem key={index} skill={skill!} isLast={index === (data.skills?.length || 0) - 1} />
+              <SkillItem key={index} skill={skill!} isLast={index === (data.skills?.length || 0) - 1} isFirst={index === 0} />
             ))}
           </div>
         </div>
@@ -35,9 +35,9 @@ export const FbcSkills = ({ data }: { data: PageBlocksFbcSkills }) => {
   );
 };
 
-const SkillItem = ({ skill, isLast }: { skill: PageBlocksFbcSkillsSkills; isLast: boolean }) => {
+const SkillItem = ({ skill, isLast, isFirst }: { skill: PageBlocksFbcSkillsSkills; isLast: boolean; isFirst: boolean }) => {
   return (
-    <div className={`flex flex-col gap-6 py-8 pr-8 ${!isLast ? 'border-r border-black/15' : ''}`}>
+    <div className={`flex flex-col gap-6 py-8 pr-8 ${!isFirst ? 'pl-8' : ''} ${!isLast ? 'border-r border-scheme-1-border' : ''}`}>
       {skill.icon && (
         <div className="w-16 h-16 relative" data-tina-field={tinaField(skill, 'icon')}>
           <Image src={skill.icon} alt="" fill className="object-contain" />
@@ -46,13 +46,13 @@ const SkillItem = ({ skill, isLast }: { skill: PageBlocksFbcSkillsSkills; isLast
       <div className="flex flex-col gap-4">
         <h3
           data-tina-field={tinaField(skill, 'title')}
-          className="font-oswald font-bold text-[26px] uppercase tracking-tight leading-tight text-black"
+          className="font-oswald font-bold text-[26px] uppercase tracking-[-0.26px] leading-[1.1] text-scheme-1-text"
         >
           {skill.title}
         </h3>
         <p
           data-tina-field={tinaField(skill, 'text')}
-          className="text-base leading-relaxed text-black"
+          className="font-sans text-[16px] leading-[1.5] text-scheme-1-text"
         >
           {skill.text}
         </p>

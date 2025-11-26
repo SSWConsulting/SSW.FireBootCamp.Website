@@ -5,17 +5,85 @@
 @plugin "@tailwindcss/typography";
 
 @theme inline {
-  --font-family-oswald: var(--font-oswald), ui-sans-serif, system-ui, sans-serif;
-  --font-family-jetbrains: var(--font-jetbrains), ui-monospace, monospace;
-  --color-fbc-red: #cc4141;
-  --color-fbc-red-dark: #a33434;
-  --color-fbc-dark: #242424;
-  --color-fbc-dark-foreground: #303030;
-  --color-fbc-gray: #f2f2f2;
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --font-family-oswald: var(--font-oswald), "Oswald", ui-sans-serif, system-ui, sans-serif;
+  --font-family-jetbrains: var(--font-jetbrains), "JetBrains Mono", ui-monospace, monospace;
+
+  --color-fbc-red: var(--color-red);
+  --color-fbc-red-dark: var(--color-red-dark);
+  --color-fbc-dark: var(--color-dark-grey-darkest);
+  --color-fbc-dark-foreground: var(--color-dark-grey-darker);
+  --color-fbc-gray: var(--color-neutral-lightest);
+
+  --color-neutral-darkest: #000000;
+  --color-neutral-darker: #191919;
+  --color-neutral-dark: #4c4c4c;
+  --color-neutral: #7f7f7f;
+  --color-neutral-light: #b2b2b2;
+  --color-neutral-lighter: #d8d8d8;
+  --color-neutral-lightest: #f2f2f2;
+  --color-white: #ffffff;
+
+  --color-red-darkest: #3d1313;
+  --color-red-darker: #511a1a;
+  --color-red-dark: #a33434;
+  --color-red: #cc4141;
+  --color-red-light: #db7a7a;
+  --color-red-lighter: #f4d9d9;
+  --color-red-lightest: #f9ecec;
+
+  --color-charcoal-darkest: #0f0f0f;
+  --color-charcoal-darker: #141414;
+  --color-charcoal-dark: #282828;
+  --color-charcoal: #333333;
+  --color-charcoal-light: #707070;
+  --color-charcoal-lighter: #d6d6d6;
+  --color-charcoal-lightest: #eaeaea;
+
+  --color-light-grey-darkest: #333333;
+  --color-light-grey-darker: #444444;
+  --color-light-grey-dark: #888888;
+  --color-light-grey: #aaaaaa;
+  --color-light-grey-light: #c3c3c3;
+  --color-light-grey-lighter: #eeeeee;
+  --color-light-grey-lightest: #f6f6f6;
+
+  --color-dark-grey-darkest: #242424;
+  --color-dark-grey-darker: #303030;
+  --color-dark-grey-dark: #606060;
+  --color-dark-grey: #797979;
+  --color-dark-grey-light: #a1a1a1;
+  --color-dark-grey-lighter: #e4e4e4;
+  --color-dark-grey-lightest: #f1f1f1;
+
+  --color-scheme-1-background: var(--color-white);
+  --color-scheme-1-border: rgba(0, 0, 0, 0.15);
+  --color-scheme-1-text: var(--color-neutral-darkest);
+  --color-scheme-1-foreground: var(--color-neutral-lightest);
+  --color-scheme-1-accent: var(--color-red);
+
+  --color-scheme-2-background: var(--color-dark-grey-darkest);
+  --color-scheme-2-border: rgba(255, 255, 255, 0.2);
+  --color-scheme-2-text: var(--color-white);
+  --color-scheme-2-foreground: var(--color-dark-grey-darker);
+  --color-scheme-2-accent: var(--color-white);
+
+  --color-scheme-3-background: var(--color-neutral-lightest);
+  --color-scheme-3-border: rgba(0, 0, 0, 0.15);
+  --color-scheme-3-text: var(--color-neutral-darkest);
+  --color-scheme-3-foreground: var(--color-white);
+  --color-scheme-3-accent: var(--color-red);
+
+  --color-scheme-4-background: var(--color-red);
+  --color-scheme-4-border: rgba(255, 255, 255, 0.2);
+  --color-scheme-4-text: var(--color-white);
+  --color-scheme-4-foreground: var(--color-red-dark);
+  --color-scheme-4-accent: var(--color-white);
+
+  --radius-sm: 8px;
+  --radius-md: 8px;
+  --radius-lg: 8px;
+  --radius-xl: calc(var(--radius-lg) + 4px);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -47,9 +115,68 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  --shadow-xxsmall: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-xsmall: 0px 1px 2px rgba(0, 0, 0, 0.06), 0px 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-small: 0px 2px 4px -2px rgba(0, 0, 0, 0.06), 0px 4px 8px -2px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0px 4px 6px -2px rgba(0, 0, 0, 0.03), 0px 12px 16px -4px rgba(0, 0, 0, 0.08);
+  --shadow-large: 0px 8px 8px -4px rgba(0, 0, 0, 0.03), 0px 20px 24px -4px rgba(0, 0, 0, 0.08);
+  --shadow-xlarge: 0px 24px 48px -12px rgba(0, 0, 0, 0.18);
+  --shadow-xxlarge: 0px 32px 64px -12px rgba(0, 0, 0, 0.14);
 }
 
 :root {
+  --opacity-transparent: rgba(255, 255, 255, 0);
+  --opacity-white-5: rgba(255, 255, 255, 0.05);
+  --opacity-white-10: rgba(255, 255, 255, 0.1);
+  --opacity-white-15: rgba(255, 255, 255, 0.15);
+  --opacity-white-20: rgba(255, 255, 255, 0.2);
+  --opacity-white-30: rgba(255, 255, 255, 0.3);
+  --opacity-white-40: rgba(255, 255, 255, 0.4);
+  --opacity-white-50: rgba(255, 255, 255, 0.5);
+  --opacity-white-60: rgba(255, 255, 255, 0.6);
+  --opacity-neutral-darkest-5: rgba(0, 0, 0, 0.05);
+  --opacity-neutral-darkest-10: rgba(0, 0, 0, 0.1);
+  --opacity-neutral-darkest-15: rgba(0, 0, 0, 0.15);
+  --opacity-neutral-darkest-20: rgba(0, 0, 0, 0.2);
+  --opacity-neutral-darkest-30: rgba(0, 0, 0, 0.3);
+  --opacity-neutral-darkest-40: rgba(0, 0, 0, 0.4);
+  --opacity-neutral-darkest-50: rgba(0, 0, 0, 0.5);
+  --opacity-neutral-darkest-60: rgba(0, 0, 0, 0.6);
+
+  --text-size-h1: 84px;
+  --text-size-h2: 60px;
+  --text-size-h3: 48px;
+  --text-size-h4: 40px;
+  --text-size-h5: 32px;
+  --text-size-h6: 26px;
+  --text-size-large: 26px;
+  --text-size-medium: 20px;
+  --text-size-regular: 18px;
+  --text-size-small: 16px;
+  --text-size-tiny: 12px;
+
+  --container-small: 1024px;
+  --container-medium: 1280px;
+  --container-large: 1440px;
+
+  --max-width-xxsmall: 320px;
+  --max-width-xsmall: 400px;
+  --max-width-small: 480px;
+  --max-width-medium: 560px;
+  --max-width-large: 768px;
+  --max-width-xlarge: 1024px;
+  --max-width-xxlarge: 1280px;
+
+  --section-padding-small: 48px;
+  --section-padding-medium: 80px;
+  --section-padding-large: 128px;
+
+  --page-padding: 64px;
+
+  --stroke-border-width: 0px;
+  --stroke-divider-width: 1px;
+
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -122,7 +249,131 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    overscroll-behavior: none;
+  }
   body {
     @apply bg-background text-foreground;
+    overscroll-behavior: none;
   }
+}
+
+@layer components {
+  /* Font family utility classes */
+  .font-oswald {
+    font-family: var(--font-oswald), "Oswald", ui-sans-serif, system-ui, sans-serif;
+  }
+
+  .font-jetbrains {
+    font-family: var(--font-jetbrains), "JetBrains Mono", ui-monospace, monospace;
+  }
+
+  .heading-h1 {
+    font-size: var(--text-size-h1);
+    font-family: var(--font-oswald), "Oswald", sans-serif;
+    font-weight: 700;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+
+  .heading-h2 {
+    font-size: var(--text-size-h2);
+    font-family: var(--font-oswald), "Oswald", sans-serif;
+    font-weight: 700;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+
+  .heading-h3 {
+    font-size: var(--text-size-h3);
+    font-family: var(--font-oswald), "Oswald", sans-serif;
+    font-weight: 700;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+
+  .heading-h4 {
+    font-size: var(--text-size-h4);
+    font-family: var(--font-oswald), "Oswald", sans-serif;
+    font-weight: 700;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+
+  .heading-h5 {
+    font-size: var(--text-size-h5);
+    font-family: var(--font-oswald), "Oswald", sans-serif;
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+
+  .heading-h6 {
+    font-size: var(--text-size-h6);
+    font-family: var(--font-oswald), "Oswald", sans-serif;
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+
+  .heading-tagline {
+    font-size: var(--text-size-small);
+    font-family: Inter, sans-serif;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  .text-large { font-size: var(--text-size-large); line-height: 1.5; }
+  .text-medium { font-size: var(--text-size-medium); line-height: 1.5; }
+  .text-regular { font-size: var(--text-size-regular); line-height: 1.5; }
+  .text-small { font-size: var(--text-size-small); line-height: 1.5; }
+  .text-tiny { font-size: var(--text-size-tiny); line-height: 1.5; }
+
+  .text-light { font-weight: 300; }
+  .text-normal { font-weight: 400; }
+  .text-medium-weight { font-weight: 500; }
+  .text-semibold { font-weight: 600; }
+  .text-bold { font-weight: 700; }
+  .text-extrabold { font-weight: 800; }
+
+  .container-small { max-width: var(--container-small); margin-left: auto; margin-right: auto; }
+  .container-medium { max-width: var(--container-medium); margin-left: auto; margin-right: auto; }
+  .container-large { max-width: var(--container-large); margin-left: auto; margin-right: auto; }
+
+  .section-padding-small { padding-top: var(--section-padding-small); padding-bottom: var(--section-padding-small); }
+  .section-padding-medium { padding-top: var(--section-padding-medium); padding-bottom: var(--section-padding-medium); }
+  .section-padding-large { padding-top: var(--section-padding-large); padding-bottom: var(--section-padding-large); }
+
+  .page-padding { padding-left: var(--page-padding); padding-right: var(--page-padding); }
+
+  .scheme-1 {
+    background-color: var(--color-scheme-1-background);
+    color: var(--color-scheme-1-text);
+  }
+  .scheme-2 {
+    background-color: var(--color-scheme-2-background);
+    color: var(--color-scheme-2-text);
+  }
+  .scheme-3 {
+    background-color: var(--color-scheme-3-background);
+    color: var(--color-scheme-3-text);
+  }
+  .scheme-4 {
+    background-color: var(--color-scheme-4-background);
+    color: var(--color-scheme-4-text);
+  }
+
+  .shadow-xxsmall { box-shadow: var(--shadow-xxsmall); }
+  .shadow-xsmall { box-shadow: var(--shadow-xsmall); }
+  .shadow-small { box-shadow: var(--shadow-small); }
+  .shadow-medium { box-shadow: var(--shadow-medium); }
+  .shadow-large { box-shadow: var(--shadow-large); }
+  .shadow-xlarge { box-shadow: var(--shadow-xlarge); }
+  .shadow-xxlarge { box-shadow: var(--shadow-xxlarge); }
 }

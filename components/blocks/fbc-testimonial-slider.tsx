@@ -21,7 +21,7 @@ export const FbcTestimonialSlider = ({ data }: { data: PageBlocksFbcTestimonialS
   if (!currentTestimonial) return null;
 
   return (
-    <section className="bg-white px-16 py-32">
+    <section className="bg-scheme-1-background px-16 py-32">
       <div className="max-w-[1440px] mx-auto flex flex-col gap-8">
         <div className="flex gap-20 items-center">
           {currentTestimonial.image && (
@@ -47,7 +47,7 @@ export const FbcTestimonialSlider = ({ data }: { data: PageBlocksFbcTestimonialS
 
             <blockquote
               data-tina-field={tinaField(currentTestimonial, 'quote')}
-              className="font-oswald font-bold text-[32px] uppercase tracking-tight leading-tight text-black"
+              className="font-oswald font-bold text-[32px] uppercase tracking-[-0.32px] leading-[1.1] text-scheme-1-text"
             >
               {currentTestimonial.quote}
             </blockquote>
@@ -56,13 +56,13 @@ export const FbcTestimonialSlider = ({ data }: { data: PageBlocksFbcTestimonialS
               <div className="flex flex-col">
                 <p
                   data-tina-field={tinaField(currentTestimonial, 'author')}
-                  className="text-lg font-semibold text-black"
+                  className="font-sans text-[18px] font-semibold leading-[1.5] text-scheme-1-text"
                 >
                   {currentTestimonial.author}
                 </p>
                 <p
                   data-tina-field={tinaField(currentTestimonial, 'role')}
-                  className="text-lg text-black"
+                  className="font-sans text-[18px] leading-[1.5] text-scheme-1-text"
                 >
                   {currentTestimonial.role}
                 </p>
@@ -78,7 +78,7 @@ export const FbcTestimonialSlider = ({ data }: { data: PageBlocksFbcTestimonialS
                 key={index}
                 onClick={() => setCurrentIndex(index)}
                 className={`w-2 h-2 rounded-full transition-colors ${
-                  index === currentIndex ? 'bg-black' : 'bg-black/30'
+                  index === currentIndex ? 'bg-scheme-1-text' : 'bg-scheme-1-text/30'
                 }`}
               />
             ))}
@@ -87,7 +87,7 @@ export const FbcTestimonialSlider = ({ data }: { data: PageBlocksFbcTestimonialS
           <div className="flex gap-4">
             <button
               onClick={goToPrevious}
-              className="p-3 bg-fbc-gray hover:bg-black/10 rounded transition-colors"
+              className="p-3 bg-scheme-3-background hover:bg-scheme-1-border rounded transition-colors"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -95,7 +95,7 @@ export const FbcTestimonialSlider = ({ data }: { data: PageBlocksFbcTestimonialS
             </button>
             <button
               onClick={goToNext}
-              className="p-3 bg-fbc-gray hover:bg-black/10 rounded transition-colors"
+              className="p-3 bg-scheme-3-background hover:bg-scheme-1-border rounded transition-colors"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

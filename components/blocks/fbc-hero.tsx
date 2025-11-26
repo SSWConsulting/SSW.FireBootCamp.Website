@@ -7,18 +7,33 @@ import type { PageBlocksFbcHero } from '../../tina/__generated__/types';
 import { Button } from '../ui/button';
 
 export const FbcHero = ({ data }: { data: PageBlocksFbcHero }) => {
+  const hasVideo = !!data.backgroundVideo;
+  const hasImage = !!data.backgroundImage;
+
   return (
     <section className="relative min-h-[800px] flex flex-col gap-20 items-start justify-center px-16 py-32 overflow-hidden">
-      {data.backgroundImage && (
+      {(hasVideo || hasImage) && (
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0 bg-black" />
-          <Image
-            src={data.backgroundImage}
-            alt=""
-            fill
-            className="object-cover mix-blend-luminosity opacity-50"
-            priority
-          />
+          {hasVideo ? (
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover mix-blend-luminosity opacity-50"
+            >
+              <source src={data.backgroundVideo!} type="video/webm" />
+            </video>
+          ) : hasImage ? (
+            <Image
+              src={data.backgroundImage!}
+              alt=""
+              fill
+              className="object-cover mix-blend-luminosity opacity-50"
+              priority
+            />
+          ) : null}
           <div className="absolute inset-0 bg-black/60" />
         </div>
       )}
@@ -40,7 +55,7 @@ export const FbcHero = ({ data }: { data: PageBlocksFbcHero }) => {
           <div className="flex flex-col gap-8 items-start max-w-[560px]">
             <p
               data-tina-field={tinaField(data, 'description')}
-              className="text-white text-xl leading-relaxed"
+              className="font-sans text-white text-[20px] leading-[1.5]"
             >
               {data.description}
             </p>
@@ -49,7 +64,7 @@ export const FbcHero = ({ data }: { data: PageBlocksFbcHero }) => {
               <Button
                 asChild
                 data-tina-field={tinaField(data, 'ctaLabel')}
-                className="bg-fbc-red hover:bg-fbc-red-dark text-white px-6 py-2.5 rounded-md text-lg font-medium"
+                className="bg-red hover:bg-red-dark text-white"
               >
                 <Link href={data.ctaLink || '#'}>{data.ctaLabel}</Link>
               </Button>
@@ -92,6 +107,13 @@ export const fbcHeroBlockSchema: Template = {
       type: 'image',
       label: 'Background Image',
       name: 'backgroundImage',
+      description: 'Fallback image if no video is provided',
+    },
+    {
+      type: 'image',
+      label: 'Background Video',
+      name: 'backgroundVideo',
+      description: 'WebM video that auto-plays and loops (takes priority over image)',
     },
     {
       type: 'string',

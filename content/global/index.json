@@ -53,10 +53,10 @@
   "footer": {
     "headline": "Start your developer journey today",
     "description": "We're independent and Oceanic-based. We run webinars, live events, in-house and online courses.",
-    "primaryCtaLabel": "Apply now",
-    "primaryCtaLink": "/apply",
-    "secondaryCtaLabel": "Go to SSW Events",
-    "secondaryCtaLink": "https://www.ssw.com.au/events",
+    "primaryCtaLabel": "Explore SSW Training",
+    "primaryCtaLink": "https://www.ssw.com.au/events",
+    "secondaryCtaLabel": "Explore SSW Rules",
+    "secondaryCtaLink": "https://www.ssw.com.au/rules",
     "linkColumns": [
       {
         "links": [

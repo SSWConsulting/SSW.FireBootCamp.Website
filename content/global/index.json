@@ -10,7 +10,7 @@
     "nav": [
       {
         "href": "#program",
-        "label": "Program"
+        "label": "The Program"
       },
       {
         "href": "#pricing",
@@ -22,7 +22,7 @@
       },
       {
         "href": "https://www.ssw.com.au/events",
-        "label": "Courses & Events",
+        "label": "SSW Training & Events",
         "hasDropdown": true
       }
     ],
@@ -41,9 +41,9 @@
       },
       {
         "icon": "start",
-        "title": "Something Else?",
+        "title": "Something else?",
         "description": "Explore our full list of courses and events at SSW.",
-        "href": "www.ssw.com.au/events#courses"
+        "href": "https://www.ssw.com.au/events"
       }
     ],
     "megaMenuBannerText": "Transform your tech career now",
@@ -61,7 +61,7 @@
       {
         "links": [
           {
-            "label": "Program",
+            "label": "The Program",
             "href": "#program",
             "isHeading": true
           },
@@ -80,7 +80,7 @@
       {
         "links": [
           {
-            "label": "Courses & Events",
+            "label": "SSW Training & Events",
             "href": "/courses",
             "isHeading": true
           },
@@ -101,24 +101,24 @@
     ],
     "social": [
       {
-        "platform": "facebook",
-        "url": "https://www.facebook.com/SSW.com.au"
-      },
-      {
-        "platform": "instagram",
-        "url": "https://www.instagram.com/ssaborina"
-      },
-      {
-        "platform": "twitter",
-        "url": "https://twitter.com/SSW_TV"
+        "platform": "youtube",
+        "url": "https://www.youtube.com/user/sswtechtalks"
       },
       {
         "platform": "linkedin",
         "url": "https://www.linkedin.com/company/ssw"
       },
       {
-        "platform": "youtube",
-        "url": "https://www.youtube.com/ssaborina"
+        "platform": "instagram",
+        "url": "https://www.instagram.com/ssw_tv"
+      },
+      {
+        "platform": "facebook",
+        "url": "https://www.facebook.com/SSW.page"
+      },
+      {
+        "platform": "twitter",
+        "url": "https://x.com/SSW_TV"
       }
     ]
   },

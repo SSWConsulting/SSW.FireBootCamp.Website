@@ -3,6 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { useLayout } from "../layout-context";
 import { Button } from "@/components/ui/button";
+import { AutoLink } from "@/components/ui/link";
 
 export const Footer = () => {
   const { globalSettings } = useLayout();
@@ -30,8 +31,10 @@ export const Footer = () => {
               <Button asChild className="bg-red hover:bg-red-dark text-white">
                 <a href={mailtoLink}>{footer?.primaryCtaLabel || 'Apply now'}</a>
               </Button>
-              <Button asChild variant="ghost" className="bg-scheme-2-border hover:bg-scheme-2-border/80 text-scheme-2-text">
-                <Link href={footer?.secondaryCtaLink || '#'}>{footer?.secondaryCtaLabel || 'Go to SSW Events'}</Link>
+              <Button asChild variant="ghost" className="bg-scheme-2-border hover:bg-scheme-2-border/80 text-scheme-2-text hover:text-scheme-2-text">
+                <AutoLink href={footer?.secondaryCtaLink || '#'}>
+                  {footer?.secondaryCtaLabel || 'Go to SSW Events'}
+                </AutoLink>
               </Button>
             </div>
           </div>
@@ -59,13 +62,13 @@ export const Footer = () => {
                       {link?.label}
                     </a>
                   ) : (
-                    <Link
+                    <AutoLink
                       key={linkIndex}
                       href={link?.href || '#'}
                       className={`py-1 md:py-2 text-scheme-2-text hover:text-scheme-2-text/80 font-sans text-[14px] md:text-[16px] leading-[1.5] ${link?.isHeading ? 'font-semibold' : ''}`}
                     >
                       {link?.label}
-                    </Link>
+                    </AutoLink>
                   )
                 ))}
               </div>
@@ -74,7 +77,8 @@ export const Footer = () => {
         </div>
 
         <div className="flex flex-col gap-6 md:gap-8">
-          <div className="flex items-center justify-start">
+          {/* Top row: Logo (left) + Powered by TinaCMS (right) */}
+          <div className="flex items-center justify-between">
             <Link href="/" aria-label="home">
               {header?.logo ? (
                 <img 
@@ -86,11 +90,28 @@ export const Footer = () => {
                 <span className="text-scheme-2-text font-bold font-sans text-[20px] md:text-[26px]">{header?.name || 'FireBootCamp'}</span>
               )}
             </Link>
+
+            <Link
+              href="https://tina.io/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-scheme-2-text hover:text-[#FF6900] transition-colors"
+            >
+              <img 
+                src="/uploads/tina-logo.png" 
+                alt="TinaCMS" 
+                className="h-10 w-auto"
+              />
+              <span className="font-sans text-[12px] md:text-[14px] font-semibold uppercase tracking-wide">
+                Powered by TinaCMS
+              </span>
+            </Link>
           </div>
 
           <div className="h-px bg-scheme-2-border" />
 
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          {/* Bottom row: Copyright (left) + Social links (right) */}
+          <div className="flex items-center justify-between">
             <p className="text-scheme-2-text font-sans text-[12px] md:text-[14px] lg:text-[16px] leading-[1.5]">
               © {new Date().getFullYear()} SSW FireBootCamp. All rights reserved.
             </p>
@@ -102,7 +123,7 @@ export const Footer = () => {
                   href={link?.url || '#'}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-scheme-2-text hover:text-scheme-2-text/80 transition-colors"
+                  className="text-scheme-2-text hover:text-red transition-colors"
                 >
                   <SocialIcon name={link?.platform || ''} />
                 </Link>

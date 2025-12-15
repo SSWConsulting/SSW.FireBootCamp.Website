@@ -5,6 +5,9 @@
 @plugin "@tailwindcss/typography";
 
 @theme inline {
+  /* Custom breakpoints - lg at 1200px instead of default 1024px */
+  --breakpoint-lg: 75rem;
+
   --font-family-oswald: var(--font-oswald), "Oswald", ui-sans-serif, system-ui, sans-serif;
   --font-family-jetbrains: var(--font-jetbrains), "JetBrains Mono", ui-monospace, monospace;
 

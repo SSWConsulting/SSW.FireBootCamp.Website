@@ -40,8 +40,7 @@ blocks:
     _template: fbcSkills
   - title: A day in the life of a software consultant at SSW
     description: Dive into an overview of FireBootCamp in the video below.
-    watchLabel: Watch
-    secondaryLabel: More coding videos at SSW TV
+    secondaryLabel: More at SSWTV
     secondaryLink: 'https://tv.ssw.com'
     videoUrl: 'https://www.youtube.com/embed/P1M1EfECpLU?si=tJ7AUVHn_2PgYjQy'
     thumbnail: /uploads/maxresdefault.jpg
@@ -63,13 +62,13 @@ blocks:
         content: >-
           Experience 12 weeks of immersive learning with practical exercises and
           real client projects.
-        image: /uploads/what-to-expect/image (5).png
+        image: /uploads/what-to-expect/why-this-course.png
       - title: Prerequisites
         headline: Basic programming knowledge recommended
         content: >-
           While we accept learners from diverse backgrounds, basic understanding
           of programming concepts will help you succeed.
-        image: /uploads/what-to-expect/image (5).png
+        image: /uploads/what-to-expect/prerequisites.png
     _template: fbcTabs
   - title: Get certified as an SSW Qualified Developer
     description: >-
@@ -79,7 +78,7 @@ blocks:
       Which can be validated, recognised and shared on social media platforms.
     badgeImage: /uploads/cta_badge.svg
     emailPlaceholder: Enter your email address
-    buttonLabel: Commit
+    buttonLabel: Submit
     disclaimer: >-
       By submitting, you're committing to a breakthrough in your software
       development career.
@@ -87,11 +86,33 @@ blocks:
   - title: Flexible learning paths for aspiring consultants
     description: Transparent and flexible options for your learning journey.
     plans:
+      - name: 1-Day Trial Session
+        price: $100
+        subtitle: Shadow a developer for 1 day to get a taste of the course.
+        icon: /uploads/pricing/pricing_ticket.svg
+        ctaLabel: Book trial day
+        ctaLink: /apply
+        features:
+          - text: 1 day shadowing a developer
+          - text: Attend daily team meeting
+          - text: Exposure to tech ecosystem
+      - name: Scholarship
+        price: '$9,000'
+        subtitle: >-
+          Pass the entry test and get access to the discounted full course
+          price.
+        icon: /uploads/pricing/pricing_school.svg
+        ctaLabel: Apply for scholarship
+        ctaLink: /apply
+        isFeatured: true
+        features:
+          - text: '$3,000 off full tuition fee'
+          - text: Access to full 12-week immersive course and all its inclusions.
       - name: Full Tuition
         price: '$12,000'
         subtitle: Immerse yourself in our 12-week intensive fullstack developer program.
         icon: /uploads/pricing/pricing_dev.svg
-        ctaLabel: Apply now
+        ctaLabel: Apply for full tuition
         ctaLink: /apply
         features:
           - text: Full 12-week course access
@@ -100,37 +121,23 @@ blocks:
           - text: Mentoring from superstar Senior Software Engineers
           - text: Achieve your certification as an SSW Qualified Developer
           - text: Potential employment opportunity with SSW as a Software Developer
-      - name: Scholarship Price
-        price: '$9,000'
-        subtitle: >-
-          Pass the entry test and get access to the discounted full course
-          price.
-        icon: /uploads/pricing/pricing_school.svg
-        ctaLabel: Apply now
-        ctaLink: /apply
-        features:
-          - text: '$3,000 off full tuition fee'
-          - text: Access to full 12-week immersive course and all its inclusions.
-      - name: 1-Day Trial Session
-        price: $100
-        subtitle: Shadow a developer for 1 day to get a taste of the course.
-        icon: /uploads/pricing/pricing_ticket.svg
-        ctaLabel: Apply now
-        ctaLink: /apply
-        features:
-          - text: 1 day shadowing a developer
-          - text: Attend daily team meeting
-          - text: Exposure to tech ecosystem
     _template: fbcPricing
   - testimonials:
       - quote: >-
-          As someone without a background in programming, this opportunity not
-          only introduced me to the essential fundamentals of coding but also
-          provided comprehensive insights into both backend and frontend
-          development. It's truly been the highlight of my learning journey.
-        author: Jeoffrey Fischer
-        role: Senior Software Engineer
-        image: /uploads/testimonials/image (4).png
+          Testimonial quote from Hark about their FireBootCamp experience.
+        author: Hark
+        role: Software Engineer
+        image: /uploads/testimonials/Placeholder Image.png
+      - quote: >-
+          Testimonial quote from Mitchell about their FireBootCamp experience.
+        author: Mitchell
+        role: Software Developer
+        image: /uploads/testimonials/Placeholder Image-1.png
+      - quote: >-
+          Testimonial quote from Pat about their FireBootCamp experience.
+        author: Pat
+        role: Software Developer
+        image: /uploads/testimonials/Placeholder Image-2.png
     _template: fbcTestimonialSlider
   - title: Our team of FireBootCamp Mentors
     description: >-
@@ -142,21 +149,27 @@ blocks:
         bio: >-
           Luke is a seasoned professional with over 20 years of dedicated
           experience in the dynamic realms of Fintech and Paytech.
-        image: /uploads/team/luke.jpg
+        image: /uploads/team/Cookie.jpg
         socials:
           - platform: linkedin
             url: 'https://www.linkedin.com/in/lukecook'
-          - platform: twitter
-            url: 'https://twitter.com/lukecook'
+          - platform: github
+            url: 'https://github.com/lukecook'
+          - platform: globe
+            url: 'https://www.ssw.com.au/people/luke-cook'
       - name: Tom Iwainski
         role: Senior Mentor
         bio: >-
           Tom Iwainski is a Senior Software Engineer at SSW with a proven track
           record in modern full-stack development, software architecture, and
           team leadership.
-        image: /uploads/team/tom.jpg
+        image: /uploads/team/Tom.jpg
         socials:
           - platform: linkedin
+            url: '#'
+          - platform: github
+            url: '#'
+          - platform: globe
             url: '#'
       - name: Lewis Toh
         role: Mentor
@@ -164,9 +177,13 @@ blocks:
           Lewis joined SSW through FireBootCamp, where he has honed and gained
           knowledge on Full Stack Development, building on Angular and .NET
           skills.
-        image: /uploads/team/lewis.jpg
+        image: /uploads/team/Lewis.jpg
         socials:
           - platform: linkedin
+            url: '#'
+          - platform: github
+            url: '#'
+          - platform: globe
             url: '#'
       - name: Isaac Lombard
         role: Mentor
@@ -174,13 +191,17 @@ blocks:
           After graduating from SSW's FireBootCamp, Isaac joined the team
           full-time, developing full-stack solutions that combine clean
           architecture with a great user experience.
-        image: /uploads/team/isaac.jpg
+        image: /uploads/team/Isaac.jpg
         socials:
           - platform: linkedin
             url: '#'
+          - platform: github
+            url: '#'
+          - platform: globe
+            url: '#'
     ctaTitle: Join the SSW team
-    ctaDescription: We're always looking for exceptional candidates at SSW
-    ctaLabel: View current opportunities
+    ctaDescription: Join our team – we're seeking talented developers ready to make an impact!
+    ctaLabel: View job openings
     ctaLink: /careers
     _template: fbcTeam
   - title: FAQs
@@ -210,8 +231,10 @@ blocks:
   - title: Your code. Your future. Now.
     description: Take the first step towards a transformative developer career
     emailPlaceholder: Enter your email address
-    buttonLabel: Commit
-    disclaimer: 'By submitting, you commit to becoming a professional software developer'
+    buttonLabel: Submit
+    disclaimer: >-
+      By submitting, you're committing to a breakthrough in your software
+      development career.
     _template: fbcCtaBanner
 ---
 

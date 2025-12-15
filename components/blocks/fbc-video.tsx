@@ -1,11 +1,9 @@
 'use client';
-import Image from 'next/image';
 import Link from 'next/link';
 import type { Template } from 'tinacms';
 import { tinaField } from 'tinacms/dist/react';
 import type { PageBlocksFbcVideo } from '../../tina/__generated__/types';
 import { Button } from '../ui/button';
-import HeroVideoDialog from '../ui/hero-video-dialog';
 
 export const FbcVideo = ({ data }: { data: PageBlocksFbcVideo }) => {
   return (
@@ -27,37 +25,32 @@ export const FbcVideo = ({ data }: { data: PageBlocksFbcVideo }) => {
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 md:gap-6 items-center">
-            {data.watchLabel && (
+          {data.secondaryLabel && (
               <Button
+              asChild
                 variant="ghost"
-                data-tina-field={tinaField(data, 'watchLabel')}
-                className="bg-black/5 hover:bg-black/10 text-scheme-3-text"
+              data-tina-field={tinaField(data, 'secondaryLabel')}
+              className="bg-[rgba(0,0,0,0.05)] border border-transparent hover:bg-[rgba(0,0,0,0.1)] text-scheme-3-text"
               >
-                {data.watchLabel}
-              </Button>
-            )}
-            {data.secondaryLabel && (
               <Link
                 href={data.secondaryLink || '#'}
-                data-tina-field={tinaField(data, 'secondaryLabel')}
-                className="flex items-center gap-2 font-sans text-[14px] md:text-[16px] lg:text-[18px] font-medium leading-[1.5] text-scheme-3-text hover:underline"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 {data.secondaryLabel}
-                <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
               </Link>
+            </Button>
             )}
-          </div>
         </div>
 
         {data.videoUrl && (
-          <div className="w-full max-w-[1280px] rounded-lg overflow-hidden shadow-[0_0_8.4px_3px_rgba(0,0,0,0.25)]">
-            <HeroVideoDialog
-              videoSrc={data.videoUrl}
-              thumbnailSrc={data.thumbnail || ''}
-              thumbnailAlt={data.title || 'Video thumbnail'}
+          <div className="w-full max-w-[1280px] aspect-video rounded-lg overflow-hidden shadow-[0_0_8.4px_3px_rgba(0,0,0,0.25)]">
+            <iframe
+              src={data.videoUrl}
+              title={data.title || 'Video'}
+              className="w-full h-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
             />
           </div>
         )}
@@ -74,7 +67,6 @@ export const fbcVideoBlockSchema: Template = {
     defaultItem: {
       title: 'A day in the life of a software consultant at SSW',
       description: 'Dive into an overview of FireBootCamp in the video below.',
-      watchLabel: 'Watch',
       secondaryLabel: 'More at SSWTV',
       secondaryLink: 'https://tv.ssw.com',
       videoUrl: 'https://www.youtube.com/embed/example',

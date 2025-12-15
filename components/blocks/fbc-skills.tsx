@@ -8,25 +8,25 @@ export const FbcSkills = ({ data }: { data: PageBlocksFbcSkills }) => {
   const skillCount = data.skills?.length || 0;
   
   return (
-    <section className="bg-scheme-1-background px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32">
-      <div className="max-w-[1440px] mx-auto flex flex-col gap-10 md:gap-16 lg:gap-20">
+    <section id="skills" className="bg-scheme-1-background px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32">
+      <div className="max-w-[1440px] mx-auto flex flex-col gap-10 md:gap-16 lg:gap-20 justify-start items-center">
         <div className="max-w-full md:max-w-[768px] flex flex-col gap-4 md:gap-6">
           <h2
             data-tina-field={tinaField(data, 'title')}
-            className="font-oswald font-bold text-[32px] sm:text-[40px] md:text-[50px] lg:text-[60px] uppercase tracking-[-0.6px] leading-none text-scheme-1-text"
+            className="font-oswald font-bold text-[32px] sm:text-[40px] md:text-[50px] lg:text-[60px] uppercase tracking-[-0.6px] leading-none text-scheme-1-text text-center"
           >
             {data.title}
           </h2>
           <p
             data-tina-field={tinaField(data, 'description')}
-            className="font-sans text-[14px] md:text-[16px] lg:text-[20px] leading-[1.5] text-scheme-1-text"
+            className="font-sans text-[14px] md:text-[16px] lg:text-[20px] leading-[1.5] text-scheme-1-text text-center"
           >
             {data.description}
           </p>
         </div>
 
         <div className="w-full">
-          <div className="border-t border-black/15 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+          <div className="border-t border-scheme-1-border grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             {data.skills?.map((skill, index) => (
               <SkillItem 
                 key={index} 
@@ -43,21 +43,25 @@ export const FbcSkills = ({ data }: { data: PageBlocksFbcSkills }) => {
 };
 
 const SkillItem = ({ skill, index, total }: { skill: PageBlocksFbcSkillsSkills; index: number; total: number }) => {
-  const isFirst = index === 0;
+  // Border logic for 4-item grid:
+  // Mobile (1 col): border-b on all except last
+  // Tablet (2 col): border-r on left column (0,2), border-b on top row (0,1)
+  // Desktop (4 col): border-r on all except last
   const isLast = index === total - 1;
-  const isOdd = index % 2 === 1;
-  const isInFirstHalf = index < 2;
+  const isLeftColumnMd = index % 2 === 0;
+  const isTopRowMd = index < 2;
   
   return (
     <div className={`
       flex flex-col gap-4 md:gap-6 py-6 md:py-8 
       px-0 md:px-6 lg:px-8
-      border-b md:border-b-0 border-scheme-1-border
-      ${isLast ? 'border-b-0' : ''}
-      ${!isLast ? 'lg:border-r' : ''}
-      ${isOdd ? 'md:border-r-0 lg:border-r' : 'md:border-r'}
-      ${isInFirstHalf ? 'md:border-b' : ''}
+      border-scheme-1-border
+      ${!isLast ? 'border-b' : ''}
+      md:border-b-0
+      ${isTopRowMd ? 'md:border-b' : ''}
+      ${isLeftColumnMd ? 'md:border-r' : ''}
       lg:border-b-0
+      ${!isLast ? 'lg:border-r' : ''}
     `}>
       {skill.icon && (
         <div className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 relative" data-tina-field={tinaField(skill, 'icon')}>

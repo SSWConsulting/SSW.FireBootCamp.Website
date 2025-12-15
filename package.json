@@ -2,6 +2,9 @@
   "name": "@tinacms/starter",
   "version": "0.1.0",
   "private": true,
+  "pnpm": {
+    "onlyBuiltDependencies": ["@biomejs/biome", "better-sqlite3", "esbuild", "sharp"]
+  },
   "scripts": {
     "dev": "tinacms dev -c \"next dev --turbopack\"",
     "build": "tinacms build && next build",

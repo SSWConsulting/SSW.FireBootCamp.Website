@@ -10,11 +10,15 @@
     "nav": [
       {
         "href": "#program",
-        "label": "The Program"
+        "label": "Program"
       },
       {
         "href": "#pricing",
         "label": "Pricing"
+      },
+      {
+        "href": "#mentors",
+        "label": "Mentors"
       },
       {
         "href": "#faqs",
@@ -22,7 +26,7 @@
       },
       {
         "href": "https://www.ssw.com.au/events",
-        "label": "SSW Training & Events",
+        "label": "Courses & Events",
         "hasDropdown": true
       }
     ],
@@ -31,17 +35,17 @@
         "icon": "live_tv",
         "title": "1-Day Dev Superpowers",
         "description": "One day seminars where you watch our developers build an app live.",
-        "href": "https://www.ssw.com.au/events/net-superpowers-tour"
+        "href": "https://firebootcamp.com/other-courses/superpower-tours/"
       },
       {
         "icon": "developer_mode_tv",
         "title": "2-Day Workshops",
         "description": "Two day workshops where you get your hands dirty and build an app.",
-        "href": "https://www.ssw.com.au/events"
+        "href": "https://firebootcamp.com/other-courses/hands-on-workshops/"
       },
       {
         "icon": "start",
-        "title": "Something else?",
+        "title": "Something Else?",
         "description": "Explore our full list of courses and events at SSW.",
         "href": "https://www.ssw.com.au/events"
       }
@@ -53,21 +57,26 @@
   "footer": {
     "headline": "Start your developer journey today",
     "description": "We're independent and Oceanic-based. We run webinars, live events, in-house and online courses.",
-    "primaryCtaLabel": "Explore SSW Training",
-    "primaryCtaLink": "https://www.ssw.com.au/events",
-    "secondaryCtaLabel": "Explore SSW Rules",
-    "secondaryCtaLink": "https://www.ssw.com.au/rules",
+    "primaryCtaLabel": "Apply now",
+    "primaryCtaLink": "/apply",
+    "secondaryCtaLabel": "Go to SSW Events",
+    "secondaryCtaLink": "https://www.ssw.com.au/events",
     "linkColumns": [
       {
         "links": [
           {
-            "label": "The Program",
+            "label": "Program",
             "href": "#program",
             "isHeading": true
           },
           {
             "label": "Pricing",
             "href": "#pricing",
+            "isHeading": true
+          },
+          {
+            "label": "Mentors",
+            "href": "#mentors",
             "isHeading": true
           },
           {
@@ -80,45 +89,41 @@
       {
         "links": [
           {
-            "label": "SSW Training & Events",
-            "href": "/courses",
+            "label": "Courses & Events",
+            "href": "https://www.ssw.com.au/events",
             "isHeading": true
           },
           {
             "label": "1-Day Dev Superpowers",
-            "href": "/courses/dev-superpowers"
+            "href": "https://firebootcamp.com/other-courses/superpower-tours/"
           },
           {
             "label": "2-Day Workshops",
-            "href": "/courses/workshops"
-          },
-          {
-            "label": "SSW Internship",
-            "href": "/internship"
+            "href": "https://firebootcamp.com/other-courses/hands-on-workshops/"
           }
         ]
       }
     ],
     "social": [
       {
-        "platform": "youtube",
-        "url": "https://www.youtube.com/user/sswtechtalks"
-      },
-      {
-        "platform": "linkedin",
-        "url": "https://www.linkedin.com/company/ssw"
+        "platform": "facebook",
+        "url": "https://www.facebook.com/SSW.page/"
       },
       {
         "platform": "instagram",
-        "url": "https://www.instagram.com/ssw_tv"
-      },
-      {
-        "platform": "facebook",
-        "url": "https://www.facebook.com/SSW.page"
+        "url": "https://www.instagram.com/ssw_tv/"
       },
       {
         "platform": "twitter",
         "url": "https://x.com/SSW_TV"
+      },
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/company/ssw/"
+      },
+      {
+        "platform": "youtube",
+        "url": "https://www.youtube.com/@SSWTV"
       }
     ]
   },

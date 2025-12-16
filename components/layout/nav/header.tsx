@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useLayout } from "../layout-context";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { AutoLink } from "@/components/ui/link";
 
 export const Header = () => {
   const { globalSettings } = useLayout();
@@ -75,12 +76,12 @@ export const Header = () => {
                         {item?.label}
                       </a>
                     ) : (
-                      <Link
+                      <AutoLink
                         href={item?.href || '#'}
                         className="text-scheme-2-text font-sans text-[18px] leading-[1.5] hover:text-scheme-2-text/80 transition-colors"
                       >
                         {item?.label}
-                      </Link>
+                      </AutoLink>
                     )}
                   </React.Fragment>
                 ))}
@@ -108,7 +109,7 @@ export const Header = () => {
               <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-16 py-8">
                 <div className="grid grid-cols-4 gap-8">
                   {megaMenu.map((item, index) => (
-                    <Link
+                    <AutoLink
                       key={index}
                       href={item?.href || '#'}
                       className="flex gap-3 py-2 group"
@@ -123,16 +124,19 @@ export const Header = () => {
                         <span className="font-sans text-[18px] font-semibold leading-[1.5] group-hover:text-scheme-2-text/80">{item?.title}</span>
                         <span className="font-sans text-[16px] leading-[1.5] opacity-80">{item?.description}</span>
                       </div>
-                    </Link>
+                    </AutoLink>
                   ))}
                 </div>
               </div>
               <div className="bg-scheme-2-foreground px-4 md:px-8 lg:px-16 py-4">
                 <div className="max-w-[1440px] mx-auto flex justify-center items-center gap-2 text-scheme-2-text font-sans text-[18px] leading-[1.5]">
                   <span>{header?.megaMenuBannerText || 'Transform your tech career now'}</span>
-                  <Link href={header?.megaMenuBannerLinkUrl || '/apply'} className="underline hover:no-underline">
+                  <AutoLink 
+                    href={header?.megaMenuBannerLinkUrl || '/apply'} 
+                    className="underline hover:no-underline"
+                  >
                     {header?.megaMenuBannerLinkText || 'Start your path'}
-                  </Link>
+                  </AutoLink>
                 </div>
               </div>
             </div>
@@ -163,13 +167,13 @@ export const Header = () => {
                       {item?.label}
                     </a>
                   ) : (
-                    <Link
+                    <AutoLink
                       href={item?.href || '#'}
                       className="text-scheme-2-text font-sans text-[18px] leading-[1.5] block py-2"
                       onClick={() => setMenuState(false)}
                     >
                       {item?.label}
-                    </Link>
+                    </AutoLink>
                   )}
                 </li>
               ))}

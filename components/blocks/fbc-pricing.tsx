@@ -13,7 +13,7 @@ export const FbcPricing = ({ data }: { data: PageBlocksFbcPricing }) => {
   const mailtoLink = `mailto:${contactEmail}?subject=${encodeURIComponent(contactSubject)}`;
   
   return (
-    <section id="pricing" className="bg-scheme-3-background px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32">
+    <section id="pricing" className="bg-scheme-3-background px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32 h-fit">
       <div className="max-w-[1440px] mx-auto flex flex-col gap-10 md:gap-16 lg:gap-20 items-center">
         <div className="max-w-full md:max-w-[768px] text-center flex flex-col gap-4 md:gap-6">
           <h2
@@ -30,10 +30,23 @@ export const FbcPricing = ({ data }: { data: PageBlocksFbcPricing }) => {
           </p>
         </div>
 
-        <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
-          {data.plans?.map((plan, index) => (
-            <PricingCard key={index} plan={plan!} mailtoLink={mailtoLink} />
-          ))}
+        <div className="w-full flex flex-wrap min-[1440px]:flex-nowrap justify-center gap-4">
+          {data.plans?.map((plan, index) => {
+            // Below 1440px: Trial (0) → 1st, Full Tuition (2) → 2nd, Scholarship (1) → 3rd
+            // At 1440px+: DOM order (Trial, Scholarship, Full Tuition)
+            const orderClasses = 
+              index === 0 ? 'order-1 min-[1440px]:order-1' : 
+              index === 1 ? 'order-3 min-[1440px]:order-2' : 
+              'order-2 min-[1440px]:order-3';
+            return (
+              <div 
+                key={index}
+                className={`w-full md:w-[calc(50%-8px)] min-[1440px]:flex-1 min-[1440px]:max-w-[480px] ${orderClasses}`}
+              >
+                <PricingCard plan={plan!} mailtoLink={mailtoLink} />
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -41,9 +54,21 @@ export const FbcPricing = ({ data }: { data: PageBlocksFbcPricing }) => {
 };
 
 const PricingCard = ({ plan, mailtoLink }: { plan: PageBlocksFbcPricingPlans; mailtoLink: string }) => {
+  const isFeatured = plan.isFeatured || false;
   return (
-    <div className="bg-scheme-1-background rounded-lg p-6 md:p-8 flex flex-col h-full">
-      <div className="flex flex-col gap-6 md:gap-8 flex-1">
+    <div className={`bg-scheme-1-background rounded-lg flex flex-col overflow-hidden w-full h-full ${
+      isFeatured 
+        ? 'border border-red shadow-[0px_0px_0px_6px_rgba(204,65,65,0.22)] pb-6 md:pb-8 pt-0 px-0' 
+        : 'border border-border p-6 md:p-8'
+    }`}>
+      {isFeatured && (
+        <div className="bg-red text-white text-center px-6 md:px-8 py-3 md:py-4">
+          <p className="font-oswald font-bold text-[14px] md:text-[16px] uppercase tracking-[1.6px] leading-[1.1]">
+            MOST POPULAR
+          </p>
+        </div>
+      )}
+      <div className={`flex flex-col gap-6 md:gap-8 flex-1 ${isFeatured ? 'px-6 md:px-8 py-8' : ''}`}>
         <div className="flex gap-4 items-center">
           {plan.icon && (
             <div className="w-10 h-[36px] md:w-12 md:h-[42px] relative" data-tina-field={tinaField(plan, 'icon')}>
@@ -76,7 +101,6 @@ const PricingCard = ({ plan, mailtoLink }: { plan: PageBlocksFbcPricingPlans; ma
         <div className="h-px bg-scheme-1-border" />
 
         <div className="flex flex-col gap-3 md:gap-4">
-          <p className="font-sans text-[16px] md:text-[18px] leading-[1.5] text-scheme-1-text">Includes</p>
           <div className="flex flex-col gap-3 md:gap-4 py-2">
             {plan.features?.map((feature, index) => (
               <FeatureItem key={index} feature={feature!} />
@@ -85,12 +109,14 @@ const PricingCard = ({ plan, mailtoLink }: { plan: PageBlocksFbcPricingPlans; ma
         </div>
       </div>
 
-      <Button
-        asChild
-        className="w-full bg-red hover:bg-red-dark text-white mt-6 md:mt-8"
-      >
-        <a href={mailtoLink}>{plan.ctaLabel || 'Apply now'}</a>
-      </Button>
+      <div className={isFeatured ? 'px-6 md:px-8' : 'h-20'}>
+        <Button
+          asChild
+          className="w-full bg-red hover:bg-red-dark text-white mt-6 md:mt-8"
+        >
+          <a href={mailtoLink}>{plan.ctaLabel || 'Apply now'}</a>
+        </Button>
+      </div>
     </div>
   );
 };
@@ -211,6 +237,11 @@ export const fbcPricingBlockSchema: Template = {
           type: 'string',
           label: 'CTA Link',
           name: 'ctaLink',
+        },
+        {
+          type: 'boolean',
+          label: 'Featured',
+          name: 'isFeatured',
         },
         {
           type: 'object',

@@ -44,7 +44,7 @@ const FaqItem = ({ faq }: { faq: PageBlocksFbcFaqFaqs }) => {
       >
         <p
           data-tina-field={tinaField(faq, 'question')}
-          className="font-sans text-[16px] md:text-[18px] lg:text-[20px] font-bold leading-[1.5] text-scheme-2-text text-left"
+          className="font-oswald font-bold text-[20px] md:text-[24px] lg:text-[28px] uppercase tracking-[-0.28px] leading-[1.3] text-scheme-2-text text-left"
         >
           {faq.question}
         </p>

@@ -31,14 +31,14 @@ export const FbcCtaBanner = ({ data }: { data: PageBlocksFbcCtaBanner }) => {
           </div>
 
           <div className="w-full lg:w-[513px] flex flex-col gap-3 md:gap-4 shrink-0">
-            <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-2">
               <input
                 type="email"
                 placeholder={data.emailPlaceholder || 'Enter your email address'}
-                className="w-full sm:flex-1 sm:min-w-0 h-10 md:h-12 px-3 bg-scheme-4-border rounded-md font-sans text-[14px] md:text-[16px] lg:text-[18px] leading-[1.5] text-scheme-4-text border-0 placeholder:text-white/70"
+                className="w-full sm:w-full sm:min-w-0 h-10 md:h-12 px-3 bg-scheme-4-border rounded-md font-sans text-[14px] md:text-[16px] lg:text-[18px] leading-[1.5] text-scheme-4-text border-0 placeholder:text-white/70"
               />
-              <Button asChild className="bg-scheme-4-accent hover:bg-scheme-4-accent/90 text-scheme-4-background whitespace-nowrap shrink-0">
-                <a href={mailtoLink}>{data.buttonLabel || 'Commit'}</a>
+              <Button asChild className="bg-scheme-4-accent hover:bg-scheme-4-accent/90 text-scheme-4-background whitespace-nowrap shrink-0" style={{ backgroundColor: 'var(--color-white)' }}>
+                <a href={mailtoLink}>{data.buttonLabel || 'Submit'}</a>
               </Button>
             </div>
             <p
@@ -63,8 +63,8 @@ export const fbcCtaBannerBlockSchema: Template = {
       title: 'Your code. Your future. Now.',
       description: 'Take the first step towards a transformative developer career',
       emailPlaceholder: 'Enter your email address',
-      buttonLabel: 'Commit',
-      disclaimer: 'By submitting, you commit to becoming a professional software developer',
+      buttonLabel: 'Submit',
+      disclaimer: "By submitting, you're committing to a breakthrough in your software development career.",
     },
   },
   fields: [

@@ -50,9 +50,9 @@ export const FbcTestimonialSlider = ({ data }: { data: PageBlocksFbcTestimonialS
   return (
     <section ref={sectionRef} className="bg-scheme-1-background px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32 overflow-hidden">
       <div className="max-w-[1440px] mx-auto flex flex-col gap-6 md:gap-8">
-        <div className="min-h-[400px] md:min-h-[500px] lg:h-[640px] relative">
+        <div className="relative">
           <div 
-            className={`flex flex-col lg:flex-row gap-6 md:gap-10 lg:gap-20 items-center h-full transition-all duration-300 ease-in-out ${
+            className={`flex flex-col md:flex-row gap-6 md:gap-10 lg:gap-20 items-center h-full transition-all duration-300 ease-in-out ${
               isAnimating 
                 ? direction === 'right' 
                   ? '-translate-x-8 opacity-0' 
@@ -61,7 +61,7 @@ export const FbcTestimonialSlider = ({ data }: { data: PageBlocksFbcTestimonialS
             }`}
           >
             {currentTestimonial.image && (
-              <div className="w-full h-[250px] sm:h-[300px] md:h-[350px] lg:w-[616px] lg:h-[640px] relative rounded-lg overflow-hidden shrink-0">
+              <div className="w-full md:w-1/2 aspect-square relative rounded-lg overflow-hidden shrink-0">
                 <Image
                   src={currentTestimonial.image}
                   alt={currentTestimonial.author || ''}
@@ -72,7 +72,7 @@ export const FbcTestimonialSlider = ({ data }: { data: PageBlocksFbcTestimonialS
               </div>
             )}
 
-            <div className="flex-1 flex flex-col gap-4 md:gap-6 lg:gap-8">
+            <div className="w-full md:w-1/2 flex flex-col gap-4 md:gap-6 lg:gap-8">
               <div className="flex gap-1">
                 {[...Array(5)].map((_, i) => (
                   <svg key={i} className="w-4 h-4 md:w-5 md:h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
@@ -114,7 +114,7 @@ export const FbcTestimonialSlider = ({ data }: { data: PageBlocksFbcTestimonialS
               <button
                 key={index}
                 onClick={() => goToIndex(index)}
-                className={`w-2 h-2 rounded-full transition-colors ${
+                className={`w-2 h-2 rounded-full transition-colors cursor-pointer ${
                   index === currentIndex ? 'bg-scheme-1-text' : 'bg-scheme-1-text/30'
                 }`}
               />
@@ -124,7 +124,7 @@ export const FbcTestimonialSlider = ({ data }: { data: PageBlocksFbcTestimonialS
           <div className="flex gap-2 md:gap-4">
             <button
               onClick={goToPrevious}
-              className="p-2 md:p-3 bg-scheme-3-background hover:bg-scheme-1-border rounded transition-colors"
+              className="p-2 md:p-3 bg-scheme-3-background hover:bg-scheme-1-border rounded transition-colors cursor-pointer"
             >
               <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -132,7 +132,7 @@ export const FbcTestimonialSlider = ({ data }: { data: PageBlocksFbcTestimonialS
             </button>
             <button
               onClick={goToNext}
-              className="p-2 md:p-3 bg-scheme-3-background hover:bg-scheme-1-border rounded transition-colors"
+              className="p-2 md:p-3 bg-scheme-3-background hover:bg-scheme-1-border rounded transition-colors cursor-pointer"
             >
               <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

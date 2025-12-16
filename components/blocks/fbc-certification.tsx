@@ -13,7 +13,7 @@ export const FbcCertification = ({ data }: { data: PageBlocksFbcCertification })
   const mailtoLink = `mailto:${contactEmail}?subject=${encodeURIComponent(contactSubject)}`;
   
   return (
-    <section className="bg-scheme-1-background px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32">
+    <section className="bg-scheme-1-background px-4 md:px-8 lg:px-16 pt-16 md:pt-24 lg:pt-16 pb-16 md:pb-24 lg:pb-32">
       <div className="max-w-[1440px] mx-auto">
         <div className="flex flex-col lg:flex-row gap-8 md:gap-12 items-center justify-center">
           {data.badgeImage && (
@@ -39,11 +39,11 @@ export const FbcCertification = ({ data }: { data: PageBlocksFbcCertification })
             </div>
 
             <div className="flex flex-col gap-3 md:gap-4 w-full max-w-[513px]">
-              <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 md:gap-2">
                 <input
                   type="email"
                   placeholder={data.emailPlaceholder || 'Enter your email address'}
-                  className="w-full sm:flex-1 sm:min-w-0 h-10 md:h-12 px-3 bg-black/5 rounded-md font-sans text-[14px] md:text-[16px] lg:text-[18px] leading-[1.5] border-0 placeholder:text-black/60"
+                  className="w-full sm:w-full sm:min-w-0 h-10 md:h-12 px-3 bg-black/5 rounded-md font-sans text-[14px] md:text-[16px] lg:text-[18px] leading-[1.5] border-0 placeholder:text-black/60"
                 />
                 <Button asChild className="bg-red hover:bg-red-dark text-white whitespace-nowrap shrink-0">
                   <a href={mailtoLink}>{data.buttonLabel || 'Commit'}</a>

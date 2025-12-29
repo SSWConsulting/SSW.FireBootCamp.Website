@@ -8,7 +8,7 @@ export const FbcSkills = ({ data }: { data: PageBlocksFbcSkills }) => {
   const skillCount = data.skills?.length || 0;
   
   return (
-    <section id="skills" className="bg-scheme-1-background px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32">
+    <section id="skills" className="bg-scheme-1-background px-6 md:px-16 lg:px-16 py-16 md:py-24 lg:py-32">
       <div className="max-w-[1440px] mx-auto flex flex-col gap-10 md:gap-16 lg:gap-20 justify-start items-center">
         <div className="max-w-full md:max-w-[768px] flex flex-col gap-4 md:gap-6">
           <h2

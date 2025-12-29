@@ -22,28 +22,32 @@ export const Header = () => {
   return (
     <>
       {/* Spacer to push content below fixed header */}
-      <div className="h-[72px] bg-scheme-2-background" />
+      <div className="h-[64px] lg:h-[72px] bg-scheme-2-background" />
       
       <header 
         className="bg-scheme-2-background fixed top-0 z-50 w-full"
         onMouseLeave={() => setMegaMenuOpen(false)}
       >
         <nav>
-          <div className="max-w-[1920px] mx-auto px-4 md:px-8 lg:px-16">
-            <div className="flex items-center justify-between h-[72px]">
+          <div className="max-w-[1920px] mx-auto px-6 md:px-16 lg:px-16 pt-[8px] pb-[8px]">
+            <div className="flex items-center justify-between h-[64px] lg:h-[72px]">
               {/* Logo - Left aligned */}
-              <div className="shrink-0 pb-[6px]">
-                <Link href="/" aria-label="home" className="flex items-center">
-                  {header?.logo ? (
-                    <img 
-                      src={header.logo} 
-                      alt={header.name || 'FireBootCamp'} 
-                      className="h-8 w-auto"
-                    />
-                  ) : (
-                    <span className="text-scheme-2-text font-bold font-sans text-[20px]">{header?.name || 'FireBootCamp'}</span>
-                  )}
-                </Link>
+              <div 
+                className="shrink-0 flex items-center justify-center cursor-pointer max-w-[200px] md:max-w-none"
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+              >
+                {header?.logo ? (
+                  <img 
+                    src={header.logo} 
+                    alt={header.name || 'FireBootCamp'} 
+                    className="h-8 md:h-10 lg:h-12 w-auto -mt-2"
+                    style={{ height: '40px' }}
+                  />
+                ) : (
+                  <span className="text-scheme-2-text font-bold font-sans text-[20px]">{header?.name || 'FireBootCamp'}</span>
+                )}
               </div>
 
               {/* Nav items - Centered */}
@@ -89,7 +93,7 @@ export const Header = () => {
 
               {/* CTA Button - Right aligned */}
               <div className="flex items-center gap-4 shrink-0">
-                <Button asChild className="hidden lg:flex bg-red hover:bg-red-dark text-white">
+                <Button asChild className="hidden lg:flex bg-red text-white">
                   <a href={mailtoLink}>{header?.ctaLabel || 'Apply now'}</a>
                 </Button>
 
@@ -106,7 +110,7 @@ export const Header = () => {
 
           {megaMenuOpen && megaMenu && megaMenu.length > 0 && (
             <div className="hidden lg:block bg-scheme-2-background">
-              <div className="max-w-[1440px] mx-auto px-4 md:px-8 lg:px-16 py-8">
+              <div className="max-w-[1440px] mx-auto px-6 md:px-16 lg:px-16 py-8">
                 <div className="grid grid-cols-4 gap-8">
                   {megaMenu.map((item, index) => (
                     <AutoLink
@@ -128,15 +132,26 @@ export const Header = () => {
                   ))}
                 </div>
               </div>
-              <div className="bg-scheme-2-foreground px-4 md:px-8 lg:px-16 py-4">
+              <div className="bg-scheme-2-foreground px-6 md:px-16 lg:px-16 py-4">
                 <div className="max-w-[1440px] mx-auto flex justify-center items-center gap-2 text-scheme-2-text font-sans text-[18px] leading-[1.5]">
                   <span>{header?.megaMenuBannerText || 'Transform your tech career now'}</span>
-                  <AutoLink 
-                    href={header?.megaMenuBannerLinkUrl || '/apply'} 
-                    className="underline hover:no-underline"
+                  <a
+                    href="#program"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setMegaMenuOpen(false);
+                      const target = document.querySelector('#program');
+                      if (target) {
+                        const headerOffset = 72;
+                        const elementPosition = target.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.scrollY - headerOffset;
+                        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                      }
+                    }}
+                    className="underline hover:no-underline cursor-pointer"
                   >
                     {header?.megaMenuBannerLinkText || 'Start your path'}
-                  </AutoLink>
+                  </a>
                 </div>
               </div>
             </div>
@@ -178,7 +193,7 @@ export const Header = () => {
                 </li>
               ))}
               <li className="pt-4">
-                <Button asChild className="w-full bg-red hover:bg-red-dark text-white">
+                <Button asChild className="w-full bg-red text-white">
                   <a href={mailtoLink}>{header?.ctaLabel || 'Apply now'}</a>
                 </Button>
               </li>

@@ -81,7 +81,7 @@ export const components: Components<{
                 type='email'
                 autoComplete='email'
                 required
-                className='w-full px-5 py-3 border border-gray-300 shadow-xs placeholder-gray-400 focus:ring-1 focus:ring-teal-500 focus:border-teal-500 sm:max-w-xs rounded-md'
+                className='w-full min-h-[52px] px-5 py-3 border border-gray-300 shadow-xs placeholder-gray-400 focus:ring-1 focus:ring-teal-500 focus:border-teal-500 sm:max-w-xs rounded-md'
                 placeholder={props.placeholder}
               />
               <div className='mt-3 rounded-md shadow-sm sm:mt-0 sm:ml-3 sm:shrink-0'>

@@ -8,35 +8,35 @@ import { AutoLink } from '../ui/link';
 
 export const FbcTeam = ({ data }: { data: PageBlocksFbcTeam }) => {
   return (
-    <section id="mentors" className="bg-scheme-3-background px-16 py-32">
-      <div className="max-w-[1440px] mx-auto flex flex-col gap-32 items-center">
-        <div className="max-w-[768px] text-center flex flex-col gap-6">
+    <section id="mentors" className="bg-scheme-3-background px-6 md:px-16 lg:px-16 py-16 md:py-24 lg:py-32">
+      <div className="max-w-[1440px] mx-auto flex flex-col gap-8 md:gap-16 lg:gap-20 items-center">
+        <div className="max-w-[768px] text-center flex flex-col gap-4 md:gap-6">
           <h2
             data-tina-field={tinaField(data, 'title')}
-            className="font-oswald font-bold text-[60px] uppercase tracking-[-0.6px] leading-none text-scheme-3-text"
+            className="font-oswald font-bold text-[32px] sm:text-[40px] md:text-[50px] lg:text-[60px] uppercase tracking-[-0.6px] leading-none text-scheme-3-text"
           >
             {data.title}
           </h2>
           <p
             data-tina-field={tinaField(data, 'description')}
-            className="font-sans text-[20px] leading-[1.5] text-scheme-3-text"
+            className="font-sans text-[16px] md:text-[18px] lg:text-[20px] leading-[1.5] text-scheme-3-text"
           >
             {data.description}
           </p>
         </div>
 
-        <div className="w-full flex flex-col gap-[64px]">
+        <div className="w-full flex flex-col gap-10 md:gap-16 lg:gap-20">
           {data.members && data.members.length > 0 && (
             <>
               {/* First row: First 2 members */}
-              <div className="w-full flex flex-col md:flex-row items-center md:items-center justify-center md:justify-center gap-[64px]">
+              <div className="w-full flex flex-col md:flex-row items-center md:items-center justify-center md:justify-center gap-10 md:gap-16 lg:gap-20">
                 {data.members.slice(0, 2).map((member, index) => (
                   <TeamMemberCard key={index} member={member!} />
                 ))}
               </div>
               {/* Second row: Last 2 members */}
               {data.members.length > 2 && (
-                <div className="w-full flex flex-col md:flex-row items-center md:items-center justify-center md:justify-center gap-[64px]">
+                <div className="w-full flex flex-col md:flex-row items-center md:items-center justify-center md:justify-center gap-10 md:gap-16 lg:gap-20">
                   {data.members.slice(2, 4).map((member, index) => (
                     <TeamMemberCard key={index + 2} member={member!} />
                   ))}
@@ -47,12 +47,12 @@ export const FbcTeam = ({ data }: { data: PageBlocksFbcTeam }) => {
         </div>
 
         {(data.ctaTitle || data.ctaDescription) && (
-          <div className="max-w-[768px] text-center flex flex-col gap-6 items-center">
-            <div className="flex flex-col gap-4 items-center">
+          <div className="max-w-[768px] text-center flex flex-col gap-4 md:gap-6 items-center pt-16">
+            <div className="flex flex-col gap-3 md:gap-4 items-center">
               {data.ctaTitle && (
                 <h3
                   data-tina-field={tinaField(data, 'ctaTitle')}
-                  className="font-oswald font-bold text-[40px] uppercase tracking-[-0.4px] leading-none text-scheme-3-text"
+                  className="font-oswald font-bold text-[24px] md:text-[32px] lg:text-[40px] uppercase tracking-[-0.4px] leading-none text-scheme-3-text"
                 >
                   {data.ctaTitle}
                 </h3>
@@ -60,7 +60,7 @@ export const FbcTeam = ({ data }: { data: PageBlocksFbcTeam }) => {
               {data.ctaDescription && (
                 <p
                   data-tina-field={tinaField(data, 'ctaDescription')}
-                  className="font-sans text-[20px] leading-[1.5] text-scheme-3-text max-w-[488px]"
+                  className="font-sans text-[16px] md:text-[18px] lg:text-[20px] leading-[1.5] text-scheme-3-text max-w-[488px]"
                 >
                   {data.ctaDescription}
                 </p>
@@ -69,8 +69,8 @@ export const FbcTeam = ({ data }: { data: PageBlocksFbcTeam }) => {
             {data.ctaLabel && (
               <Button
                 asChild
-                variant="ghost"
-                className="bg-[rgba(0,0,0,0.05)] border border-transparent hover:bg-[rgba(0,0,0,0.1)] text-scheme-3-text"
+                variant="secondary"
+                className="bg-[rgba(0,0,0,0.05)] border border-transparent hover:bg-[rgba(0,0,0,0.12)] text-scheme-3-text w-full sm:w-fit sm:shrink-0"
               >
                 <AutoLink href="https://www.ssw.com.au/employment">{data.ctaLabel}</AutoLink>
               </Button>
@@ -84,12 +84,12 @@ export const FbcTeam = ({ data }: { data: PageBlocksFbcTeam }) => {
 
 const TeamMemberCard = ({ member }: { member: PageBlocksFbcTeamMembers }) => {
   return (
-    <div className="basis-0 grow flex flex-col gap-6 items-center text-center max-w-[375px] w-full md:w-auto">
+    <div className="basis-0 grow flex flex-col gap-4 md:gap-6 items-center text-center max-w-[375px] w-full md:w-auto">
       {member.image && (
         <div className="relative shrink-0 size-[186.5px] rounded-full overflow-hidden">
           <Image
             src={member.image}
-            alt={member.name || ''}
+            alt={member.name || 'Team member'}
             fill
             className="object-cover"
             data-tina-field={tinaField(member, 'image')}
@@ -97,17 +97,17 @@ const TeamMemberCard = ({ member }: { member: PageBlocksFbcTeamMembers }) => {
         </div>
       )}
 
-      <div className="flex flex-col gap-4 w-full flex-1">
+      <div className="flex flex-col gap-3 md:gap-4 w-full flex-1">
         <div className="flex flex-col items-center">
           <p
             data-tina-field={tinaField(member, 'name')}
-            className="font-sans text-[26px] font-semibold leading-[1.5] text-scheme-3-text"
+            className="font-sans text-[20px] md:text-[24px] lg:text-[26px] font-semibold leading-[1.5] text-scheme-3-text"
           >
             {member.name}
           </p>
           <p
             data-tina-field={tinaField(member, 'role')}
-            className="font-sans text-[20px] leading-[1.5] text-scheme-3-text"
+            className="font-sans text-[16px] md:text-[18px] lg:text-[20px] leading-[1.5] text-scheme-3-text"
           >
             {member.role}
           </p>
@@ -115,7 +115,7 @@ const TeamMemberCard = ({ member }: { member: PageBlocksFbcTeamMembers }) => {
 
         <p
           data-tina-field={tinaField(member, 'bio')}
-          className="font-sans text-[16px] leading-[1.5] text-scheme-3-text"
+          className="font-sans text-[14px] md:text-[15px] lg:text-[16px] leading-[1.5] text-scheme-3-text"
         >
           {member.bio}
         </p>
@@ -175,7 +175,7 @@ const SocialLink = ({ social }: { social: PageBlocksFbcTeamMembersSocials }) => 
   return (
     <AutoLink 
       href={social.url || '#'} 
-      className="text-scheme-3-text hover:text-red transition-colors"
+      className="text-scheme-3-text hover:text-red transition-colors flex items-center justify-center min-w-[36px] min-h-[36px]"
     >
       {getIcon(social.platform)}
     </AutoLink>

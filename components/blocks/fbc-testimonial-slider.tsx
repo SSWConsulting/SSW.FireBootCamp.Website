@@ -48,8 +48,8 @@ export const FbcTestimonialSlider = ({ data }: { data: PageBlocksFbcTestimonialS
   if (!currentTestimonial) return null;
 
   return (
-    <section ref={sectionRef} className="bg-scheme-1-background px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32 overflow-hidden">
-      <div className="max-w-[1440px] mx-auto flex flex-col gap-6 md:gap-8">
+    <section ref={sectionRef} className="bg-scheme-1-background px-6 md:px-16 lg:px-16 py-16 md:py-24 lg:py-32 overflow-hidden">
+      <div className="max-w-[1440px] mx-auto flex flex-col gap-8 md:gap-8">
         <div className="relative">
           <div 
             className={`flex flex-col md:flex-row gap-6 md:gap-10 lg:gap-20 items-center h-full transition-all duration-300 ease-in-out ${
@@ -64,7 +64,7 @@ export const FbcTestimonialSlider = ({ data }: { data: PageBlocksFbcTestimonialS
               <div className="w-full md:w-1/2 aspect-square relative rounded-lg overflow-hidden shrink-0">
                 <Image
                   src={currentTestimonial.image}
-                  alt={currentTestimonial.author || ''}
+                  alt={currentTestimonial.author || 'Testimonial author'}
                   fill
                   className="object-cover"
                   data-tina-field={tinaField(currentTestimonial, 'image')}

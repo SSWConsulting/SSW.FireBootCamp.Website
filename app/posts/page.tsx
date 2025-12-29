@@ -5,32 +5,53 @@ import PostsClientPage from './client-page';
 export const revalidate = 300;
 
 export default async function PostsPage() {
-  let posts = await client.queries.postConnection({
-    sort: 'date',
-    last: 1
-  });
-  const allPosts = posts;
-
-  if (!allPosts.data.postConnection.edges) {
-    return [];
-  }
-
-  while (posts.data?.postConnection.pageInfo.hasPreviousPage) {
-    posts = await client.queries.postConnection({
+  try {
+    let { query, data, variables } = await client.queries.postConnection({
       sort: 'date',
-      before: posts.data.postConnection.pageInfo.endCursor,
+      last: 1
     });
 
-    if (!posts.data.postConnection.edges) {
-      break;
+    if (!data.postConnection.edges) {
+      return (
+        <Layout rawPageData={{ query, data, variables }}>
+          <PostsClientPage query={query} data={data} variables={variables} />
+        </Layout>
+      );
     }
 
-    allPosts.data.postConnection.edges.push(...posts.data.postConnection.edges.reverse());
-  }
+    // Accumulate all posts across pages
+    const allEdges = [...data.postConnection.edges];
 
-  return (
-    <Layout rawPageData={allPosts.data}>
-      <PostsClientPage {...allPosts} />
-    </Layout>
-  );
+    while (data?.postConnection.pageInfo.hasPreviousPage) {
+      const { data: nextData } = await client.queries.postConnection({
+        sort: 'date',
+        before: data.postConnection.pageInfo.endCursor,
+      });
+
+      if (!nextData.postConnection.edges) {
+        break;
+      }
+
+      allEdges.push(...nextData.postConnection.edges.reverse());
+      data = nextData;
+    }
+
+    // Create final data structure with all edges
+    const finalData = {
+      ...data,
+      postConnection: {
+        ...data.postConnection,
+        edges: allEdges,
+      },
+    };
+
+    return (
+      <Layout rawPageData={{ query, data: finalData, variables }}>
+        <PostsClientPage query={query} data={finalData} variables={variables} />
+      </Layout>
+    );
+  } catch (error) {
+    console.error("Failed to fetch posts:", error);
+    throw error;
+  }
 }

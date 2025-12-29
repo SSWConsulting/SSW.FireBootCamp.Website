@@ -10,7 +10,7 @@ export const FbcHero = ({ data }: { data: PageBlocksFbcHero }) => {
   const hasImage = !!data.backgroundImage;
 
   return (
-    <section className="relative h-[80vh] flex flex-col gap-10 md:gap-16 lg:gap-20 items-start justify-center px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32 overflow-hidden">
+    <section className="relative h-[80vh] flex flex-col gap-10 md:gap-16 lg:gap-20 items-start justify-center px-6 md:px-16 lg:px-16 py-16 md:py-24 lg:py-32 overflow-hidden">
       {(hasVideo || hasImage) && (
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0 bg-black" />
@@ -37,7 +37,7 @@ export const FbcHero = ({ data }: { data: PageBlocksFbcHero }) => {
         </div>
       )}
 
-      <div className="relative z-10 max-w-[1440px] w-full mx-auto flex flex-col gap-0 h-full justify-between items-start">
+      <div className="relative z-10 max-w-[1440px] w-full mx-auto flex flex-col gap-8 h-full justify-between items-start">
         <div className="max-w-full lg:max-w-[1024px]">
           <h1
             data-tina-field={tinaField(data, 'headline')}
@@ -61,7 +61,7 @@ export const FbcHero = ({ data }: { data: PageBlocksFbcHero }) => {
 
             <Button
               asChild
-              className="bg-red hover:bg-red-dark text-white"
+              className="bg-red text-white w-full sm:w-fit sm:shrink-0"
             >
               <a 
                 href="#skills" 

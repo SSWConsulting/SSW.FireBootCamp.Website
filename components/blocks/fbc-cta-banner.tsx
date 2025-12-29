@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import type { Template } from 'tinacms';
 import { tinaField } from 'tinacms/dist/react';
 import type { PageBlocksFbcCtaBanner } from '../../tina/__generated__/types';
@@ -12,41 +13,51 @@ export const FbcCtaBanner = ({ data }: { data: PageBlocksFbcCtaBanner }) => {
   const mailtoLink = `mailto:${contactEmail}?subject=${encodeURIComponent(contactSubject)}`;
   
   return (
-    <section className="bg-scheme-4-background px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32">
+    <section className="bg-scheme-4-background px-6 md:px-16 lg:px-16 py-16 md:py-24 lg:py-32">
       <div className="max-w-[1440px] mx-auto">
-        <div className="bg-scheme-4-foreground rounded-lg p-6 md:p-8 lg:p-12 flex flex-col lg:flex-row gap-6 md:gap-8 items-start lg:items-center">
-          <div className="flex-1 flex flex-col gap-4 md:gap-6">
-            <h2
-              data-tina-field={tinaField(data, 'title')}
-              className="font-oswald font-bold text-[28px] sm:text-[36px] md:text-[42px] lg:text-[48px] uppercase tracking-[-0.48px] leading-none text-scheme-4-text"
-            >
-              {data.title}
-            </h2>
-            <p
-              data-tina-field={tinaField(data, 'description')}
-              className="font-sans text-[14px] md:text-[16px] lg:text-[20px] leading-[1.5] text-scheme-4-text"
-            >
-              {data.description}
-            </p>
+        <div className="bg-scheme-4-foreground rounded-lg p-6 md:p-8 lg:p-12 relative">
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-6">
+              <h2
+                data-tina-field={tinaField(data, 'title')}
+                className="font-oswald font-bold text-[32px] sm:text-[40px] md:text-[50px] lg:text-[60px] uppercase tracking-[-0.6px] leading-none text-scheme-4-text"
+              >
+                {data.title}
+              </h2>
+              <p
+                data-tina-field={tinaField(data, 'description')}
+                className="font-sans text-[16px] md:text-[18px] lg:text-[20px] leading-[1.5] text-scheme-4-text"
+              >
+                {data.description}
+              </p>
+            </div>
+
+            <div className="w-full lg:w-[513px] flex flex-col gap-4">
+              <div className="flex flex-col sm:flex-row gap-4 w-full">
+                <label htmlFor="cta-banner-email" className="sr-only">
+                  Email address
+                </label>
+                <input
+                  id="cta-banner-email"
+                  type="email"
+                  placeholder={data.emailPlaceholder || 'Enter your email address'}
+                  className="flex-1 min-h-[51px] px-3 bg-white/10 rounded-md font-sans text-[16px] md:text-[18px] leading-[1.5] text-scheme-4-text border-0 placeholder:text-white/60"
+                />
+                <Button asChild variant="tertiary" className="whitespace-nowrap w-full sm:w-fit sm:shrink-0">
+                  <a href={mailtoLink}>{data.buttonLabel || 'Submit'}</a>
+                </Button>
+              </div>
+            </div>
           </div>
 
-          <div className="w-full lg:w-[513px] flex flex-col gap-3 md:gap-4 shrink-0">
-            <div className="flex flex-col sm:flex-row gap-3 md:gap-2">
-              <input
-                type="email"
-                placeholder={data.emailPlaceholder || 'Enter your email address'}
-                className="w-full sm:w-full sm:min-w-0 h-10 md:h-12 px-3 bg-scheme-4-border rounded-md font-sans text-[14px] md:text-[16px] lg:text-[18px] leading-[1.5] text-scheme-4-text border-0 placeholder:text-white/70"
-              />
-              <Button asChild className="bg-scheme-4-accent hover:bg-scheme-4-accent/90 text-scheme-4-background whitespace-nowrap shrink-0" style={{ backgroundColor: 'var(--color-white)' }}>
-                <a href={mailtoLink}>{data.buttonLabel || 'Submit'}</a>
-              </Button>
-            </div>
-            <p
-              data-tina-field={tinaField(data, 'disclaimer')}
-              className="font-sans text-[11px] md:text-[12px] leading-[1.5] text-scheme-4-text"
-            >
-              {data.disclaimer}
-            </p>
+          {/* SophieBot character - absolutely positioned at bottom-right */}
+          <div className="absolute bottom-0 right-0 w-[418px] h-[325px] hidden lg:block pointer-events-none">
+            <Image
+              src="/uploads/sophiebot.png"
+              alt=""
+              fill
+              className="object-contain object-center"
+            />
           </div>
         </div>
       </div>

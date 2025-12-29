@@ -3,6 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { format } from 'date-fns';
+import { useTina } from 'tinacms/dist/react';
 import { TinaMarkdown } from 'tinacms/dist/rich-text';
 import { PostConnectionQuery, PostConnectionQueryVariables } from '@/tina/__generated__/types';
 import ErrorBoundary from '@/components/error-boundary';
@@ -18,7 +19,13 @@ interface ClientPostProps {
 }
 
 export default function PostsClientPage(props: ClientPostProps) {
-  const posts = props.data?.postConnection.edges!.map((postData) => {
+  const { data: tinaData } = useTina({
+    query: props.query,
+    data: props.data,
+    variables: props.variables,
+  });
+
+  const posts = tinaData?.postConnection.edges!.map((postData) => {
     const post = postData!.node!;
     const date = new Date(post.date!);
     let formattedDate = '';

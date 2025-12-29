@@ -7,7 +7,7 @@ import { Button } from '../ui/button';
 
 export const FbcVideo = ({ data }: { data: PageBlocksFbcVideo }) => {
   return (
-    <section className="bg-scheme-3-background px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32">
+    <section className="bg-scheme-3-background px-6 md:px-16 lg:px-16 py-16 md:py-24 lg:py-32">
       <div className="max-w-[1440px] mx-auto flex flex-col gap-10 md:gap-16 lg:gap-20 items-center">
         <div className="max-w-full md:max-w-[768px] text-center flex flex-col gap-6 md:gap-8 items-center">
           <div className="flex flex-col gap-4 md:gap-6">
@@ -28,9 +28,9 @@ export const FbcVideo = ({ data }: { data: PageBlocksFbcVideo }) => {
           {data.secondaryLabel && (
               <Button
               asChild
-                variant="ghost"
+                variant="secondary"
               data-tina-field={tinaField(data, 'secondaryLabel')}
-              className="bg-[rgba(0,0,0,0.05)] border border-transparent hover:bg-[rgba(0,0,0,0.1)] text-scheme-3-text"
+              className="bg-[rgba(0,0,0,0.05)] border border-transparent hover:bg-[rgba(0,0,0,0.12)] text-scheme-3-text w-full sm:w-fit sm:shrink-0"
               >
               <Link
                 href={data.secondaryLink || '#'}

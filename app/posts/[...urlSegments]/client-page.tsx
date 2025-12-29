@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { format } from 'date-fns';
 import { tinaField, useTina } from 'tinacms/dist/react';
 import { TinaMarkdown } from 'tinacms/dist/rich-text';
-import { PostQuery } from '@/tina/__generated__/types';
+import { PostQuery, PostQueryVariables } from '@/tina/__generated__/types';
 import { useLayout } from '@/components/layout/layout-context';
 import { Section } from '@/components/layout/section';
 import { components } from '@/components/mdx-components';
@@ -22,17 +22,19 @@ const titleColorClasses = {
 };
 
 interface ClientPostProps {
-  data: PostQuery;
-  variables: {
-    relativePath: string;
-  };
   query: string;
+  data: PostQuery;
+  variables: PostQueryVariables;
 }
 
 export default function PostClientPage(props: ClientPostProps) {
   const { theme } = useLayout();
-  const { data } = useTina({ ...props });
-  const post = data.post;
+  const { data: tinaData } = useTina({
+    query: props.query,
+    data: props.data,
+    variables: props.variables,
+  });
+  const post = tinaData.post;
 
   const date = new Date(post.date!);
   let formattedDate = '';
@@ -45,9 +47,9 @@ export default function PostClientPage(props: ClientPostProps) {
   return (
     <ErrorBoundary>
       <Section>
-        <h2 data-tina-field={tinaField(post, 'title')} className={`w-full relative\tmb-8 text-6xl font-extrabold tracking-normal text-center title-font`}>
+        <h1 data-tina-field={tinaField(post, 'title')} className={`w-full relative\tmb-8 text-6xl font-extrabold tracking-normal text-center title-font`}>
           <span className={`bg-clip-text text-transparent bg-linear-to-r ${titleColour}`}>{post.title}</span>
-        </h2>
+        </h1>
         <div data-tina-field={tinaField(post, 'author')} className='flex items-center justify-center mb-16'>
           {post.author && (
             <>

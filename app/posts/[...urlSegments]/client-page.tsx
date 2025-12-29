@@ -45,9 +45,9 @@ export default function PostClientPage(props: ClientPostProps) {
   return (
     <ErrorBoundary>
       <Section>
-        <h2 data-tina-field={tinaField(post, 'title')} className={`w-full relative\tmb-8 text-6xl font-extrabold tracking-normal text-center title-font`}>
+        <h1 data-tina-field={tinaField(post, 'title')} className={`w-full relative\tmb-8 text-6xl font-extrabold tracking-normal text-center title-font`}>
           <span className={`bg-clip-text text-transparent bg-linear-to-r ${titleColour}`}>{post.title}</span>
-        </h2>
+        </h1>
         <div data-tina-field={tinaField(post, 'author')} className='flex items-center justify-center mb-16'>
           {post.author && (
             <>

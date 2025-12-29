@@ -13,62 +13,71 @@ export const FbcPricing = ({ data }: { data: PageBlocksFbcPricing }) => {
   const mailtoLink = `mailto:${contactEmail}?subject=${encodeURIComponent(contactSubject)}`;
   
   return (
-    <section id="pricing" className="bg-scheme-3-background px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32 h-fit">
-      <div className="max-w-[1440px] mx-auto flex flex-col gap-10 md:gap-16 lg:gap-20 items-center">
-        <div className="max-w-full md:max-w-[768px] text-center flex flex-col gap-4 md:gap-6">
-          <h2
-            data-tina-field={tinaField(data, 'title')}
-            className="font-oswald font-bold text-[32px] sm:text-[40px] md:text-[50px] lg:text-[60px] uppercase tracking-[-0.6px] leading-none text-scheme-3-text"
-          >
-            {data.title}
-          </h2>
-          <p
-            data-tina-field={tinaField(data, 'description')}
-            className="font-sans text-[16px] md:text-[18px] lg:text-[20px] leading-[1.5] text-scheme-3-text"
-          >
-            {data.description}
-          </p>
-        </div>
+    <section id="pricing" className="bg-scheme-3-background px-6 md:px-16 lg:px-16 py-16 md:py-24 lg:py-32 h-fit">
+        <div className="max-w-[1440px] mx-auto flex flex-col gap-10 md:gap-16 lg:gap-20 items-center">
+          <div className="max-w-full md:max-w-[768px] text-center flex flex-col gap-4 md:gap-6">
+            <h2
+              data-tina-field={tinaField(data, 'title')}
+              className="font-oswald font-bold text-[32px] sm:text-[40px] md:text-[50px] lg:text-[60px] uppercase tracking-[-0.6px] leading-none text-scheme-3-text"
+            >
+              {data.title}
+            </h2>
+            <p
+              data-tina-field={tinaField(data, 'description')}
+              className="font-sans text-[16px] md:text-[18px] lg:text-[20px] leading-[1.5] text-scheme-3-text"
+            >
+              {data.description}
+            </p>
+          </div>
 
-        <div className="w-full flex flex-wrap min-[1440px]:flex-nowrap justify-center gap-4">
-          {data.plans?.map((plan, index) => {
-            // Below 1440px: Trial (0) → 1st, Full Tuition (2) → 2nd, Scholarship (1) → 3rd
-            // At 1440px+: DOM order (Trial, Scholarship, Full Tuition)
-            const orderClasses = 
-              index === 0 ? 'order-1 min-[1440px]:order-1' : 
-              index === 1 ? 'order-3 min-[1440px]:order-2' : 
-              'order-2 min-[1440px]:order-3';
-            return (
-              <div 
-                key={index}
-                className={`w-full md:w-[calc(50%-8px)] min-[1440px]:flex-1 min-[1440px]:max-w-[480px] ${orderClasses}`}
-              >
-                <PricingCard plan={plan!} mailtoLink={mailtoLink} />
-              </div>
-            );
-          })}
+          <div className="w-full flex flex-wrap min-[1440px]:flex-nowrap justify-center gap-x-4 gap-y-8 min-[1440px]:gap-4">
+            {data.plans?.map((plan, index) => {
+              const isFeatured = plan?.isFeatured || false;
+              // Count how many non-featured cards come before this one
+              const nonFeaturedBefore = data.plans?.slice(0, index).filter(p => !p?.isFeatured).length || 0;
+              // Below 1440px: Featured card appears first (order: 1), others follow in sequence (order: 2, 3, etc.)
+              // At 1440px+: Maintain DOM order (order based on index + 1)
+              const mobileOrder = isFeatured ? 1 : nonFeaturedBefore + 2;
+              const desktopOrder = index + 1;
+              return (
+                <div 
+                  key={index}
+                  className="pricing-card-wrapper w-full md:w-[calc(50%-8px)] min-[1440px]:flex-1 min-[1440px]:max-w-[480px]"
+                  style={{
+                    '--mobile-order': mobileOrder,
+                    '--desktop-order': desktopOrder,
+                  } as React.CSSProperties}
+                >
+                  <PricingCard plan={plan!} mailtoLink={mailtoLink} />
+                </div>
+              );
+            })}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
   );
 };
 
 const PricingCard = ({ plan, mailtoLink }: { plan: PageBlocksFbcPricingPlans; mailtoLink: string }) => {
   const isFeatured = plan.isFeatured || false;
+  const planName = plan.name || 'Pricing Plan';
   return (
-    <div className={`bg-scheme-1-background rounded-lg flex flex-col overflow-hidden w-full h-full ${
-      isFeatured 
-        ? 'border border-red shadow-[0px_0px_0px_6px_rgba(204,65,65,0.22)] pb-6 md:pb-8 pt-0 px-0' 
-        : 'border border-border p-6 md:p-8'
-    }`}>
+    <div 
+      className={`bg-scheme-1-background flex flex-col overflow-visible w-full h-full relative md:min-h-[750px] ${
+        isFeatured 
+          ? 'border-2 border-red shadow-block-red-pricing rounded-lg pb-6 md:pb-8 px-0' 
+          : 'border border-[rgba(0,0,0,0.15)] shadow-block-grey-pricing rounded-lg p-6 md:p-8'
+      }`}
+      aria-label={isFeatured ? `${planName} - Most popular plan` : planName}
+    >
       {isFeatured && (
-        <div className="bg-red text-white text-center px-6 md:px-8 py-3 md:py-4">
-          <p className="font-oswald font-bold text-[14px] md:text-[16px] uppercase tracking-[1.6px] leading-[1.1]">
+        <div className="absolute top-[-17px] left-1/2 -translate-x-1/2 bg-red text-white px-6 py-2.5 rounded-lg flex justify-center items-center w-fit max-h-[30px]">
+          <p className="font-sans font-semibold text-sm uppercase leading-[1.5] whitespace-nowrap">
             MOST POPULAR
           </p>
         </div>
       )}
-      <div className={`flex flex-col gap-6 md:gap-8 flex-1 ${isFeatured ? 'px-6 md:px-8 py-8' : ''}`}>
+      <div className={`flex flex-col gap-6 md:gap-8 flex-1 ${isFeatured ? 'px-6 md:px-8 pt-8' : ''}`}>
         <div className="flex gap-4 items-center">
           {plan.icon && (
             <div className="w-10 h-[36px] md:w-12 md:h-[42px] relative" data-tina-field={tinaField(plan, 'icon')}>
@@ -112,7 +121,7 @@ const PricingCard = ({ plan, mailtoLink }: { plan: PageBlocksFbcPricingPlans; ma
       <div className={isFeatured ? 'px-6 md:px-8' : 'h-20'}>
         <Button
           asChild
-          className="w-full bg-red hover:bg-red-dark text-white mt-6 md:mt-8"
+          className="w-full bg-red text-white mt-6 md:mt-8"
         >
           <a href={mailtoLink}>{plan.ctaLabel || 'Apply now'}</a>
         </Button>

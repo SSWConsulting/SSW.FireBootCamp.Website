@@ -126,6 +126,12 @@
   --shadow-large: 0px 8px 8px -4px rgba(0, 0, 0, 0.03), 0px 20px 24px -4px rgba(0, 0, 0, 0.08);
   --shadow-xlarge: 0px 24px 48px -12px rgba(0, 0, 0, 0.18);
   --shadow-xxlarge: 0px 32px 64px -12px rgba(0, 0, 0, 0.14);
+  --shadow-block-red: 0px 4px 0px 0px var(--color-red-dark);
+  --shadow-block-grey: 0px 4px 0px 0px rgba(0, 0, 0, 0.25);
+  --shadow-block-tertiary: 0px 4px 0px 0px rgba(255, 255, 255, 0.59);
+  --shadow-block-secondary-alternate: 0px 4px 0px 0px rgba(255, 255, 255, 0.1);
+  --shadow-block-red-pricing: 0px 7px 0px 0px #CC4141;
+  --shadow-block-grey-pricing: 0px 7px 0px 0px rgba(0, 0, 0, 0.25);
 }
 
 :root {
@@ -379,4 +385,20 @@
   .shadow-large { box-shadow: var(--shadow-large); }
   .shadow-xlarge { box-shadow: var(--shadow-xlarge); }
   .shadow-xxlarge { box-shadow: var(--shadow-xxlarge); }
+  .shadow-block-red { box-shadow: var(--shadow-block-red); }
+  .shadow-block-grey { box-shadow: var(--shadow-block-grey); }
+  .shadow-block-tertiary { box-shadow: var(--shadow-block-tertiary); }
+  .shadow-block-secondary-alternate { box-shadow: var(--shadow-block-secondary-alternate); }
+  .shadow-block-red-pricing { box-shadow: var(--shadow-block-red-pricing); }
+  .shadow-block-grey-pricing { box-shadow: var(--shadow-block-grey-pricing); }
+
+  /* Pricing card ordering - featured card appears first on mobile/tablet */
+  .pricing-card-wrapper {
+    order: var(--mobile-order);
+  }
+  @media (min-width: 1440px) {
+    .pricing-card-wrapper {
+      order: var(--desktop-order) !important;
+    }
+  }
 }

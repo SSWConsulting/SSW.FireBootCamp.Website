@@ -15,22 +15,26 @@ export default async function Page({
   const resolvedParams = await params;
   const filepath = resolvedParams.urlSegments.join('/');
 
-  let data;
   try {
-    data = await client.queries.page({
+    const { query, data, variables } = await client.queries.page({
       relativePath: `${filepath}.mdx`,
     });
+
+    if (!data.page) {
+      notFound();
+    }
+
+    return (
+      <Layout rawPageData={{ query, data, variables }}>
+        <Section>
+          <ClientPage query={query} data={data} variables={variables} />
+        </Section>
+      </Layout>
+    );
   } catch (error) {
+    console.error("Failed to fetch page:", error);
     notFound();
   }
-
-  return (
-    <Layout rawPageData={data}>
-      <Section>
-        <ClientPage {...data} />
-      </Section>
-    </Layout>
-  );
 }
 
 export async function generateStaticParams() {

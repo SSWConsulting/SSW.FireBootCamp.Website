@@ -1,24 +1,24 @@
 "use client";
 import { useTina } from "tinacms/dist/react";
 import { Blocks } from "@/components/blocks";
-import { PageQuery } from "@/tina/__generated__/types";
+import { PageQuery, PageQueryVariables } from "@/tina/__generated__/types";
 import ErrorBoundary from "@/components/error-boundary";
 
 export interface ClientPageProps {
-  data: {
-    page: PageQuery["page"];
-  };
-  variables: {
-    relativePath: string;
-  };
   query: string;
+  data: PageQuery;
+  variables: PageQueryVariables;
 }
 
 export default function ClientPage(props: ClientPageProps) {
-  const { data } = useTina({ ...props });
+  const { data: tinaData } = useTina({
+    query: props.query,
+    data: props.data,
+    variables: props.variables,
+  });
   return (
     <ErrorBoundary>
-      <Blocks {...data?.page} />
+      <Blocks {...tinaData?.page} />
     </ErrorBoundary>
   );
 }

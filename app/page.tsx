@@ -6,13 +6,18 @@ import ClientPage from "./[...urlSegments]/client-page";
 export const revalidate = 300;
 
 export default async function Home() {
-  const data = await client.queries.page({
-    relativePath: `home.mdx`,
-  });
+  try {
+    const { query, data, variables } = await client.queries.page({
+      relativePath: `home.mdx`,
+    });
 
-  return (
-    <Layout rawPageData={data}>
-      <ClientPage {...data} />
-    </Layout>
-  );
+    return (
+      <Layout rawPageData={{ query, data, variables }}>
+        <ClientPage query={query} data={data} variables={variables} />
+      </Layout>
+    );
+  } catch (error) {
+    console.error("Failed to fetch home page:", error);
+    throw error;
+  }
 }

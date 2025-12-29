@@ -1,4 +1,5 @@
 import React from 'react';
+import { notFound } from 'next/navigation';
 import client from '@/tina/__generated__/client';
 import Layout from '@/components/layout/layout';
 import PostClientPage from './client-page';
@@ -12,15 +13,25 @@ export default async function PostPage({
 }) {
   const resolvedParams = await params;
   const filepath = resolvedParams.urlSegments.join('/');
-  const data = await client.queries.post({
-    relativePath: `${filepath}.mdx`,
-  });
 
-  return (
-    <Layout rawPageData={data}>
-      <PostClientPage {...data} />
-    </Layout>
-  );
+  try {
+    const { query, data, variables } = await client.queries.post({
+      relativePath: `${filepath}.mdx`,
+    });
+
+    if (!data.post) {
+      notFound();
+    }
+
+    return (
+      <Layout rawPageData={{ query, data, variables }}>
+        <PostClientPage query={query} data={data} variables={variables} />
+      </Layout>
+    );
+  } catch (error) {
+    console.error("Failed to fetch post:", error);
+    notFound();
+  }
 }
 
 export async function generateStaticParams() {

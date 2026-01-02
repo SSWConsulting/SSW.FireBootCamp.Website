@@ -1,4 +1,5 @@
 import type { Collection } from 'tinacms';
+import { seoFieldSchema } from '@/tina/fields/seo';
 import { heroBlockSchema } from '@/components/blocks/hero';
 import { contentBlockSchema } from '@/components/blocks/content';
 import { testimonialBlockSchema } from '@/components/blocks/testimonial';
@@ -33,6 +34,7 @@ const Page: Collection = {
     },
   },
   fields: [
+    seoFieldSchema,
     {
       type: 'object',
       list: true,

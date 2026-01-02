@@ -27,46 +27,45 @@ export async function generateMetadata({
   }
 
   const post = data.data.post;
-  const title = post.title 
+  
+  // Use static SEO fields from CMS instead of dynamic extraction
+  const seo = post.seo;
+  
+  // Default values
+  const defaultDescription = 'Read our latest blog post from SSW FireBootCamp';
+
+  // Build title with fallback: SEO title → post title → default
+  const title = seo?.title 
+    ? `${seo.title} | SSW FireBootCamp`
+    : post.title 
     ? `${post.title} | SSW FireBootCamp`
     : 'SSW FireBootCamp Blog';
 
-  // Extract text from excerpt (it's rich text, so we need to handle it)
-  let description = 'Read our latest blog post from SSW FireBootCamp';
-  if (post.excerpt) {
-    // If excerpt is a string, use it directly
-    if (typeof post.excerpt === 'string') {
-      description = post.excerpt.substring(0, 160);
-    } else if (post.excerpt && typeof post.excerpt === 'object' && 'children' in post.excerpt) {
-      // If it's rich text, extract text from children
-      const extractText = (node: any): string => {
-        if (typeof node === 'string') return node;
-        if (node?.children) {
-          return node.children.map(extractText).join(' ');
-        }
-        return '';
-      };
-      description = extractText(post.excerpt).substring(0, 160);
-    }
-  }
+  // Build description with fallback: SEO description → default
+  // Note: We no longer extract from excerpt (rich text parsing removed)
+  const description = seo?.description || defaultDescription;
 
+  // Build Open Graph metadata with fallbacks
+  const ogImage = seo?.openGraph?.image || post.heroImg;
+  const ogUpdatedTime = seo?.openGraph?.updatedTime || (post.date ? new Date(post.date).toISOString() : undefined);
+  
   const openGraph: Metadata['openGraph'] = {
-    title,
-    description,
+    title: seo?.openGraph?.title || title,
+    description: seo?.openGraph?.description || description,
     type: 'article',
+    // Use SEO OG image or fallback to hero image (filter out null/undefined)
+    ...(ogImage && { images: [ogImage] }),
+    // Use SEO OG updatedTime or fallback to post date
+    ...(ogUpdatedTime && { updatedTime: ogUpdatedTime }),
+    // Use post date for publishedTime (article-specific)
+    ...(post.date && {
+      publishedTime: new Date(post.date).toISOString(),
+    }),
+    // Use post author for authors (article-specific)
+    ...(post.author?.name && {
+      authors: [post.author.name],
+    }),
   };
-
-  if (post.heroImg) {
-    openGraph.images = [post.heroImg];
-  }
-
-  if (post.date) {
-    openGraph.publishedTime = new Date(post.date).toISOString();
-  }
-
-  if (post.author?.name) {
-    openGraph.authors = [post.author.name];
-  }
 
   return {
     title,

@@ -11,24 +11,34 @@ export async function generateMetadata(): Promise<Metadata> {
     relativePath: `home.mdx`,
   });
 
-  // Extract title from first block's headline if available
-  const firstBlock = data.data.page.blocks?.[0];
-  const title = firstBlock && 'headline' in firstBlock 
-    ? `${firstBlock.headline} | SSW FireBootCamp`
-    : 'SSW FireBootCamp';
+  // Use static SEO fields from CMS instead of dynamic extraction
+  const seo = data.data.page.seo;
+  
+  // Default values from root layout
+  const defaultTitle = 'SSW FireBootCamp';
+  const defaultDescription = 'Transform your tech career with our 12-week intensive fullstack developer program';
 
-  const description = firstBlock && 'description' in firstBlock
-    ? String(firstBlock.description || '').substring(0, 160)
-    : 'Transform your tech career with our 12-week intensive fullstack developer program';
+  // Build title with fallback
+  const title = seo?.title 
+    ? `${seo.title} | SSW FireBootCamp`
+    : defaultTitle;
+
+  // Build description with fallback
+  const description = seo?.description || defaultDescription;
+
+  // Build Open Graph metadata with fallbacks
+  const openGraph: Metadata['openGraph'] = {
+    title: seo?.openGraph?.title || title,
+    description: seo?.openGraph?.description || description,
+    type: 'website',
+    ...(seo?.openGraph?.image && { images: [seo.openGraph.image] }),
+    ...(seo?.openGraph?.updatedTime && { updatedTime: seo.openGraph.updatedTime }),
+  };
 
   return {
     title,
     description,
-    openGraph: {
-      title,
-      description,
-      type: 'website',
-    },
+    openGraph,
   };
 }
 

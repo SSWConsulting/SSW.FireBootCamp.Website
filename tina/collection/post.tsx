@@ -1,4 +1,5 @@
 import React from 'react';
+import { seoFieldSchema } from '@/tina/fields/seo';
 import { videoBlockSchema } from '@/components/blocks/video';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import type { Collection } from 'tinacms';
@@ -36,6 +37,7 @@ const Post: Collection = {
         toolbar: ['bold', 'italic', 'link'],
       },
     },
+    seoFieldSchema,
     {
       type: 'reference',
       label: 'Author',

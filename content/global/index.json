@@ -23,31 +23,6 @@
       {
         "href": "#faqs",
         "label": "FAQs"
-      },
-      {
-        "href": "https://www.ssw.com.au/events",
-        "label": "Courses & Events",
-        "hasDropdown": true
-      }
-    ],
-    "megaMenu": [
-      {
-        "icon": "live_tv",
-        "title": "1-Day Dev Superpowers",
-        "description": "One day seminars where you watch our developers build an app live.",
-        "href": "https://firebootcamp.com/other-courses/superpower-tours/"
-      },
-      {
-        "icon": "developer_mode_tv",
-        "title": "2-Day Workshops",
-        "description": "Two day workshops where you get your hands dirty and build an app.",
-        "href": "https://firebootcamp.com/other-courses/hands-on-workshops/"
-      },
-      {
-        "icon": "start",
-        "title": "Something Else?",
-        "description": "Explore our full list of courses and events at SSW.",
-        "href": "https://www.ssw.com.au/events"
       }
     ],
     "megaMenuBannerText": "Transform your tech career now",

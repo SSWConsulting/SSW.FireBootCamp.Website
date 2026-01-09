@@ -1,8 +1,8 @@
 'use client';
-import * as React from 'react';
-import dynamic from 'next/dynamic';
-import type { Template } from 'tinacms';
 import { PageBlocksVideo } from '@/tina/__generated__/types';
+import dynamic from 'next/dynamic';
+import * as React from 'react';
+import type { Template } from 'tinacms';
 import { Section } from '../layout/section';
 import { sectionBlockSchemaField } from '../layout/section';
 

@@ -1,14 +1,16 @@
-//  TODO: Fix Types in this file
-
+import { Dialog, DialogPanel, Transition, TransitionChild } from '@headlessui/react';
 import React from 'react';
 import { Fragment, useState } from 'react';
-import { Dialog, Transition, TransitionChild, DialogPanel } from '@headlessui/react';
 import { useLayout } from './layout/layout-context';
 
-//@ts-ignore
-export const RawRenderer = ({ rawData, parentColor }) => {
+interface RawRendererProps {
+  rawData: unknown;
+  parentColor?: string;
+}
+
+export const RawRenderer = ({ rawData, parentColor }: RawRendererProps) => {
   const { theme } = useLayout();
-  const buttonColorClasses = {
+  const buttonColorClasses: Record<string, string> = {
     blue: 'text-blue-500',
     teal: 'text-teal-500',
     green: 'text-green-500',
@@ -33,9 +35,9 @@ export const RawRenderer = ({ rawData, parentColor }) => {
       <button
         type='button'
         onClick={openModal}
-        //@ts-ignore
-        className={`z-10 relative flex items-center px-5 py-2 mx-3 my-2 font-semibold text-sm transition duration-150 ease-out rounded transform focus:shadow-outline focus:outline-hidden whitespace-nowrap opacity-80 hover:opacity-100 shadow-md ${buttonColorClasses[theme!.color!]
-          }`}
+        className={`z-10 relative flex items-center px-5 py-2 mx-3 my-2 font-semibold text-sm transition duration-150 ease-out rounded transform focus:shadow-outline focus:outline-hidden whitespace-nowrap opacity-80 hover:opacity-100 shadow-md ${
+          theme?.color ? buttonColorClasses[theme.color] || '' : ''
+        }`}
       >
         View Raw Data
         <span

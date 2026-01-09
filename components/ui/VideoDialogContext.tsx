@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useState, ReactNode } from "react";
+import { ReactNode, createContext, useContext, useState } from 'react';
 
 interface VideoDialogContextProps {
   isVideoOpen: boolean;
@@ -25,17 +25,13 @@ export const VideoDialogProvider = ({ children }: { children: ReactNode }) => {
     setIsVideoOpen(false);
   };
 
-  return (
-    <VideoDialogContext.Provider value={{ isVideoOpen, videoUrl, openVideo, closeVideo }}>
-      {children}
-    </VideoDialogContext.Provider>
-  );
+  return <VideoDialogContext.Provider value={{ isVideoOpen, videoUrl, openVideo, closeVideo }}>{children}</VideoDialogContext.Provider>;
 };
 
 export const useVideoDialog = () => {
   const context = useContext(VideoDialogContext);
   if (!context) {
-    throw new Error("useVideoDialog must be used within a VideoDialogProvider");
+    throw new Error('useVideoDialog must be used within a VideoDialogProvider');
   }
   return context;
 };

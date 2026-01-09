@@ -1,7 +1,7 @@
-import React from 'react';
-import { seoFieldSchema } from '@/tina/fields/seo';
 import { videoBlockSchema } from '@/components/blocks/video';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { seoFieldSchema } from '@/tina/fields/seo';
+import React from 'react';
 import type { Collection } from 'tinacms';
 
 const Post: Collection = {

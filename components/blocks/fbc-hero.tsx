@@ -1,79 +1,69 @@
 'use client';
+import { ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 import type { Template } from 'tinacms';
 import { tinaField } from 'tinacms/dist/react';
 import type { PageBlocksFbcHero } from '../../tina/__generated__/types';
-import { Button } from '../ui/button';
 
 export const FbcHero = ({ data }: { data: PageBlocksFbcHero }) => {
   const hasVideo = !!data.backgroundVideo;
   const hasImage = !!data.backgroundImage;
 
   return (
-    <section className="relative h-[80vh] flex flex-col gap-10 md:gap-16 lg:gap-20 items-start justify-center px-6 md:px-16 lg:px-16 py-16 md:py-24 lg:py-32 overflow-hidden">
+    <section className='relative h-fit flex flex-col gap-10 md:gap-16 lg:gap-20 items-start justify-center px-6 md:px-16 lg:px-16 py-16 md:py-24 lg:py-32 overflow-hidden'>
       {(hasVideo || hasImage) && (
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 bg-black" />
+        <div className='absolute inset-0 pointer-events-none'>
+          <div className='absolute inset-0 bg-black' />
           {hasVideo ? (
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="absolute inset-0 w-full h-full object-cover mix-blend-luminosity opacity-50"
-            >
-              <source src={data.backgroundVideo!} type="video/webm" />
+            <video autoPlay loop muted playsInline className='absolute inset-0 w-full h-full object-cover mix-blend-luminosity opacity-50'>
+              <source src={data.backgroundVideo!} type='video/webm' />
             </video>
           ) : hasImage ? (
-            <Image
-              src={data.backgroundImage!}
-              alt=""
-              fill
-              className="object-cover mix-blend-luminosity opacity-50"
-              priority
-            />
+            <Image src={data.backgroundImage!} alt='' fill className='object-cover mix-blend-luminosity opacity-50' priority />
           ) : null}
-          <div className="absolute inset-0 bg-black/60" />
+          <div className='absolute inset-0 bg-black/60' />
         </div>
       )}
 
-      <div className="relative z-10 max-w-[1440px] w-full mx-auto flex flex-col gap-8 h-full justify-between items-start">
-        <div className="max-w-full lg:max-w-[1024px]">
-          <h1
-            data-tina-field={tinaField(data, 'headline')}
-            className="font-oswald font-bold text-white uppercase tracking-tight leading-none"
-          >
-            <span className="font-jetbrains font-thin text-[40px] sm:text-[60px] md:text-[80px] lg:text-[108px] text-white tracking-[-1.08px]">&lt;</span>
-            <span className="text-fbc-red text-[32px] sm:text-[48px] md:text-[64px] lg:text-[84px] tracking-[-0.84px]">Code</span>
-            <span className="font-jetbrains font-thin text-[40px] sm:text-[60px] md:text-[80px] lg:text-[108px] text-white tracking-[-1.08px]">&gt;</span>
-            <span className="text-[32px] sm:text-[48px] md:text-[64px] lg:text-[84px] tracking-[-0.84px]"> {data.headline}</span>
+      <div className='relative z-10 max-w-[1440px] w-full mx-auto flex flex-col gap-16 h-full justify-start items-start'>
+        <div className='max-w-full lg:max-w-[1024px]'>
+          <h1 data-tina-field={tinaField(data, 'headline')} className='font-oswald font-bold text-white uppercase tracking-tight leading-none'>
+            <span className='font-jetbrains font-thin text-[40px] sm:text-[60px] md:text-[80px] lg:text-[108px] text-white tracking-[-1.08px]'>&lt;</span>
+            <span className='text-fbc-red text-[32px] sm:text-[48px] md:text-[64px] lg:text-[84px] tracking-[-0.84px]'>Code</span>
+            <span className='font-jetbrains font-thin text-[40px] sm:text-[60px] md:text-[80px] lg:text-[108px] text-white tracking-[-1.08px]'>&gt;</span>
+            <span className='text-[32px] sm:text-[48px] md:text-[64px] lg:text-[84px] tracking-[-0.84px]'> {data.headline}</span>
           </h1>
         </div>
 
-        <div className="flex flex-col gap-4 items-start lg:items-end w-full">
-          <div className="flex flex-col gap-6 md:gap-8 items-start max-w-full lg:max-w-[560px]">
-            <p
-              data-tina-field={tinaField(data, 'description')}
-              className="font-sans text-white text-[16px] md:text-[18px] lg:text-[20px] leading-[1.5]"
-            >
-              {data.description}
-            </p>
+        <p
+          data-tina-field={tinaField(data, 'description')}
+          className='font-sans text-white text-[16px] md:text-[18px] lg:text-[20px] leading-[1.5] w-full max-w-full lg:max-w-[560px]'
+        >
+          {data.description}
+        </p>
 
-            <Button
-              asChild
-              className="bg-red text-white w-full sm:w-fit sm:shrink-0"
-            >
-              <a 
-                href="#skills" 
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' });
-                }}
+        <div className='flex flex-col gap-4 items-start lg:items-end w-full'>
+          <a
+            href='#skills'
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            aria-label='Scroll to skills section'
+            className='flex gap-6 items-center rounded-md overflow-visible cursor-pointer transition-all hover:brightness-[1.15] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2'
+          >
+            <div className='px-0 h-full w-fit flex items-center justify-center'>
+              <span
+                data-tina-field={tinaField(data, 'ctaLabel')}
+                className='font-oswald font-bold text-white text-[40px] uppercase leading-none tracking-[-0.4px] w-fit h-fit'
               >
-                Get Started
-              </a>
-            </Button>
-          </div>
+                {data.ctaLabel || 'Continue'}
+              </span>
+            </div>
+            <div className='bg-red w-16 h-[62px] pt-[3px] flex items-center justify-center gap-2.5 rounded-lg shadow-[0_4px_0_0_#A33434]'>
+              <ChevronDown className='text-white size-6' aria-hidden='true' />
+            </div>
+          </a>
         </div>
       </div>
     </section>
@@ -87,7 +77,8 @@ export const fbcHeroBlockSchema: Template = {
     previewSrc: '/blocks/hero.png',
     defaultItem: {
       headline: 'your way to a professional career in software development',
-      description: 'After 12-weeks of intense training you will emerge as a professional fullstack developer. Master enterprise-grade technologies and transform your potential into a powerful technical skill set, ready for real-world challenges.',
+      description:
+        'After 12-weeks of intense training you will emerge as a professional fullstack developer. Master enterprise-grade technologies and transform your potential into a powerful technical skill set, ready for real-world challenges.',
       ctaLabel: 'Apply now',
       ctaLink: '/apply',
     },
@@ -131,4 +122,3 @@ export const fbcHeroBlockSchema: Template = {
     },
   ],
 };
-

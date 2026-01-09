@@ -3,11 +3,11 @@ import { CharacterCounterInput } from './character-counter';
 /**
  * Reusable SEO field schema for TinaCMS collections
  * Provides fields for meta title, description, and Open Graph metadata
- * 
+ *
  * Usage:
  * ```ts
  * import { seoFieldSchema } from '@/tina/fields/seo';
- * 
+ *
  * const Page: Collection = {
  *   fields: [
  *     seoFieldSchema,
@@ -84,4 +84,3 @@ export const seoFieldSchema: {
     },
   ],
 };
-

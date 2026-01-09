@@ -1,8 +1,8 @@
-import React from 'react';
-import { notFound } from 'next/navigation';
-import { Metadata } from 'next';
-import client from '@/tina/__generated__/client';
 import Layout from '@/components/layout/layout';
+import client from '@/tina/__generated__/client';
+import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import React from 'react';
 import PostClientPage from './client-page';
 
 export const revalidate = 300;
@@ -14,7 +14,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const resolvedParams = await params;
   const filepath = resolvedParams.urlSegments.join('/');
-  
+
   let data;
   try {
     data = await client.queries.post({
@@ -27,19 +27,15 @@ export async function generateMetadata({
   }
 
   const post = data.data.post;
-  
+
   // Use static SEO fields from CMS instead of dynamic extraction
   const seo = post.seo;
-  
+
   // Default values
   const defaultDescription = 'Read our latest blog post from SSW FireBootCamp';
 
   // Build title with fallback: SEO title → post title → default
-  const title = seo?.title 
-    ? `${seo.title} | SSW FireBootCamp`
-    : post.title 
-    ? `${post.title} | SSW FireBootCamp`
-    : 'SSW FireBootCamp Blog';
+  const title = seo?.title ? `${seo.title} | SSW FireBootCamp` : post.title ? `${post.title} | SSW FireBootCamp` : 'SSW FireBootCamp Blog';
 
   // Build description with fallback: SEO description → default
   // Note: We no longer extract from excerpt (rich text parsing removed)
@@ -48,7 +44,7 @@ export async function generateMetadata({
   // Build Open Graph metadata with fallbacks
   const ogImage = seo?.openGraph?.image || post.heroImg;
   const ogUpdatedTime = seo?.openGraph?.updatedTime || (post.date ? new Date(post.date).toISOString() : undefined);
-  
+
   const openGraph: Metadata['openGraph'] = {
     title: seo?.openGraph?.title || title,
     description: seo?.openGraph?.description || description,
@@ -97,7 +93,7 @@ export default async function PostPage({
       </Layout>
     );
   } catch (error) {
-    console.error("Failed to fetch post:", error);
+    console.error('Failed to fetch post:', error);
     notFound();
   }
 }

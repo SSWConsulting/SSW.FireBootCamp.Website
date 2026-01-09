@@ -1,8 +1,8 @@
-"use client";
-import { useTina } from "tinacms/dist/react";
-import { Blocks } from "@/components/blocks";
-import { PageQuery, PageQueryVariables } from "@/tina/__generated__/types";
-import ErrorBoundary from "@/components/error-boundary";
+'use client';
+import { Blocks } from '@/components/blocks';
+import ErrorBoundary from '@/components/error-boundary';
+import { PageQuery, PageQueryVariables } from '@/tina/__generated__/types';
+import { useTina } from 'tinacms/dist/react';
 
 export interface ClientPageProps {
   query: string;

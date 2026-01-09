@@ -1,5 +1,5 @@
-import { useIntersectionObserver } from 'usehooks-ts';
 import mermaid from 'mermaid';
+import { useIntersectionObserver } from 'usehooks-ts';
 
 export default function MermaidElement({ value }: { value: string }) {
   const { ref } = useIntersectionObserver({

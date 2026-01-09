@@ -1,11 +1,11 @@
+import { PageBlocksVideo } from '@/tina/__generated__/types';
 import { format } from 'date-fns';
+import Image from 'next/image';
 import React from 'react';
 import { Components, TinaMarkdown, TinaMarkdownContent } from 'tinacms/dist/rich-text';
-import Image from 'next/image';
 import { Prism } from 'tinacms/dist/rich-text/prism';
-import { Video } from './blocks/video';
-import { PageBlocksVideo } from '@/tina/__generated__/types';
 import { Mermaid } from './blocks/mermaid';
+import { Video } from './blocks/video';
 
 export const components: Components<{
   BlockQuote: {
@@ -27,9 +27,9 @@ export const components: Components<{
     if (!props) {
       return <></>;
     }
-    
+
     if (props.lang === 'mermaid') {
-      return <Mermaid value={props.value} />
+      return <Mermaid value={props.value} />;
     }
 
     return <Prism lang={props.lang} value={props.value} />;
@@ -109,7 +109,7 @@ export const components: Components<{
       </span>
     );
   },
-  mermaid: (props: any) => <Mermaid {...props} />,
+  mermaid: (props: { value?: string } | undefined) => <Mermaid value={props?.value || ''} />,
   video: (props) => {
     return <Video data={props} />;
   },

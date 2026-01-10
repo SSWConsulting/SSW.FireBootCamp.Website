@@ -211,7 +211,6 @@ export const fbcPricingBlockSchema: Template = {
         {
           name: 'Full Course Access',
           price: '$12,000',
-          discountPrice: '$12,000',
           subtitle: 'Immerse yourself in our 12-week intensive fullstack developer program. Scholarship price available: $9,000 after passing entry test.',
           icon: '',
           ctaLabel: 'Apply now',
@@ -271,12 +270,6 @@ export const fbcPricingBlockSchema: Template = {
           type: 'string',
           label: 'Price',
           name: 'price',
-        },
-        {
-          type: 'string',
-          label: 'Discount Price',
-          name: 'discountPrice',
-          description: 'Optional: Original price to show with strikethrough (e.g., $12,000)',
         },
         {
           type: 'string',

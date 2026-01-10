@@ -1,14 +1,14 @@
 'use client';
-import React from 'react';
-import Image from 'next/image';
-import { format } from 'date-fns';
-import { tinaField, useTina } from 'tinacms/dist/react';
-import { TinaMarkdown } from 'tinacms/dist/rich-text';
-import { PostQuery, PostQueryVariables } from '@/tina/__generated__/types';
+import ErrorBoundary from '@/components/error-boundary';
 import { useLayout } from '@/components/layout/layout-context';
 import { Section } from '@/components/layout/section';
 import { components } from '@/components/mdx-components';
-import ErrorBoundary from '@/components/error-boundary';
+import { PostQuery, PostQueryVariables } from '@/tina/__generated__/types';
+import { format } from 'date-fns';
+import Image from 'next/image';
+import React from 'react';
+import { tinaField, useTina } from 'tinacms/dist/react';
+import { TinaMarkdown } from 'tinacms/dist/rich-text';
 
 const titleColorClasses = {
   blue: 'from-blue-400 to-blue-600 dark:from-blue-300 dark:to-blue-500',

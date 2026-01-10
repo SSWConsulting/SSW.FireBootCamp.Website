@@ -8,7 +8,7 @@ export default async function PostsPage() {
   try {
     let { query, data, variables } = await client.queries.postConnection({
       sort: 'date',
-      last: 1
+      last: 1,
     });
 
     if (!data.postConnection.edges) {
@@ -51,7 +51,7 @@ export default async function PostsPage() {
       </Layout>
     );
   } catch (error) {
-    console.error("Failed to fetch posts:", error);
+    console.error('Failed to fetch posts:', error);
     throw error;
   }
 }

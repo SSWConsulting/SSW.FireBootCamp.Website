@@ -1,9 +1,9 @@
-import React from 'react';
-import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import client from '@/tina/__generated__/client';
 import Layout from '@/components/layout/layout';
 import { Section } from '@/components/layout/section';
+import client from '@/tina/__generated__/client';
+import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import React from 'react';
 import ClientPage from './client-page';
 
 export const revalidate = 300;
@@ -29,18 +29,16 @@ export async function generateMetadata({
 
   // Use static SEO fields from CMS instead of dynamic extraction
   const seo = data.data.page.seo;
-  
+
   // Default values
   const defaultTitle = 'SSW FireBootCamp';
   const defaultDescription = 'SSW FireBootCamp - Transform your tech career with our 12-week intensive fullstack developer program';
-  
+
   // Fallback to filename-based title if no SEO title (last resort)
   const filenameTitle = filepath.split('/').pop()?.replace(/-/g, ' ') || 'Page';
 
   // Build title with fallback hierarchy: SEO title → filename-based → default
-  const title = seo?.title 
-    ? `${seo.title} | SSW FireBootCamp`
-    : `${filenameTitle} | SSW FireBootCamp`;
+  const title = seo?.title ? `${seo.title} | SSW FireBootCamp` : `${filenameTitle} | SSW FireBootCamp`;
 
   // Build description with fallback
   const description = seo?.description || defaultDescription;
@@ -86,7 +84,7 @@ export default async function Page({
       </Layout>
     );
   } catch (error) {
-    console.error("Failed to fetch page:", error);
+    console.error('Failed to fetch page:', error);
     notFound();
   }
 }

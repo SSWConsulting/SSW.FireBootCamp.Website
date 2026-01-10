@@ -1,25 +1,25 @@
-import { tinaField } from "tinacms/dist/react";
-import { Page, PageBlocks } from "../../tina/__generated__/types";
-import { Hero } from "./hero";
-import { Content } from "./content";
-import { Features } from "./features";
-import { Testimonial } from "./testimonial";
-import { Video } from "./video";
-import { Callout } from "./callout";
-import { Stats } from "./stats";
-import { CallToAction } from "./call-to-action";
-import { FbcHero } from "./fbc-hero";
-import { FbcSkills } from "./fbc-skills";
-import { FbcVideo } from "./fbc-video";
-import { FbcTabs } from "./fbc-tabs";
-import { FbcCertification } from "./fbc-certification";
-import { FbcPricing } from "./fbc-pricing";
-import { FbcTestimonialSlider } from "./fbc-testimonial-slider";
-import { FbcTeam } from "./fbc-team";
-import { FbcFaq } from "./fbc-faq";
-import { FbcCtaBanner } from "./fbc-cta-banner";
+import { tinaField } from 'tinacms/dist/react';
+import { Page, PageBlocks } from '../../tina/__generated__/types';
+import { CallToAction } from './call-to-action';
+import { Callout } from './callout';
+import { Content } from './content';
+import { FbcCertification } from './fbc-certification';
+import { FbcCtaBanner } from './fbc-cta-banner';
+import { FbcFaq } from './fbc-faq';
+import { FbcHero } from './fbc-hero';
+import { FbcPricing } from './fbc-pricing';
+import { FbcSkills } from './fbc-skills';
+import { FbcTabs } from './fbc-tabs';
+import { FbcTeam } from './fbc-team';
+import { FbcTestimonialSlider } from './fbc-testimonial-slider';
+import { FbcVideo } from './fbc-video';
+import { Features } from './features';
+import { Hero } from './hero';
+import { Stats } from './stats';
+import { Testimonial } from './testimonial';
+import { Video } from './video';
 
-export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values">) => {
+export const Blocks = (props: Omit<Page, 'id' | '_sys' | '_values'>) => {
   if (!props.blocks) return null;
   return (
     <>
@@ -36,41 +36,41 @@ export const Blocks = (props: Omit<Page, "id" | "_sys" | "_values">) => {
 
 const Block = (block: PageBlocks) => {
   switch (block.__typename) {
-    case "PageBlocksVideo":
+    case 'PageBlocksVideo':
       return <Video data={block} />;
-    case "PageBlocksHero":
+    case 'PageBlocksHero':
       return <Hero data={block} />;
-    case "PageBlocksCallout":
+    case 'PageBlocksCallout':
       return <Callout data={block} />;
-    case "PageBlocksStats":
+    case 'PageBlocksStats':
       return <Stats data={block} />;
-    case "PageBlocksContent":
+    case 'PageBlocksContent':
       return <Content data={block} />;
-    case "PageBlocksFeatures":
+    case 'PageBlocksFeatures':
       return <Features data={block} />;
-    case "PageBlocksTestimonial":
+    case 'PageBlocksTestimonial':
       return <Testimonial data={block} />;
-    case "PageBlocksCta":
+    case 'PageBlocksCta':
       return <CallToAction data={block} />;
-    case "PageBlocksFbcHero":
+    case 'PageBlocksFbcHero':
       return <FbcHero data={block} />;
-    case "PageBlocksFbcSkills":
+    case 'PageBlocksFbcSkills':
       return <FbcSkills data={block} />;
-    case "PageBlocksFbcVideo":
+    case 'PageBlocksFbcVideo':
       return <FbcVideo data={block} />;
-    case "PageBlocksFbcTabs":
+    case 'PageBlocksFbcTabs':
       return <FbcTabs data={block} />;
-    case "PageBlocksFbcCertification":
+    case 'PageBlocksFbcCertification':
       return <FbcCertification data={block} />;
-    case "PageBlocksFbcPricing":
+    case 'PageBlocksFbcPricing':
       return <FbcPricing data={block} />;
-    case "PageBlocksFbcTestimonialSlider":
+    case 'PageBlocksFbcTestimonialSlider':
       return <FbcTestimonialSlider data={block} />;
-    case "PageBlocksFbcTeam":
+    case 'PageBlocksFbcTeam':
       return <FbcTeam data={block} />;
-    case "PageBlocksFbcFaq":
+    case 'PageBlocksFbcFaq':
       return <FbcFaq data={block} />;
-    case "PageBlocksFbcCtaBanner":
+    case 'PageBlocksFbcCtaBanner':
       return <FbcCtaBanner data={block} />;
     default:
       return null;

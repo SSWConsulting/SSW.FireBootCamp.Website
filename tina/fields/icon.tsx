@@ -1,10 +1,10 @@
 'use client';
+import { Popover, PopoverButton, PopoverPanel, Transition } from '@headlessui/react';
 import React from 'react';
-import { Button, wrapFieldsWithMeta } from 'tinacms';
 import { BiChevronRight } from 'react-icons/bi';
 import { GoCircleSlash } from 'react-icons/go';
+import { Button, wrapFieldsWithMeta } from 'tinacms';
 import { Icon, IconOptions } from '../../components/icon';
-import { Popover, PopoverButton, Transition, PopoverPanel } from '@headlessui/react';
 import { ColorPickerInput } from './color';
 
 const parseIconName = (name: string) => {

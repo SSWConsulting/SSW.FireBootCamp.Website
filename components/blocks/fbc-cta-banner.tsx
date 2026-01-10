@@ -3,47 +3,47 @@ import Image from 'next/image';
 import type { Template } from 'tinacms';
 import { tinaField } from 'tinacms/dist/react';
 import type { PageBlocksFbcCtaBanner } from '../../tina/__generated__/types';
-import { Button } from '../ui/button';
 import { useLayout } from '../layout/layout-context';
+import { Button } from '../ui/button';
 
 export const FbcCtaBanner = ({ data }: { data: PageBlocksFbcCtaBanner }) => {
   const { globalSettings } = useLayout();
   const contactEmail = globalSettings?.contactEmail || 'pennywalker@ssw.com.au';
   const contactSubject = globalSettings?.contactSubject || "SSW Firebootcamp - Let's chat";
   const mailtoLink = `mailto:${contactEmail}?subject=${encodeURIComponent(contactSubject)}`;
-  
+
   return (
-    <section className="bg-scheme-4-background px-6 md:px-16 lg:px-16 py-16 md:py-24 lg:py-32">
-      <div className="max-w-[1440px] mx-auto">
-        <div className="bg-scheme-4-foreground rounded-lg p-6 md:p-8 lg:p-12 relative">
-          <div className="flex flex-col gap-6">
-            <div className="flex flex-col gap-6">
+    <section className='bg-scheme-4-background px-6 md:px-16 lg:px-16 py-16 md:py-24 lg:py-32'>
+      <div className='max-w-[1440px] mx-auto'>
+        <div className='bg-scheme-4-foreground rounded-lg p-6 md:p-8 lg:p-12 relative'>
+          <div className='flex flex-col gap-6'>
+            <div className='flex flex-col gap-6'>
               <h2
                 data-tina-field={tinaField(data, 'title')}
-                className="font-oswald font-bold text-[32px] sm:text-[40px] md:text-[50px] lg:text-[60px] uppercase tracking-[-0.6px] leading-none text-scheme-4-text"
+                className='font-oswald font-bold text-[32px] sm:text-[40px] md:text-[50px] lg:text-[60px] uppercase tracking-[-0.6px] leading-none text-scheme-4-text'
               >
                 {data.title}
               </h2>
               <p
                 data-tina-field={tinaField(data, 'description')}
-                className="font-sans text-[16px] md:text-[18px] lg:text-[20px] leading-[1.5] text-scheme-4-text"
+                className='font-sans text-[16px] md:text-[18px] lg:text-[20px] leading-[1.5] text-scheme-4-text'
               >
                 {data.description}
               </p>
             </div>
 
-            <div className="w-full lg:w-[513px] flex flex-col gap-4">
-              <div className="flex flex-col sm:flex-row gap-4 w-full">
-                <label htmlFor="cta-banner-email" className="sr-only">
+            <div className='w-full lg:w-[513px] flex flex-col gap-4'>
+              <div className='flex flex-col sm:flex-row gap-4 w-full'>
+                <label htmlFor='cta-banner-email' className='sr-only'>
                   Email address
                 </label>
                 <input
-                  id="cta-banner-email"
-                  type="email"
+                  id='cta-banner-email'
+                  type='email'
                   placeholder={data.emailPlaceholder || 'Enter your email address'}
-                  className="flex-1 min-h-[51px] px-3 bg-white/10 rounded-md font-sans text-[16px] md:text-[18px] leading-[1.5] text-scheme-4-text border-0 placeholder:text-white/60"
+                  className='flex-1 min-h-[51px] px-3 bg-white/10 rounded-md font-sans text-[16px] md:text-[18px] leading-[1.5] text-scheme-4-text border-0 placeholder:text-white/80'
                 />
-                <Button asChild variant="tertiary" className="whitespace-nowrap w-full sm:w-fit sm:shrink-0">
+                <Button asChild variant='tertiary' className='whitespace-nowrap w-full sm:w-fit sm:shrink-0'>
                   <a href={mailtoLink}>{data.buttonLabel || 'Submit'}</a>
                 </Button>
               </div>
@@ -51,13 +51,8 @@ export const FbcCtaBanner = ({ data }: { data: PageBlocksFbcCtaBanner }) => {
           </div>
 
           {/* SophieBot character - absolutely positioned at bottom-right */}
-          <div className="absolute bottom-0 right-0 w-[418px] h-[325px] hidden lg:block pointer-events-none">
-            <Image
-              src="/uploads/sophiebot.png"
-              alt=""
-              fill
-              className="object-contain object-center"
-            />
+          <div className='absolute bottom-0 right-0 w-[418px] h-[325px] hidden lg:block pointer-events-none'>
+            <Image src='/uploads/sophiebot.png' alt='' fill className='object-contain object-center' />
           </div>
         </div>
       </div>
@@ -109,4 +104,3 @@ export const fbcCtaBannerBlockSchema: Template = {
     },
   ],
 };
-

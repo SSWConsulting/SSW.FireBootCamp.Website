@@ -6,34 +6,29 @@ import type { PageBlocksFbcSkills, PageBlocksFbcSkillsSkills } from '../../tina/
 
 export const FbcSkills = ({ data }: { data: PageBlocksFbcSkills }) => {
   const skillCount = data.skills?.length || 0;
-  
+
   return (
-    <section id="skills" className="bg-scheme-1-background px-6 md:px-16 lg:px-16 py-16 md:py-24 lg:py-32">
-      <div className="max-w-[1440px] mx-auto flex flex-col gap-10 md:gap-16 lg:gap-20 justify-start items-center">
-        <div className="max-w-full md:max-w-[768px] flex flex-col gap-4 md:gap-6">
+    <section id='skills' className='bg-scheme-1-background px-6 md:px-16 lg:px-16 py-16 md:py-24 lg:py-32'>
+      <div className='max-w-[1440px] mx-auto flex flex-col gap-10 md:gap-16 lg:gap-20 justify-start items-center'>
+        <div className='max-w-full md:max-w-[768px] flex flex-col gap-4 md:gap-6'>
           <h2
             data-tina-field={tinaField(data, 'title')}
-            className="font-oswald font-bold text-[32px] sm:text-[40px] md:text-[50px] lg:text-[60px] uppercase tracking-[-0.6px] leading-none text-scheme-1-text text-center"
+            className='font-oswald font-bold text-[32px] sm:text-[40px] md:text-[50px] lg:text-[60px] uppercase tracking-[-0.6px] leading-none text-scheme-1-text text-center'
           >
             {data.title}
           </h2>
           <p
             data-tina-field={tinaField(data, 'description')}
-            className="font-sans text-[14px] md:text-[16px] lg:text-[20px] leading-[1.5] text-scheme-1-text text-center"
+            className='font-sans text-[14px] md:text-[16px] lg:text-[20px] leading-[1.5] text-scheme-1-text text-center'
           >
             {data.description}
           </p>
         </div>
 
-        <div className="w-full">
-          <div className="border-t border-scheme-1-border grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        <div className='w-full'>
+          <div className='border-t border-scheme-1-border grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
             {data.skills?.map((skill, index) => (
-              <SkillItem 
-                key={index} 
-                skill={skill!} 
-                index={index}
-                total={skillCount}
-              />
+              <SkillItem key={index} skill={skill!} index={index} total={skillCount} />
             ))}
           </div>
         </div>
@@ -50,9 +45,10 @@ const SkillItem = ({ skill, index, total }: { skill: PageBlocksFbcSkillsSkills; 
   const isLast = index === total - 1;
   const isLeftColumnMd = index % 2 === 0;
   const isTopRowMd = index < 2;
-  
+
   return (
-    <div className={`
+    <div
+      className={`
       flex flex-col gap-4 md:gap-6 py-6 md:py-8 
       px-0 md:px-6 lg:px-8
       border-scheme-1-border
@@ -62,23 +58,21 @@ const SkillItem = ({ skill, index, total }: { skill: PageBlocksFbcSkillsSkills; 
       ${isLeftColumnMd ? 'md:border-r' : ''}
       lg:border-b-0
       ${!isLast ? 'lg:border-r' : ''}
-    `}>
+    `}
+    >
       {skill.icon && (
-        <div className="w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 relative" data-tina-field={tinaField(skill, 'icon')}>
-          <Image src={skill.icon} alt="" fill className="object-contain" />
+        <div className='w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 relative' data-tina-field={tinaField(skill, 'icon')}>
+          <Image src={skill.icon} alt='' fill className='object-contain' />
         </div>
       )}
-      <div className="flex flex-col gap-3 md:gap-4">
+      <div className='flex flex-col gap-3 md:gap-4'>
         <h3
           data-tina-field={tinaField(skill, 'title')}
-          className="font-oswald font-bold text-[20px] md:text-[22px] lg:text-[26px] uppercase tracking-[-0.26px] leading-[1.1] text-scheme-1-text"
+          className='font-oswald font-bold text-[20px] md:text-[22px] lg:text-[26px] uppercase tracking-[-0.26px] leading-[1.1] text-scheme-1-text'
         >
           {skill.title}
         </h3>
-        <p
-          data-tina-field={tinaField(skill, 'text')}
-          className="font-sans text-[14px] md:text-[15px] lg:text-[16px] leading-[1.5] text-scheme-1-text"
-        >
+        <p data-tina-field={tinaField(skill, 'text')} className='font-sans text-[14px] md:text-[15px] lg:text-[16px] leading-[1.5] text-scheme-1-text'>
           {skill.text}
         </p>
       </div>
@@ -163,4 +157,3 @@ export const fbcSkillsBlockSchema: Template = {
     },
   ],
 };
-

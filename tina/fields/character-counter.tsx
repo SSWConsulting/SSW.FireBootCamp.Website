@@ -5,7 +5,7 @@ import { wrapFieldsWithMeta } from 'tinacms';
 /**
  * Character counter component for textarea fields in TinaCMS
  * Displays real-time character count with recommended range guidance (150-160 characters)
- * 
+ *
  * Usage in schema:
  * ```ts
  * {
@@ -37,54 +37,48 @@ export const CharacterCounterInput = wrapFieldsWithMeta(({ input, field }) => {
   };
 
   return (
-    <div className="w-full">
+    <div className='w-full'>
       {/* Hidden input for TinaCMS form handling */}
-      <input type="text" id={input.name} className="hidden" {...input} />
-      
+      <input type='text' id={input.name} className='hidden' {...input} />
+
       {/* Textarea */}
-        <textarea
-          id={`${input.name}-textarea`}
-          value={input.value || ''}
-          onChange={(e) => {
-            // Allow input but warn if over recommended
-            input.onChange(e.target.value);
-          }}
-          className="w-full min-h-[100px] px-3 py-2 border border-gray-200 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-y"
-          aria-label={typeof field.label === 'string' ? field.label : 'Text input'}
-          aria-describedby={`${input.name}-counter ${input.name}-description`}
-        />
-      
+      <textarea
+        id={`${input.name}-textarea`}
+        value={input.value || ''}
+        onChange={(e) => {
+          // Allow input but warn if over recommended
+          input.onChange(e.target.value);
+        }}
+        className='w-full min-h-[100px] px-3 py-2 border border-gray-200 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-y'
+        aria-label={typeof field.label === 'string' ? field.label : 'Text input'}
+        aria-describedby={`${input.name}-counter ${input.name}-description`}
+      />
+
       {/* Character counter and guidance */}
-      <div className="mt-2 flex items-center justify-between text-sm">
-        <div className="flex items-center gap-2">
-          <span
-            id={`${input.name}-counter`}
-            className={`font-medium ${getCounterColor()}`}
-            aria-live="polite"
-            aria-atomic="true"
-          >
+      <div className='mt-2 flex items-center justify-between text-sm'>
+        <div className='flex items-center gap-2'>
+          <span id={`${input.name}-counter`} className={`font-medium ${getCounterColor()}`} aria-live='polite' aria-atomic='true'>
             {currentLength} characters
           </span>
           {!isWithinRecommended && currentLength > 0 && (
-            <span className="text-gray-500 text-xs">
+            <span className='text-gray-500 text-xs'>
               (Recommended: {recommendedMin}-{recommendedMax} characters)
             </span>
           )}
         </div>
         {isWithinRecommended && (
-          <span className="text-green-600 text-xs font-medium" aria-label="Character count is within recommended range">
+          <span className='text-green-600 text-xs font-medium' aria-label='Character count is within recommended range'>
             ✓ Optimal length
           </span>
         )}
       </div>
-      
+
       {/* Field description */}
       {field.description && (
-        <p id={`${input.name}-description`} className="mt-1 text-xs text-gray-500">
+        <p id={`${input.name}-description`} className='mt-1 text-xs text-gray-500'>
           {field.description}
         </p>
       )}
     </div>
   );
 });
-

@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -130,7 +130,7 @@
   --shadow-block-grey: 0px 4px 0px 0px rgba(0, 0, 0, 0.25);
   --shadow-block-tertiary: 0px 4px 0px 0px rgba(255, 255, 255, 0.59);
   --shadow-block-secondary-alternate: 0px 4px 0px 0px rgba(255, 255, 255, 0.1);
-  --shadow-block-red-pricing: 0px 7px 0px 0px #CC4141;
+  --shadow-block-red-pricing: 0px 7px 0px 0px #cc4141;
   --shadow-block-grey-pricing: 0px 7px 0px 0px rgba(0, 0, 0, 0.25);
 }
 
@@ -338,28 +338,79 @@
     line-height: 1.5;
   }
 
-  .text-large { font-size: var(--text-size-large); line-height: 1.5; }
-  .text-medium { font-size: var(--text-size-medium); line-height: 1.5; }
-  .text-regular { font-size: var(--text-size-regular); line-height: 1.5; }
-  .text-small { font-size: var(--text-size-small); line-height: 1.5; }
-  .text-tiny { font-size: var(--text-size-tiny); line-height: 1.5; }
+  .text-large {
+    font-size: var(--text-size-large);
+    line-height: 1.5;
+  }
+  .text-medium {
+    font-size: var(--text-size-medium);
+    line-height: 1.5;
+  }
+  .text-regular {
+    font-size: var(--text-size-regular);
+    line-height: 1.5;
+  }
+  .text-small {
+    font-size: var(--text-size-small);
+    line-height: 1.5;
+  }
+  .text-tiny {
+    font-size: var(--text-size-tiny);
+    line-height: 1.5;
+  }
 
-  .text-light { font-weight: 300; }
-  .text-normal { font-weight: 400; }
-  .text-medium-weight { font-weight: 500; }
-  .text-semibold { font-weight: 600; }
-  .text-bold { font-weight: 700; }
-  .text-extrabold { font-weight: 800; }
+  .text-light {
+    font-weight: 300;
+  }
+  .text-normal {
+    font-weight: 400;
+  }
+  .text-medium-weight {
+    font-weight: 500;
+  }
+  .text-semibold {
+    font-weight: 600;
+  }
+  .text-bold {
+    font-weight: 700;
+  }
+  .text-extrabold {
+    font-weight: 800;
+  }
 
-  .container-small { max-width: var(--container-small); margin-left: auto; margin-right: auto; }
-  .container-medium { max-width: var(--container-medium); margin-left: auto; margin-right: auto; }
-  .container-large { max-width: var(--container-large); margin-left: auto; margin-right: auto; }
+  .container-small {
+    max-width: var(--container-small);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .container-medium {
+    max-width: var(--container-medium);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .container-large {
+    max-width: var(--container-large);
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-  .section-padding-small { padding-top: var(--section-padding-small); padding-bottom: var(--section-padding-small); }
-  .section-padding-medium { padding-top: var(--section-padding-medium); padding-bottom: var(--section-padding-medium); }
-  .section-padding-large { padding-top: var(--section-padding-large); padding-bottom: var(--section-padding-large); }
+  .section-padding-small {
+    padding-top: var(--section-padding-small);
+    padding-bottom: var(--section-padding-small);
+  }
+  .section-padding-medium {
+    padding-top: var(--section-padding-medium);
+    padding-bottom: var(--section-padding-medium);
+  }
+  .section-padding-large {
+    padding-top: var(--section-padding-large);
+    padding-bottom: var(--section-padding-large);
+  }
 
-  .page-padding { padding-left: var(--page-padding); padding-right: var(--page-padding); }
+  .page-padding {
+    padding-left: var(--page-padding);
+    padding-right: var(--page-padding);
+  }
 
   .scheme-1 {
     background-color: var(--color-scheme-1-background);
@@ -378,19 +429,45 @@
     color: var(--color-scheme-4-text);
   }
 
-  .shadow-xxsmall { box-shadow: var(--shadow-xxsmall); }
-  .shadow-xsmall { box-shadow: var(--shadow-xsmall); }
-  .shadow-small { box-shadow: var(--shadow-small); }
-  .shadow-medium { box-shadow: var(--shadow-medium); }
-  .shadow-large { box-shadow: var(--shadow-large); }
-  .shadow-xlarge { box-shadow: var(--shadow-xlarge); }
-  .shadow-xxlarge { box-shadow: var(--shadow-xxlarge); }
-  .shadow-block-red { box-shadow: var(--shadow-block-red); }
-  .shadow-block-grey { box-shadow: var(--shadow-block-grey); }
-  .shadow-block-tertiary { box-shadow: var(--shadow-block-tertiary); }
-  .shadow-block-secondary-alternate { box-shadow: var(--shadow-block-secondary-alternate); }
-  .shadow-block-red-pricing { box-shadow: var(--shadow-block-red-pricing); }
-  .shadow-block-grey-pricing { box-shadow: var(--shadow-block-grey-pricing); }
+  .shadow-xxsmall {
+    box-shadow: var(--shadow-xxsmall);
+  }
+  .shadow-xsmall {
+    box-shadow: var(--shadow-xsmall);
+  }
+  .shadow-small {
+    box-shadow: var(--shadow-small);
+  }
+  .shadow-medium {
+    box-shadow: var(--shadow-medium);
+  }
+  .shadow-large {
+    box-shadow: var(--shadow-large);
+  }
+  .shadow-xlarge {
+    box-shadow: var(--shadow-xlarge);
+  }
+  .shadow-xxlarge {
+    box-shadow: var(--shadow-xxlarge);
+  }
+  .shadow-block-red {
+    box-shadow: var(--shadow-block-red);
+  }
+  .shadow-block-grey {
+    box-shadow: var(--shadow-block-grey);
+  }
+  .shadow-block-tertiary {
+    box-shadow: var(--shadow-block-tertiary);
+  }
+  .shadow-block-secondary-alternate {
+    box-shadow: var(--shadow-block-secondary-alternate);
+  }
+  .shadow-block-red-pricing {
+    box-shadow: var(--shadow-block-red-pricing);
+  }
+  .shadow-block-grey-pricing {
+    box-shadow: var(--shadow-block-grey-pricing);
+  }
 
   /* Pricing card ordering - featured card appears first on mobile/tablet */
   .pricing-card-wrapper {

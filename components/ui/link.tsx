@@ -10,12 +10,5 @@ type LinkProps = ComponentProps<typeof Link>;
 export const AutoLink = ({ href, ...props }: LinkProps) => {
   const isExternal = typeof href === 'string' && (href.startsWith('http://') || href.startsWith('https://'));
 
-  return (
-    <Link
-      href={href}
-      {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-      {...props}
-    />
-  );
+  return <Link href={href} {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})} {...props} />;
 };
-

@@ -1,6 +1,8 @@
 import client from '@/tina/__generated__/client';
 import { MetadataRoute } from 'next';
 
+export const dynamic = 'force-static';
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://firebootcamp.com';
   const entries: MetadataRoute.Sitemap = [];

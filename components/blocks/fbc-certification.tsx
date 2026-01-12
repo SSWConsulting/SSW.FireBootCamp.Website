@@ -35,14 +35,14 @@ export const FbcCertification = ({ data }: { data: PageBlocksFbcCertification })
               </h2>
               <p
                 data-tina-field={tinaField(data, 'description')}
-                className='font-sans text-[14px] md:text-[16px] lg:text-[20px] leading-[1.5] text-scheme-1-text whitespace-pre-line text-center lg:text-left'
+                className='font-sans text-[14px] md:text-[16px] lg:text-[20px] leading-[1.5] text-scheme-1-text whitespace-pre-line text-center lg:text-left max-w-[560px]'
               >
                 {data.description}
               </p>
             </div>
 
-            <div className='flex flex-col gap-3 md:gap-4 w-full max-w-[513px] items-center lg:items-start'>
-              <div className='flex flex-col sm:flex-row gap-3 md:gap-2 w-full'>
+            <div className='flex flex-col gap-3 md:gap-4 w-full max-w-[560px] items-center lg:items-start'>
+              <div className='flex flex-col sm:flex-row gap-3 md:gap-2 w-full min-w-[100px] justify-start'>
                 <label htmlFor='certification-email' className='sr-only'>
                   Email address
                 </label>

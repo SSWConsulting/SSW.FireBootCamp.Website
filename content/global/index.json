@@ -60,23 +60,6 @@
             "isHeading": true
           }
         ]
-      },
-      {
-        "links": [
-          {
-            "label": "Courses & Events",
-            "href": "https://www.ssw.com.au/events",
-            "isHeading": true
-          },
-          {
-            "label": "1-Day Dev Superpowers",
-            "href": "https://firebootcamp.com/other-courses/superpower-tours/"
-          },
-          {
-            "label": "2-Day Workshops",
-            "href": "https://firebootcamp.com/other-courses/hands-on-workshops/"
-          }
-        ]
       }
     ],
     "social": [

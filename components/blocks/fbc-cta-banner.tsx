@@ -33,7 +33,7 @@ export const FbcCtaBanner = ({ data }: { data: PageBlocksFbcCtaBanner }) => {
             </div>
 
             <div className='w-full lg:w-[513px] flex flex-col gap-4'>
-              <div className='flex flex-col sm:flex-row gap-4 w-full'>
+              <div className='flex flex-col sm:flex-row gap-2 w-full'>
                 <label htmlFor='cta-banner-email' className='sr-only'>
                   Email address
                 </label>

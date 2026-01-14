@@ -5,8 +5,6 @@ import { tinaField } from 'tinacms/dist/react';
 import type { PageBlocksFbcSkills, PageBlocksFbcSkillsSkills } from '../../tina/__generated__/types';
 
 export const FbcSkills = ({ data }: { data: PageBlocksFbcSkills }) => {
-  const skillCount = data.skills?.length || 0;
-
   return (
     <section id='skills' className='bg-scheme-1-background px-6 md:px-16 lg:px-16 py-16 md:py-24 lg:py-32'>
       <div className='max-w-[1440px] mx-auto flex flex-col gap-10 md:gap-16 lg:gap-20 justify-start items-center'>
@@ -26,9 +24,9 @@ export const FbcSkills = ({ data }: { data: PageBlocksFbcSkills }) => {
         </div>
 
         <div className='w-full'>
-          <div className='border-t border-scheme-1-border grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4'>
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
             {data.skills?.map((skill, index) => (
-              <SkillItem key={index} skill={skill!} index={index} total={skillCount} />
+              <SkillItem key={index} skill={skill!} index={index} />
             ))}
           </div>
         </div>
@@ -37,28 +35,25 @@ export const FbcSkills = ({ data }: { data: PageBlocksFbcSkills }) => {
   );
 };
 
-const SkillItem = ({ skill, index, total }: { skill: PageBlocksFbcSkillsSkills; index: number; total: number }) => {
-  // Border logic for 4-item grid:
-  // Mobile (1 col): border-b on all except last
-  // Tablet (2 col): border-r on left column (0,2), border-b on top row (0,1)
-  // Desktop (4 col): border-r on all except last
-  const isLast = index === total - 1;
+const SkillItem = ({ skill, index }: { skill: PageBlocksFbcSkillsSkills; index: number }) => {
+  // Border logic:
+  // - All cards: top border
+  // - Tablet (2-col): left column (indices 0, 2, 4) gets right border only
+  // - Desktop (3-col): middle column (indices 1, 4) gets left and right borders
   const isLeftColumnMd = index % 2 === 0;
-  const isTopRowMd = index < 2;
+  const isMiddleColumnLg = index % 3 === 1;
+  // Only reset tablet right border if NOT middle column in desktop
+  const resetTabletBorderAtLg = isLeftColumnMd && !isMiddleColumnLg;
 
   return (
     <div
       className={`
-      flex flex-col gap-4 md:gap-6 py-6 md:py-8 
-      px-0 md:px-6 lg:px-8
-      border-scheme-1-border
-      ${!isLast ? 'border-b' : ''}
-      md:border-b-0
-      ${isTopRowMd ? 'md:border-b' : ''}
-      ${isLeftColumnMd ? 'md:border-r' : ''}
-      lg:border-b-0
-      ${!isLast ? 'lg:border-r' : ''}
-    `}
+        flex flex-col gap-4 md:gap-6 py-6 md:py-8 px-0 md:px-6 lg:px-8
+        border-t border-scheme-1-border
+        ${isLeftColumnMd ? 'md:border-r' : ''}
+        ${resetTabletBorderAtLg ? 'lg:border-r-0' : ''}
+        ${isMiddleColumnLg ? 'lg:border-l lg:border-r' : ''}
+      `}
     >
       {skill.icon && (
         <div className='w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 relative' data-tina-field={tinaField(skill, 'icon')}>
@@ -90,24 +85,34 @@ export const fbcSkillsBlockSchema: Template = {
       description: 'Learn the essential technologies that power professional software engineering. Transform raw potential into industry-ready expertise.',
       skills: [
         {
-          icon: '/uploads/skills/dotnet.png',
-          title: '.NET development fundamentals',
-          text: 'Learn to build robust enterprise applications using the powerful and versatile .NET framework.',
+          icon: '/uploads/icons/icon-dotnet.svg',
+          title: 'Full stack development',
+          text: 'Build and deliver production-ready web applications using modern, enterprise-grade tools and patterns.',
         },
         {
-          icon: '/uploads/skills/angular.png',
-          title: 'Angular framework mastery',
-          text: 'Create dynamic, responsive web applications with advanced Angular techniques and best practices.',
-        },
-        {
-          icon: '/uploads/skills/sql.png',
-          title: 'Database design and management',
+          icon: '/uploads/icons/icon-sql.svg',
+          title: 'Database design',
           text: 'Develop advanced skills in Entity Framework Core and SQL Server for efficient data handling.',
         },
         {
-          icon: '/uploads/skills/scrum.png',
+          icon: '/uploads/icons/icon-architect.svg',
+          title: 'Software architecture',
+          text: 'Learn how to design systems that scale, make sense to other developers, and stand up to real-world constraints.',
+        },
+        {
+          icon: '/uploads/icons/icon-testing.svg',
+          title: 'Testing and quality',
+          text: 'Understand how automated testing fits into real projects and how quality is maintained as systems grow.',
+        },
+        {
+          icon: '/uploads/icons/icon-collaboration.svg',
+          title: 'Communication skills',
+          text: 'Practice explaining technical decisions, working with stakeholders, and collaborating effectively.',
+        },
+        {
+          icon: '/uploads/icons/icon-agile.svg',
           title: 'Agile project workflows',
-          text: 'Implement Scrum methodologies to streamline development processes and enhance collaboration and productivity.',
+          text: 'Work like a pro using Scrum to ship better software, faster, with real team collaboration.',
         },
       ],
     },

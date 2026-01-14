@@ -10,7 +10,7 @@ export const FbcHero = ({ data }: { data: PageBlocksFbcHero }) => {
   const hasImage = !!data.backgroundImage;
 
   return (
-    <section className='relative h-fit flex flex-col gap-10 md:gap-16 lg:gap-20 items-start justify-center px-6 md:px-16 lg:px-16 py-16 md:py-24 lg:py-32 overflow-hidden'>
+    <section className='relative min-h-[80vh] flex flex-col gap-10 md:gap-16 lg:gap-20 items-start justify-center px-6 md:px-16 lg:px-16 py-16 md:py-24 lg:py-32 overflow-hidden'>
       {(hasVideo || hasImage) && (
         <div className='absolute inset-0 pointer-events-none'>
           <div className='absolute inset-0 bg-black' />
@@ -31,7 +31,7 @@ export const FbcHero = ({ data }: { data: PageBlocksFbcHero }) => {
             <span className='font-jetbrains font-thin text-[40px] sm:text-[60px] md:text-[80px] lg:text-[108px] text-white tracking-[-1.08px]'>&lt;</span>
             <span className='text-fbc-red text-[32px] sm:text-[48px] md:text-[64px] lg:text-[84px] tracking-[-0.84px]'>Code</span>
             <span className='font-jetbrains font-thin text-[40px] sm:text-[60px] md:text-[80px] lg:text-[108px] text-white tracking-[-1.08px]'>&gt;</span>
-            <span className='text-[32px] sm:text-[48px] md:text-[64px] lg:text-[84px] tracking-[-0.84px]'> {data.headline}</span>
+            <span className='text-[32px] sm:text-[48px] md:text-[64px] lg:text-[84px] tracking-[-0.84px] lg:leading-[95px]'> {data.headline}</span>
           </h1>
         </div>
 
@@ -44,12 +44,12 @@ export const FbcHero = ({ data }: { data: PageBlocksFbcHero }) => {
 
         <div className='flex flex-col gap-4 items-start lg:items-end w-full'>
           <a
-            href='#skills'
+            href='#pricing'
             onClick={(e) => {
               e.preventDefault();
-              document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' });
+              document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
             }}
-            aria-label='Scroll to skills section'
+            aria-label='Scroll to pricing section'
             className='flex gap-6 items-center rounded-md overflow-visible cursor-pointer transition-all hover:brightness-[1.15] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2'
           >
             <div className='px-0 h-full w-fit flex items-center justify-center'>

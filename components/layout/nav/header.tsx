@@ -86,7 +86,21 @@ export const Header = () => {
               {/* CTA Button - Right aligned */}
               <div className='flex items-center gap-4 shrink-0'>
                 <Button asChild className='hidden lg:flex bg-red text-white'>
-                  <a href={mailtoLink}>{header?.ctaLabel || 'Apply now'}</a>
+                  <a
+                    href='#pricing'
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const target = document.getElementById('pricing');
+                      if (target) {
+                        const headerOffset = 72;
+                        const elementPosition = target.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.scrollY - headerOffset;
+                        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                      }
+                    }}
+                  >
+                    {header?.ctaLabel || 'Apply now'}
+                  </a>
                 </Button>
 
                 <button
@@ -181,7 +195,22 @@ export const Header = () => {
               ))}
               <li className='pt-4'>
                 <Button asChild className='w-full bg-red text-white'>
-                  <a href={mailtoLink}>{header?.ctaLabel || 'Apply now'}</a>
+                  <a
+                    href='#pricing'
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setMenuState(false);
+                      const target = document.getElementById('pricing');
+                      if (target) {
+                        const headerOffset = 72;
+                        const elementPosition = target.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.scrollY - headerOffset;
+                        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                      }
+                    }}
+                  >
+                    {header?.ctaLabel || 'Apply now'}
+                  </a>
                 </Button>
               </li>
             </ul>

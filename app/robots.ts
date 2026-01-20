@@ -9,12 +9,14 @@ import type { MetadataRoute } from 'next';
  * @see https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots
  */
 export default function robots(): MetadataRoute.Robots {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://firebootcamp.com';
+
   return {
     rules: {
       userAgent: '*',
       allow: '/',
       disallow: '/admin/',
     },
-    sitemap: 'https://firebootcamp.com/sitemap.xml',
+    sitemap: `${siteUrl}/sitemap.xml`,
   };
 }

@@ -37,8 +37,10 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ['100', '400'],
 });
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://firebootcamp.com';
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://firebootcamp.com'),
+  metadataBase: new URL(SITE_URL),
   title: 'SSW FireBootCamp',
   description: 'Transform your tech career with our 12-week intensive fullstack developer program',
   alternates: {

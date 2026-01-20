@@ -1,7 +1,8 @@
+import { GoogleAnalytics } from '@/components/analytics/google-analytics';
 import VideoDialog from '@/components/ui/VideoDialog';
 import { VideoDialogProvider } from '@/components/ui/VideoDialogContext';
 import { cn } from '@/lib/utils';
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { Inter as FontSans, JetBrains_Mono, Lato, Nunito, Oswald } from 'next/font/google';
 import React from 'react';
 
@@ -37,8 +38,12 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://firebootcamp.com'),
   title: 'SSW FireBootCamp',
   description: 'Transform your tech career with our 12-week intensive fullstack developer program',
+  alternates: {
+    canonical: './',
+  },
 };
 
 export default function RootLayout({
@@ -60,6 +65,7 @@ export default function RootLayout({
           <VideoDialog />
         </VideoDialogProvider>
         <TailwindIndicator />
+        <GoogleAnalytics />
       </body>
     </html>
   );

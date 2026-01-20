@@ -58,6 +58,14 @@
             "label": "FAQs",
             "href": "#faqs",
             "isHeading": true
+          },
+          {
+            "label": "pennywalker@ssw.com.au",
+            "href": "mailto:pennywalker@ssw.com.au"
+          },
+          {
+            "label": "(+61) 02 9953 3000",
+            "href": "tel:+61299533000"
           }
         ]
       }

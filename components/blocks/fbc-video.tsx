@@ -8,7 +8,7 @@ import { Button } from '../ui/button';
 export const FbcVideo = ({ data }: { data: PageBlocksFbcVideo }) => {
   return (
     <section className='bg-scheme-3-background px-6 md:px-16 lg:px-16 py-16 md:py-24 lg:py-32'>
-      <div className='max-w-[1440px] mx-auto flex flex-col gap-10 md:gap-16 lg:gap-20 items-center'>
+      <div className='max-w-[1440px] mx-auto flex flex-col gap-10 md:gap-16 lg:gap-10 items-center'>
         <div className='max-w-full md:max-w-[768px] text-center flex flex-col gap-6 md:gap-8 items-center'>
           <div className='flex flex-col gap-4 md:gap-6'>
             <h2
@@ -24,19 +24,6 @@ export const FbcVideo = ({ data }: { data: PageBlocksFbcVideo }) => {
               {data.description}
             </p>
           </div>
-
-          {data.secondaryLabel && (
-            <Button
-              asChild
-              variant='secondary'
-              data-tina-field={tinaField(data, 'secondaryLabel')}
-              className='bg-[rgba(0,0,0,0.05)] border border-transparent hover:bg-[rgba(0,0,0,0.12)] text-scheme-3-text w-full sm:w-fit sm:shrink-0'
-            >
-              <Link href={data.secondaryLink || '#'} target='_blank' rel='noopener noreferrer'>
-                {data.secondaryLabel}
-              </Link>
-            </Button>
-          )}
         </div>
 
         {data.videoUrl && (
@@ -49,6 +36,19 @@ export const FbcVideo = ({ data }: { data: PageBlocksFbcVideo }) => {
               allowFullScreen
             />
           </div>
+        )}
+
+        {data.secondaryLabel && (
+          <Button
+            asChild
+            variant='secondary'
+            data-tina-field={tinaField(data, 'secondaryLabel')}
+            className='bg-[rgba(0,0,0,0.05)] border border-transparent hover:bg-[rgba(0,0,0,0.12)] text-scheme-3-text w-full sm:w-fit sm:shrink-0'
+          >
+            <Link href={data.secondaryLink || '#'} target='_blank' rel='noopener noreferrer'>
+              {data.secondaryLabel}
+            </Link>
+          </Button>
         )}
       </div>
     </section>
@@ -63,8 +63,8 @@ export const fbcVideoBlockSchema: Template = {
     defaultItem: {
       title: 'A day in the life of a software consultant at SSW',
       description: 'Dive into an overview of FireBootCamp in the video below.',
-      secondaryLabel: 'More at SSWTV',
-      secondaryLink: 'https://tv.ssw.com',
+      secondaryLabel: 'Discover more on SSWTV',
+      secondaryLink: 'https://www.youtube.com/@SSWTV',
       videoUrl: 'https://www.youtube.com/embed/example',
     },
   },

@@ -89,7 +89,7 @@ export const Footer = () => {
               href='https://tina.io/'
               target='_blank'
               rel='noopener noreferrer'
-              className='flex items-center gap-2 text-scheme-2-text hover:text-[#FF6900] transition-colors'
+              className='flex items-center gap-2 text-scheme-2-text hover:text-[#EC4815] transition-colors'
             >
               <img src='/uploads/tina-logo.png' alt='TinaCMS' className='h-10 w-auto' />
               <span className='font-sans text-[12px] md:text-[14px] font-semibold uppercase tracking-wide'>Powered by TinaCMS</span>
@@ -101,10 +101,10 @@ export const Footer = () => {
           {/* Bottom row: Copyright (left) + Social links (right) */}
           <div className='flex items-center justify-between'>
             <p className='text-scheme-2-text font-sans text-[12px] md:text-[14px] lg:text-[16px] leading-[1.5]'>
-              © {new Date().getFullYear()} SSW FireBootCamp. All rights reserved.
+              © {new Date().getFullYear() === 2014 ? '2014' : `2014-${new Date().getFullYear()}`} SSW FireBootCamp. All rights reserved.
             </p>
 
-            <div className='flex gap-3'>
+            <div className='flex gap-6'>
               {footer?.social?.map((link, index) => (
                 <Link
                   key={index}

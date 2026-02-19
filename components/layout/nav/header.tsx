@@ -30,7 +30,7 @@ export const Header = () => {
             <div className='flex items-center justify-between h-[64px] lg:h-[72px]'>
               {/* Logo - Left aligned */}
               <div
-                className='shrink-0 flex items-center justify-center cursor-pointer max-w-[200px] md:max-w-none'
+                className='shrink-0 flex items-center justify-center cursor-pointer max-w-[200px] md:max-w-none w-[300px]'
                 onClick={() => {
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
@@ -84,7 +84,7 @@ export const Header = () => {
               </div>
 
               {/* CTA Button - Right aligned */}
-              <div className='flex items-center gap-4 shrink-0'>
+              <div className='flex items-center gap-4 shrink-0 w-[300px] justify-end'>
                 <Button asChild className='hidden lg:flex bg-red text-white'>
                   <a
                     href='#pricing'

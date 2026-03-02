@@ -101,7 +101,7 @@ export const Footer = () => {
           {/* Bottom row: Copyright (left) + Social links (right) */}
           <div className='flex items-center justify-between'>
             <p className='text-scheme-2-text font-sans text-[12px] md:text-[14px] lg:text-[16px] leading-[1.5]'>
-              © {new Date().getFullYear() === 2014 ? '2014' : `2014-${new Date().getFullYear()}`} SSW FireBootCamp. All rights reserved.
+              © 2014–{new Date().getFullYear()} SSW FireBootCamp. All rights reserved.
             </p>
 
             <div className='flex gap-6'>

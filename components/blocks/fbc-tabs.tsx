@@ -1,4 +1,5 @@
 'use client';
+import { AnimatePresence, motion } from 'motion/react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -6,53 +7,47 @@ import type { Template } from 'tinacms';
 import { tinaField } from 'tinacms/dist/react';
 import type { PageBlocksFbcTabs, PageBlocksFbcTabsTabs } from '../../tina/__generated__/types';
 
+const tabVariants = {
+  enter: (direction: number) => ({
+    x: direction > 0 ? 200 : -200,
+    opacity: 0,
+  }),
+  center: {
+    x: 0,
+    opacity: 1,
+  },
+  exit: (direction: number) => ({
+    x: direction > 0 ? -200 : 200,
+    opacity: 0,
+  }),
+};
+
 export const FbcTabs = ({ data }: { data: PageBlocksFbcTabs }) => {
-  const [activeTab, setActiveTab] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [displayedTab, setDisplayedTab] = useState(0);
+  const [[activeTab, direction], setTab] = useState([0, 0]);
   const tabs = (data.tabs || []).filter((tab): tab is PageBlocksFbcTabsTabs => tab !== null);
   const sectionRef = useRef<HTMLElement>(null);
 
   const handleTabChange = useCallback(
     (index: number) => {
-      if (index === activeTab || isTransitioning) return;
-
-      setIsTransitioning(true);
-      setTimeout(() => {
-        setDisplayedTab(index);
-        setActiveTab(index);
-        setTimeout(() => {
-          setIsTransitioning(false);
-        }, 50);
-      }, 200);
+      if (index === activeTab) return;
+      setTab([index, index > activeTab ? 1 : -1]);
     },
-    [activeTab, isTransitioning]
+    [activeTab]
   );
 
-  const goToPrevious = useCallback(
-    (e?: React.MouseEvent) => {
-      e?.preventDefault();
-      if (isTransitioning) return;
-      const newIndex = activeTab === 0 ? tabs.length - 1 : activeTab - 1;
-      handleTabChange(newIndex);
-    },
-    [activeTab, isTransitioning, tabs.length, handleTabChange]
-  );
+  const goToPrevious = useCallback(() => {
+    const newIndex = activeTab === 0 ? tabs.length - 1 : activeTab - 1;
+    setTab([newIndex, -1]);
+  }, [activeTab, tabs.length]);
 
-  const goToNext = useCallback(
-    (e?: React.MouseEvent) => {
-      e?.preventDefault();
-      if (isTransitioning) return;
-      const newIndex = activeTab === tabs.length - 1 ? 0 : activeTab + 1;
-      handleTabChange(newIndex);
-    },
-    [activeTab, isTransitioning, tabs.length, handleTabChange]
-  );
+  const goToNext = useCallback(() => {
+    const newIndex = activeTab === tabs.length - 1 ? 0 : activeTab + 1;
+    setTab([newIndex, 1]);
+  }, [activeTab, tabs.length]);
 
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Only handle if section is in view or focused
       if (!sectionRef.current?.contains(document.activeElement) && document.activeElement !== sectionRef.current) {
         return;
       }
@@ -112,15 +107,24 @@ export const FbcTabs = ({ data }: { data: PageBlocksFbcTabs }) => {
 
           <div className='w-full relative'>
             <div className='w-full min-h-[400px] md:min-h-[500px] lg:h-[640px] bg-scheme-3-background rounded-lg overflow-hidden relative'>
-              <div
-                className={`h-full transition-opacity duration-200 ease-in-out ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}
-                role='tabpanel'
-                id={`tabpanel-${activeTab}`}
-                aria-labelledby={`tab-${activeTab}`}
-                aria-live='polite'
-              >
-                {tabs[displayedTab] && <TabContent tab={tabs[displayedTab]!} goToPrevious={goToPrevious} goToNext={goToNext} />}
-              </div>
+              <AnimatePresence initial={false} custom={direction} mode='popLayout'>
+                <motion.div
+                  key={activeTab}
+                  custom={direction}
+                  variants={tabVariants}
+                  initial='enter'
+                  animate='center'
+                  exit='exit'
+                  transition={{ type: 'tween', duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  className='h-full'
+                  role='tabpanel'
+                  id={`tabpanel-${activeTab}`}
+                  aria-labelledby={`tab-${activeTab}`}
+                  aria-live='polite'
+                >
+                  {tabs[activeTab] && <TabContent tab={tabs[activeTab]!} goToPrevious={goToPrevious} goToNext={goToNext} />}
+                </motion.div>
+              </AnimatePresence>
             </div>
           </div>
         </div>

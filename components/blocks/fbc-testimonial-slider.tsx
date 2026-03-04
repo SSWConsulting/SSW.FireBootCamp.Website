@@ -1,99 +1,91 @@
 'use client';
 import Image from 'next/image';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import type { Template } from 'tinacms';
 import { tinaField } from 'tinacms/dist/react';
 import type { PageBlocksFbcTestimonialSlider, PageBlocksFbcTestimonialSliderTestimonials } from '../../tina/__generated__/types';
 
 export const FbcTestimonialSlider = ({ data }: { data: PageBlocksFbcTestimonialSlider }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState<'left' | 'right'>('right');
-  const [isAnimating, setIsAnimating] = useState(false);
-  const testimonials = data.testimonials || [];
-  const sectionRef = useRef<HTMLElement>(null);
+  const testimonials = (data.testimonials || []).filter(
+    (t): t is PageBlocksFbcTestimonialSliderTestimonials => t != null
+  );
 
-  const goToPrevious = (e: React.MouseEvent) => {
-    e.preventDefault();
-    if (isAnimating) return;
-    setDirection('left');
-    setIsAnimating(true);
-    setTimeout(() => {
-      setCurrentIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
-      setIsAnimating(false);
-    }, 300);
+  if (testimonials.length === 0) return null;
+
+  const goToPrevious = () => {
+    setCurrentIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
   };
 
-  const goToNext = (e: React.MouseEvent) => {
-    e.preventDefault();
-    if (isAnimating) return;
-    setDirection('right');
-    setIsAnimating(true);
-    setTimeout(() => {
-      setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
-      setIsAnimating(false);
-    }, 300);
+  const goToNext = () => {
+    setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
   };
-
-  const currentTestimonial = testimonials[currentIndex];
-  if (!currentTestimonial) return null;
 
   return (
-    <section ref={sectionRef} className='bg-scheme-1-background px-6 md:px-16 lg:px-16 py-16 md:py-24 lg:py-32 overflow-hidden'>
+    <section className='bg-scheme-1-background px-6 md:px-16 lg:px-16 py-16 md:py-24 lg:py-32 overflow-hidden'>
       <div className='max-w-[1440px] mx-auto flex flex-col gap-8 md:gap-8'>
-        <div className='relative'>
+        {/* Scrolling carousel viewport */}
+        <div className='overflow-hidden'>
           <div
-            className={`flex flex-col md:flex-row gap-6 md:gap-10 lg:gap-20 items-center h-full transition-all duration-300 ease-in-out ${
-              isAnimating ? (direction === 'right' ? '-translate-x-8 opacity-0' : 'translate-x-8 opacity-0') : 'translate-x-0 opacity-100'
-            }`}
+            className='flex transition-transform duration-500 ease-out'
+            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
-            {currentTestimonial.image && (
-              <div className='w-full md:w-1/2 aspect-square relative rounded-lg overflow-hidden shrink-0'>
-                <Image
-                  src={currentTestimonial.image}
-                  alt={currentTestimonial.author || 'Testimonial author'}
-                  fill
-                  className='object-cover'
-                  data-tina-field={tinaField(currentTestimonial, 'image')}
-                />
-              </div>
-            )}
-
-            <div className='w-full md:w-1/2 flex flex-col gap-4 md:gap-6 lg:gap-8'>
-              <div className='flex gap-1'>
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className='w-4 h-4 md:w-5 md:h-5 text-yellow-400' fill='currentColor' viewBox='0 0 20 20'>
-                    <path d='M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z' />
-                  </svg>
-                ))}
-              </div>
-
-              <blockquote
-                data-tina-field={tinaField(currentTestimonial, 'quote')}
-                className='font-oswald font-bold text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] uppercase tracking-[-0.32px] leading-[1.1] text-scheme-1-text'
+            {testimonials.map((testimonial, index) => (
+              <div
+                key={index}
+                className='w-full flex-shrink-0 flex flex-col md:flex-row gap-6 md:gap-10 lg:gap-20 items-center'
               >
-                {currentTestimonial.quote}
-              </blockquote>
+                {testimonial.image && (
+                  <div className='w-full md:w-1/2 aspect-square relative rounded-lg overflow-hidden shrink-0'>
+                    <Image
+                      src={testimonial.image}
+                      alt={testimonial.author || 'Testimonial author'}
+                      fill
+                      className='object-cover'
+                      data-tina-field={tinaField(testimonial, 'image')}
+                    />
+                  </div>
+                )}
 
-              <div className='flex gap-5 items-center'>
-                <div className='flex flex-col'>
-                  <p
-                    data-tina-field={tinaField(currentTestimonial, 'author')}
-                    className='font-sans text-[14px] md:text-[16px] lg:text-[18px] font-semibold leading-[1.5] text-scheme-1-text'
+                <div className='w-full md:w-1/2 flex flex-col gap-4 md:gap-6 lg:gap-8'>
+                  <div className='flex gap-1'>
+                    {[...Array(5)].map((_, i) => (
+                      <svg key={i} className='w-4 h-4 md:w-5 md:h-5 text-yellow-400' fill='currentColor' viewBox='0 0 20 20'>
+                        <path d='M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z' />
+                      </svg>
+                    ))}
+                  </div>
+
+                  <blockquote
+                    data-tina-field={tinaField(testimonial, 'quote')}
+                    className='font-oswald font-bold text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] uppercase tracking-[-0.32px] leading-[1.1] text-scheme-1-text'
                   >
-                    {currentTestimonial.author}
-                  </p>
-                  <p
-                    data-tina-field={tinaField(currentTestimonial, 'role')}
-                    className='font-sans text-[14px] md:text-[16px] lg:text-[18px] leading-[1.5] text-scheme-1-text'
-                  >
-                    {currentTestimonial.role}
-                  </p>
+                    {testimonial.quote}
+                  </blockquote>
+
+                  <div className='flex gap-5 items-center'>
+                    <div className='flex flex-col'>
+                      <p
+                        data-tina-field={tinaField(testimonial, 'author')}
+                        className='font-sans text-[14px] md:text-[16px] lg:text-[18px] font-semibold leading-[1.5] text-scheme-1-text'
+                      >
+                        {testimonial.author}
+                      </p>
+                      <p
+                        data-tina-field={tinaField(testimonial, 'role')}
+                        className='font-sans text-[14px] md:text-[16px] lg:text-[18px] leading-[1.5] text-scheme-1-text'
+                      >
+                        {testimonial.role}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
         </div>
 
+        {/* Navigation arrows - always fixed outside scroll */}
         <div className='flex items-center justify-end'>
           <div className='flex gap-2 md:gap-4'>
             <button

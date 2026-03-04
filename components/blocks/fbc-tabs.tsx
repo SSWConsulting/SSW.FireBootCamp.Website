@@ -98,12 +98,12 @@ export const FbcTabs = ({ data }: { data: PageBlocksFbcTabs }) => {
                 {tabs.map((tab, index) => (
                   <div
                     key={index}
-                    className='w-full flex-shrink-0 flex flex-col md:flex-row h-full'
+                    className='w-full flex-shrink-0 flex flex-col md:flex-row items-center'
                     role='tabpanel'
                     id={`tabpanel-${index}`}
                     aria-labelledby={`tab-${index}`}
                   >
-                    <div className='w-full md:w-1/2 aspect-[4/3] md:aspect-auto relative pointer-events-none shrink-0'>
+                    <div className='w-full md:w-1/2 aspect-square relative overflow-hidden shrink-0'>
                       {tab.image && (
                         <Image src={tab.image} alt={tab.title || 'Tab content image'} fill className='object-cover' data-tina-field={tinaField(tab, 'image')} />
                       )}

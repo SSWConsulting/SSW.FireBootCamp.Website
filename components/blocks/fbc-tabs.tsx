@@ -88,7 +88,7 @@ export const FbcTabs = ({ data }: { data: PageBlocksFbcTabs }) => {
           </div>
 
           <div className='w-full relative'>
-            <div className='w-full min-h-[400px] md:min-h-[500px] lg:h-[640px] bg-scheme-3-background rounded-lg overflow-hidden relative'>
+            <div className='w-full bg-scheme-3-background rounded-lg overflow-hidden relative'>
               {/* Scrolling content strip */}
               <div
                 className='flex h-full transition-transform duration-500 ease-out'

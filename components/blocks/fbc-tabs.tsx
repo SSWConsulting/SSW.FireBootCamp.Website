@@ -98,7 +98,7 @@ export const FbcTabs = ({ data }: { data: PageBlocksFbcTabs }) => {
                 {tabs.map((tab, index) => (
                   <div
                     key={index}
-                    className='w-full flex-shrink-0 flex flex-col md:flex-row items-start'
+                    className='w-full flex-shrink-0 flex flex-col md:flex-row items-stretch'
                     role='tabpanel'
                     id={`tabpanel-${index}`}
                     aria-labelledby={`tab-${index}`}

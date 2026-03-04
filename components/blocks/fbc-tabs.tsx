@@ -98,17 +98,17 @@ export const FbcTabs = ({ data }: { data: PageBlocksFbcTabs }) => {
                 {tabs.map((tab, index) => (
                   <div
                     key={index}
-                    className='w-full flex-shrink-0 flex flex-col lg:flex-row h-full'
+                    className='w-full flex-shrink-0 flex flex-col md:flex-row h-full'
                     role='tabpanel'
                     id={`tabpanel-${index}`}
                     aria-labelledby={`tab-${index}`}
                   >
-                    <div className='w-full aspect-[4/3] lg:h-auto lg:flex-1 lg:max-w-[50%] relative pointer-events-none'>
+                    <div className='w-full md:w-1/2 aspect-[4/3] md:aspect-auto relative pointer-events-none shrink-0'>
                       {tab.image && (
                         <Image src={tab.image} alt={tab.title || 'Tab content image'} fill className='object-cover' data-tina-field={tinaField(tab, 'image')} />
                       )}
                     </div>
-                    <div className='flex-1 flex flex-col py-8 px-6 md:py-12 md:px-10 lg:py-16 lg:px-12 gap-4 md:gap-6 lg:gap-8 max-w-full lg:max-w-[50%]'>
+                    <div className='w-full md:w-1/2 flex flex-col py-8 px-6 md:py-12 md:px-10 lg:py-16 lg:px-12 gap-4 md:gap-6 lg:gap-8'>
                       <div className='flex flex-col gap-3 md:gap-4'>
                         <span className='font-sans text-[14px] md:text-[16px] font-semibold leading-[1.5] text-scheme-3-text'>{tab.title}</span>
                         <div className='flex flex-col gap-4 md:gap-6'>

@@ -84,7 +84,7 @@ export const Header = () => {
               </div>
 
               {/* CTA Button - Right aligned */}
-              <div className='flex items-center gap-4 shrink-0 w-[300px] justify-end'>
+              <div className='flex items-center gap-4 shrink-0 lg:w-[300px] justify-end'>
                 <Button asChild className='hidden lg:flex bg-red text-white'>
                   <a
                     href='#pricing'

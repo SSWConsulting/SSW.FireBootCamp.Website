@@ -31,7 +31,7 @@ export const FbcHero = ({ data }: { data: PageBlocksFbcHero }) => {
             <span className='font-jetbrains font-thin text-[2.5rem] sm:text-[3.75rem] md:text-[5rem] lg:text-[6.75rem] text-white tracking-[-1.08px]'>&lt;</span>
             <span className='text-fbc-red text-[2rem] sm:text-[3rem] md:text-[4rem] lg:text-[5.25rem] tracking-[-0.84px]'>Code</span>
             <span className='font-jetbrains font-thin text-[2.5rem] sm:text-[3.75rem] md:text-[5rem] lg:text-[6.75rem] text-white tracking-[-1.08px]'>&gt;</span>
-            <span className='text-[2rem] sm:text-[3rem] md:text-[4rem] lg:text-[5.25rem] tracking-[-0.84px] lg:leading-[95px]'> {data.headline}</span>
+            <span className='text-[2rem] sm:text-[3rem] md:text-[4rem] lg:text-[5.25rem] tracking-[-0.84px] lg:leading-[5.9375rem]'> {data.headline}</span>
           </h1>
         </div>
 

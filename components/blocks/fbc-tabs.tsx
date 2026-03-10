@@ -59,11 +59,11 @@ export const FbcTabs = ({ data }: { data: PageBlocksFbcTabs }) => {
         <div className='max-w-full md:max-w-[768px] text-center flex flex-col gap-4 md:gap-6 lg:gap-8'>
           <h2
             data-tina-field={tinaField(data, 'title')}
-            className='font-oswald font-bold text-[32px] sm:text-[40px] md:text-[50px] lg:text-[60px] uppercase tracking-[-0.6px] leading-none text-scheme-1-text'
+            className='font-oswald font-bold text-[2rem] sm:text-[2.5rem] md:text-[3.125rem] lg:text-[3.75rem] uppercase tracking-[-0.6px] leading-none text-scheme-1-text'
           >
             {data.title}
           </h2>
-          <p data-tina-field={tinaField(data, 'description')} className='font-sans text-[16px] md:text-[18px] lg:text-[20px] leading-[1.5] text-scheme-1-text'>
+          <p data-tina-field={tinaField(data, 'description')} className='font-sans text-[1rem] md:text-[1.125rem] lg:text-[1.25rem] leading-[1.5] text-scheme-1-text'>
             {data.description}
           </p>
         </div>
@@ -78,7 +78,7 @@ export const FbcTabs = ({ data }: { data: PageBlocksFbcTabs }) => {
                 aria-selected={activeTab === index}
                 aria-controls={`tabpanel-${index}`}
                 id={`tab-${index}`}
-                className={`px-2 md:px-0 py-2 font-sans text-[14px] md:text-[16px] lg:text-[18px] font-medium leading-[1.5] transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red focus-visible:ring-offset-2 rounded-none ${
+                className={`px-2 md:px-0 py-2 font-sans text-[0.875rem] md:text-[1rem] lg:text-[1.125rem] font-medium leading-[1.5] transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red focus-visible:ring-offset-2 rounded-none ${
                   activeTab === index ? 'text-red border-b-2 border-red font-bold' : 'text-scheme-1-text hover:text-red'
                 }`}
               >
@@ -110,17 +110,17 @@ export const FbcTabs = ({ data }: { data: PageBlocksFbcTabs }) => {
                     </div>
                     <div className='w-full md:w-1/2 flex flex-col py-8 px-6 md:py-12 md:px-10 lg:py-16 lg:px-12 gap-4 md:gap-6 lg:gap-8'>
                       <div className='flex flex-col gap-3 md:gap-4'>
-                        <span className='font-sans text-[14px] md:text-[16px] font-semibold leading-[1.5] text-scheme-3-text'>{tab.title}</span>
+                        <span className='font-sans text-[0.875rem] md:text-[1rem] font-semibold leading-[1.5] text-scheme-3-text'>{tab.title}</span>
                         <div className='flex flex-col gap-4 md:gap-6'>
                           <h3
                             data-tina-field={tinaField(tab, 'headline')}
-                            className='font-oswald font-bold text-[24px] sm:text-[32px] md:text-[40px] lg:text-[48px] uppercase tracking-[-0.48px] leading-none text-scheme-3-text'
+                            className='font-oswald font-bold text-[1.5rem] sm:text-[2rem] md:text-[2.5rem] lg:text-[3rem] uppercase tracking-[-0.48px] leading-none text-scheme-3-text'
                           >
                             {tab.headline}
                           </h3>
                           <p
                             data-tina-field={tinaField(tab, 'content')}
-                            className='font-sans text-[14px] md:text-[16px] lg:text-[20px] leading-[1.5] text-scheme-3-text'
+                            className='font-sans text-[0.875rem] md:text-[1rem] lg:text-[1.25rem] leading-[1.5] text-scheme-3-text'
                           >
                             {tab.content}
                           </p>

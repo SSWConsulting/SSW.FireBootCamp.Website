@@ -13,13 +13,13 @@ export const FbcVideo = ({ data }: { data: PageBlocksFbcVideo }) => {
           <div className='flex flex-col gap-4 md:gap-6'>
             <h2
               data-tina-field={tinaField(data, 'title')}
-              className='font-oswald font-bold text-[32px] sm:text-[40px] md:text-[50px] lg:text-[60px] uppercase tracking-[-0.6px] leading-none text-scheme-3-text'
+              className='font-oswald font-bold text-[2rem] sm:text-[2.5rem] md:text-[3.125rem] lg:text-[3.75rem] uppercase tracking-[-0.6px] leading-none text-scheme-3-text'
             >
               {data.title}
             </h2>
             <p
               data-tina-field={tinaField(data, 'description')}
-              className='font-sans text-[14px] md:text-[16px] lg:text-[20px] leading-[1.5] text-scheme-3-text'
+              className='font-sans text-[0.875rem] md:text-[1rem] lg:text-[1.25rem] leading-[1.5] text-scheme-3-text'
             >
               {data.description}
             </p>

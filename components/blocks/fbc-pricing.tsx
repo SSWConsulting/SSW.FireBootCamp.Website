@@ -24,11 +24,11 @@ export const FbcPricing = ({ data }: { data: PageBlocksFbcPricing }) => {
         <div className='max-w-full md:max-w-[768px] text-center flex flex-col gap-4 md:gap-6'>
           <h2
             data-tina-field={tinaField(data, 'title')}
-            className='font-oswald font-bold text-[32px] sm:text-[40px] md:text-[50px] lg:text-[60px] uppercase tracking-[-0.6px] leading-none text-scheme-3-text'
+            className='font-oswald font-bold text-[2rem] sm:text-[2.5rem] md:text-[3.125rem] lg:text-[3.75rem] uppercase tracking-[-0.6px] leading-none text-scheme-3-text'
           >
             {data.title}
           </h2>
-          <p data-tina-field={tinaField(data, 'description')} className='font-sans text-[16px] md:text-[18px] lg:text-[20px] leading-[1.5] text-scheme-3-text'>
+          <p data-tina-field={tinaField(data, 'description')} className='font-sans text-[1rem] md:text-[1.125rem] lg:text-[1.25rem] leading-[1.5] text-scheme-3-text'>
             {data.description}
           </p>
         </div>
@@ -121,11 +121,11 @@ const PricingCard = ({ plan, generateMailtoLink }: { plan: PageBlocksFbcPricingP
             <div className='flex flex-col gap-3'>
               <h3
                 data-tina-field={tinaField(plan, 'name')}
-                className='font-oswald font-bold text-[40px] uppercase tracking-[-0.4px] leading-[100%] text-[#000]'
+                className='font-oswald font-bold text-[2.5rem] uppercase tracking-[-0.4px] leading-[100%] text-[#000]'
               >
                 {plan.name}
               </h3>
-              <p data-tina-field={tinaField(plan, 'subtitle')} className='font-sans text-[18px] leading-[1.5] text-scheme-1-text'>
+              <p data-tina-field={tinaField(plan, 'subtitle')} className='font-sans text-[1.125rem] leading-[1.5] text-scheme-1-text'>
                 {plan.subtitle}
               </p>
             </div>
@@ -139,14 +139,14 @@ const PricingCard = ({ plan, generateMailtoLink }: { plan: PageBlocksFbcPricingP
               <div className='flex flex-wrap items-start md:items-end gap-[10px]'>
                 <p
                   data-tina-field={tinaField(plan, 'price')}
-                  className='font-oswald font-bold text-[84px] uppercase tracking-[-0.84px] leading-[100%] text-[#000]'
+                  className='font-oswald font-bold text-[5.25rem] uppercase tracking-[-0.84px] leading-[100%] text-[#000]'
                 >
                   {priceDisplay.mainPrice}
                 </p>
                 {priceDisplay.discountPrice && (
                   <p
                     data-tina-field={tinaField(plan, 'discountPrice' as any)}
-                    className='font-oswald font-bold text-[40px] uppercase tracking-[-0.4px] leading-[100%] text-[#B2B2B2] line-through'
+                    className='font-oswald font-bold text-[2.5rem] uppercase tracking-[-0.4px] leading-[100%] text-[#B2B2B2] line-through'
                   >
                     {priceDisplay.discountPrice}
                   </p>
@@ -160,7 +160,7 @@ const PricingCard = ({ plan, generateMailtoLink }: { plan: PageBlocksFbcPricingP
               const displayNote = scholarshipNote || (isFullCourse ? '*Pass the entry test to get the discounted price' : null);
               if (!displayNote) return null;
               return (
-                <p data-tina-field={tinaField(plan, 'scholarshipNote' as any)} className='font-sans text-[18px] font-normal leading-[150%] text-[#4C4C4C]'>
+                <p data-tina-field={tinaField(plan, 'scholarshipNote' as any)} className='font-sans text-[1.125rem] font-normal leading-[150%] text-[#4C4C4C]'>
                   {displayNote}
                 </p>
               );
@@ -194,7 +194,7 @@ const FeatureItem = ({ feature }: { feature: PageBlocksFbcPricingPlansFeatures }
       <svg className='w-5 h-5 md:w-6 md:h-6 text-red shrink-0' fill='currentColor' viewBox='0 0 24 24'>
         <path d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z' />
       </svg>
-      <p className='font-sans text-[14px] md:text-[16px] lg:text-[18px] leading-[1.5] text-scheme-1-text'>{feature.text}</p>
+      <p className='font-sans text-[0.875rem] md:text-[1rem] lg:text-[1.125rem] leading-[1.5] text-scheme-1-text'>{feature.text}</p>
     </div>
   );
 };

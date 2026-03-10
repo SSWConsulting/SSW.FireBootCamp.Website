@@ -29,13 +29,13 @@ export const FbcCertification = ({ data }: { data: PageBlocksFbcCertification })
             <div className='flex flex-col gap-4 md:gap-6 items-center lg:items-start'>
               <h2
                 data-tina-field={tinaField(data, 'title')}
-                className='font-oswald font-bold text-[32px] sm:text-[40px] md:text-[50px] lg:text-[60px] uppercase tracking-[-0.6px] leading-none text-scheme-1-text text-center lg:text-left'
+                className='font-oswald font-bold text-[2rem] sm:text-[2.5rem] md:text-[3.125rem] lg:text-[3.75rem] uppercase tracking-[-0.6px] leading-none text-scheme-1-text text-center lg:text-left'
               >
                 {data.title}
               </h2>
               <p
                 data-tina-field={tinaField(data, 'description')}
-                className='font-sans text-[14px] md:text-[16px] lg:text-[20px] leading-[1.5] text-scheme-1-text whitespace-pre-line text-center lg:text-left max-w-[560px]'
+                className='font-sans text-[0.875rem] md:text-[1rem] lg:text-[1.25rem] leading-[1.5] text-scheme-1-text whitespace-pre-line text-center lg:text-left max-w-[560px]'
               >
                 {data.description}
               </p>
@@ -50,7 +50,7 @@ export const FbcCertification = ({ data }: { data: PageBlocksFbcCertification })
                   id='certification-email'
                   type='email'
                   placeholder={data.emailPlaceholder || 'Enter your email address'}
-                  className='w-full sm:w-full sm:min-w-0 min-h-[52px] px-3 bg-black/5 rounded-md font-sans text-[14px] md:text-[16px] lg:text-[18px] leading-[1.5] border-0 placeholder:text-black/60'
+                  className='w-full sm:w-full sm:min-w-0 min-h-[52px] px-3 bg-black/5 rounded-md font-sans text-[0.875rem] md:text-[1rem] lg:text-[1.125rem] leading-[1.5] border-0 placeholder:text-black/60'
                 />
                 <Button asChild className='bg-red text-white whitespace-nowrap w-full sm:w-fit sm:shrink-0'>
                   <a href={mailtoLink}>{data.buttonLabel || 'Commit'}</a>
@@ -58,7 +58,7 @@ export const FbcCertification = ({ data }: { data: PageBlocksFbcCertification })
               </div>
               <p
                 data-tina-field={tinaField(data, 'disclaimer')}
-                className='font-sans text-[11px] md:text-[12px] leading-[1.5] text-scheme-1-text text-center lg:text-left'
+                className='font-sans text-[0.6875rem] md:text-[0.75rem] leading-[1.5] text-scheme-1-text text-center lg:text-left'
               >
                 {data.disclaimer}
               </p>

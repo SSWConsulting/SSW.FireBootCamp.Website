@@ -13,11 +13,11 @@ export const FbcTeam = ({ data }: { data: PageBlocksFbcTeam }) => {
         <div className='max-w-[768px] text-center flex flex-col gap-4 md:gap-6'>
           <h2
             data-tina-field={tinaField(data, 'title')}
-            className='font-oswald font-bold text-[32px] sm:text-[40px] md:text-[50px] lg:text-[60px] uppercase tracking-[-0.6px] leading-none text-scheme-3-text'
+            className='font-oswald font-bold text-[2rem] sm:text-[2.5rem] md:text-[3.125rem] lg:text-[3.75rem] uppercase tracking-[-0.6px] leading-none text-scheme-3-text'
           >
             {data.title}
           </h2>
-          <p data-tina-field={tinaField(data, 'description')} className='font-sans text-[16px] md:text-[18px] lg:text-[20px] leading-[1.5] text-scheme-3-text'>
+          <p data-tina-field={tinaField(data, 'description')} className='font-sans text-[1rem] md:text-[1.125rem] lg:text-[1.25rem] leading-[1.5] text-scheme-3-text'>
             {data.description}
           </p>
         </div>
@@ -49,16 +49,16 @@ const TeamMemberCard = ({ member }: { member: PageBlocksFbcTeamMembers }) => {
         <div className='flex flex-col items-center'>
           <p
             data-tina-field={tinaField(member, 'name')}
-            className='font-sans text-[20px] md:text-[24px] lg:text-[26px] font-semibold leading-[1.5] text-scheme-3-text'
+            className='font-sans text-[1.25rem] md:text-[1.5rem] lg:text-[1.625rem] font-semibold leading-[1.5] text-scheme-3-text'
           >
             {member.name}
           </p>
-          <p data-tina-field={tinaField(member, 'role')} className='font-sans text-[16px] font-semibold uppercase leading-[150%] text-[#7F7F7F] text-center'>
+          <p data-tina-field={tinaField(member, 'role')} className='font-sans text-[1rem] font-semibold uppercase leading-[150%] text-[#7F7F7F] text-center'>
             {member.role}
           </p>
         </div>
 
-        <p data-tina-field={tinaField(member, 'bio')} className='font-sans text-[14px] md:text-[15px] lg:text-[16px] leading-[1.5] text-scheme-3-text'>
+        <p data-tina-field={tinaField(member, 'bio')} className='font-sans text-[0.875rem] md:text-[0.9375rem] lg:text-[1rem] leading-[1.5] text-scheme-3-text'>
           {member.bio}
         </p>
       </div>

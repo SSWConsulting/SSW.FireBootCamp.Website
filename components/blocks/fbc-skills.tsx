@@ -11,13 +11,13 @@ export const FbcSkills = ({ data }: { data: PageBlocksFbcSkills }) => {
         <div className='max-w-full md:max-w-[768px] flex flex-col gap-4 md:gap-6'>
           <h2
             data-tina-field={tinaField(data, 'title')}
-            className='font-oswald font-bold text-[32px] sm:text-[40px] md:text-[50px] lg:text-[60px] uppercase tracking-[-0.6px] leading-none text-scheme-1-text text-center'
+            className='font-oswald font-bold text-[2rem] sm:text-[2.5rem] md:text-[3.125rem] lg:text-[3.75rem] uppercase tracking-[-0.6px] leading-none text-scheme-1-text text-center'
           >
             {data.title}
           </h2>
           <p
             data-tina-field={tinaField(data, 'description')}
-            className='font-sans text-[14px] md:text-[16px] lg:text-[20px] leading-[1.5] text-scheme-1-text text-center'
+            className='font-sans text-[0.875rem] md:text-[1rem] lg:text-[1.25rem] leading-[1.5] text-scheme-1-text text-center'
           >
             {data.description}
           </p>
@@ -63,11 +63,11 @@ const SkillItem = ({ skill, index }: { skill: PageBlocksFbcSkillsSkills; index: 
       <div className='flex flex-col gap-3 md:gap-4'>
         <h3
           data-tina-field={tinaField(skill, 'title')}
-          className='font-oswald font-bold text-[20px] md:text-[22px] lg:text-[26px] uppercase tracking-[-0.26px] leading-[1.1] text-scheme-1-text'
+          className='font-oswald font-bold text-[1.25rem] md:text-[1.375rem] lg:text-[1.625rem] uppercase tracking-[-0.26px] leading-[1.1] text-scheme-1-text'
         >
           {skill.title}
         </h3>
-        <p data-tina-field={tinaField(skill, 'text')} className='font-sans text-[14px] md:text-[15px] lg:text-[16px] leading-[1.5] text-scheme-1-text'>
+        <p data-tina-field={tinaField(skill, 'text')} className='font-sans text-[0.875rem] md:text-[0.9375rem] lg:text-[1rem] leading-[1.5] text-scheme-1-text'>
           {skill.text}
         </p>
       </div>

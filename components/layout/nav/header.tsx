@@ -38,7 +38,7 @@ export const Header = () => {
                 {header?.logo ? (
                   <img src={header.logo} alt={header.name || 'FireBootCamp'} className='h-8 md:h-10 lg:h-12 w-auto -mt-2' style={{ height: '40px' }} />
                 ) : (
-                  <span className='text-scheme-2-text font-bold font-sans text-[20px]'>{header?.name || 'FireBootCamp'}</span>
+                  <span className='text-scheme-2-text font-bold font-sans text-[1.25rem]'>{header?.name || 'FireBootCamp'}</span>
                 )}
               </div>
 
@@ -49,7 +49,7 @@ export const Header = () => {
                     {item?.hasDropdown ? (
                       <div
                         onMouseEnter={() => setMegaMenuOpen(true)}
-                        className='flex items-center gap-1 text-scheme-2-text font-sans text-[18px] leading-[1.5] hover:text-scheme-2-text/80 transition-colors cursor-pointer'
+                        className='flex items-center gap-1 text-scheme-2-text font-sans text-[1.125rem] leading-[1.5] hover:text-scheme-2-text/80 transition-colors cursor-pointer'
                       >
                         <span>{item.label}</span>
                         <ChevronDown className={`w-6 h-6 transition-transform ${megaMenuOpen ? 'rotate-180' : ''}`} />
@@ -67,14 +67,14 @@ export const Header = () => {
                             window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
                           }
                         }}
-                        className='text-scheme-2-text font-sans text-[18px] leading-[1.5] hover:text-scheme-2-text/80 transition-colors cursor-pointer'
+                        className='text-scheme-2-text font-sans text-[1.125rem] leading-[1.5] hover:text-scheme-2-text/80 transition-colors cursor-pointer'
                       >
                         {item?.label}
                       </a>
                     ) : (
                       <AutoLink
                         href={item?.href || '#'}
-                        className='text-scheme-2-text font-sans text-[18px] leading-[1.5] hover:text-scheme-2-text/80 transition-colors'
+                        className='text-scheme-2-text font-sans text-[1.125rem] leading-[1.5] hover:text-scheme-2-text/80 transition-colors'
                       >
                         {item?.label}
                       </AutoLink>
@@ -84,7 +84,7 @@ export const Header = () => {
               </div>
 
               {/* CTA Button - Right aligned */}
-              <div className='flex items-center gap-4 shrink-0 w-[300px] justify-end'>
+              <div className='flex items-center gap-4 shrink-0 lg:w-[300px] justify-end'>
                 <Button asChild className='hidden lg:flex bg-red text-white'>
                   <a
                     href='#pricing'
@@ -126,15 +126,15 @@ export const Header = () => {
                         </div>
                       )}
                       <div className='flex flex-col gap-1 text-scheme-2-text'>
-                        <span className='font-sans text-[18px] font-semibold leading-[1.5] group-hover:text-scheme-2-text/80'>{item?.title}</span>
-                        <span className='font-sans text-[16px] leading-[1.5] opacity-80'>{item?.description}</span>
+                        <span className='font-sans text-[1.125rem] font-semibold leading-[1.5] group-hover:text-scheme-2-text/80'>{item?.title}</span>
+                        <span className='font-sans text-[1rem] leading-[1.5] opacity-80'>{item?.description}</span>
                       </div>
                     </AutoLink>
                   ))}
                 </div>
               </div>
               <div className='bg-scheme-2-foreground px-6 md:px-16 lg:px-16 py-4'>
-                <div className='max-w-[1440px] mx-auto flex justify-center items-center gap-2 text-scheme-2-text font-sans text-[18px] leading-[1.5]'>
+                <div className='max-w-[1440px] mx-auto flex justify-center items-center gap-2 text-scheme-2-text font-sans text-[1.125rem] leading-[1.5]'>
                   <span>{header?.megaMenuBannerText || 'Transform your tech career now'}</span>
                   <a
                     href='#program'
@@ -167,7 +167,7 @@ export const Header = () => {
                   {item?.href?.startsWith('#') ? (
                     <a
                       href={item.href}
-                      className='text-scheme-2-text font-sans text-[18px] leading-[1.5] block py-2'
+                      className='text-scheme-2-text font-sans text-[1.125rem] leading-[1.5] block py-2'
                       onClick={(e) => {
                         e.preventDefault();
                         setMenuState(false);
@@ -185,7 +185,7 @@ export const Header = () => {
                   ) : (
                     <AutoLink
                       href={item?.href || '#'}
-                      className='text-scheme-2-text font-sans text-[18px] leading-[1.5] block py-2'
+                      className='text-scheme-2-text font-sans text-[1.125rem] leading-[1.5] block py-2'
                       onClick={() => setMenuState(false)}
                     >
                       {item?.label}

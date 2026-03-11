@@ -36,3 +36,5 @@ yarn-error.log*
 package-lock.json
 
 .tina/__generated__ai-rules/
+tsconfig.tsbuildinfo
+package-lock.json

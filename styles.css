@@ -153,17 +153,17 @@
   --opacity-neutral-darkest-50: rgba(0, 0, 0, 0.5);
   --opacity-neutral-darkest-60: rgba(0, 0, 0, 0.6);
 
-  --text-size-h1: 84px;
-  --text-size-h2: 60px;
-  --text-size-h3: 48px;
-  --text-size-h4: 40px;
-  --text-size-h5: 32px;
-  --text-size-h6: 26px;
-  --text-size-large: 26px;
-  --text-size-medium: 20px;
-  --text-size-regular: 18px;
-  --text-size-small: 16px;
-  --text-size-tiny: 12px;
+  --text-size-h1: 5.25rem;
+  --text-size-h2: 3.75rem;
+  --text-size-h3: 3rem;
+  --text-size-h4: 2.5rem;
+  --text-size-h5: 2rem;
+  --text-size-h6: 1.625rem;
+  --text-size-large: 1.625rem;
+  --text-size-medium: 1.25rem;
+  --text-size-regular: 1.125rem;
+  --text-size-small: 1rem;
+  --text-size-tiny: 0.75rem;
 
   --container-small: 1024px;
   --container-medium: 1280px;

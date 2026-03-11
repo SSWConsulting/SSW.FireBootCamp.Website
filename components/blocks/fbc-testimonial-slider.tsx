@@ -62,7 +62,7 @@ export const FbcTestimonialSlider = ({ data }: { data: PageBlocksFbcTestimonialS
 
                   <blockquote
                     data-tina-field={tinaField(testimonial, 'quote')}
-                    className='font-oswald font-bold text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] uppercase tracking-[-0.32px] leading-[1.1] text-scheme-1-text'
+                    className='font-oswald font-bold text-[1.25rem] sm:text-[1.5rem] md:text-[1.75rem] lg:text-[2rem] uppercase tracking-[-0.32px] leading-[1.1] text-scheme-1-text'
                   >
                     {testimonial.quote}
                   </blockquote>
@@ -71,13 +71,13 @@ export const FbcTestimonialSlider = ({ data }: { data: PageBlocksFbcTestimonialS
                     <div className='flex flex-col whitespace-nowrap'>
                       <p
                         data-tina-field={tinaField(testimonial, 'author')}
-                        className='font-sans text-[14px] md:text-[16px] lg:text-[18px] font-semibold leading-[1.5] text-scheme-1-text'
+                        className='font-sans text-[0.875rem] md:text-[1rem] lg:text-[1.125rem] font-semibold leading-[1.5] text-scheme-1-text'
                       >
                         {testimonial.author}
                       </p>
                       <p
                         data-tina-field={tinaField(testimonial, 'role')}
-                        className='font-sans text-[14px] md:text-[16px] lg:text-[18px] leading-[1.5] text-scheme-1-text'
+                        className='font-sans text-[0.875rem] md:text-[1rem] lg:text-[1.125rem] leading-[1.5] text-scheme-1-text'
                       >
                         {testimonial.role}
                       </p>

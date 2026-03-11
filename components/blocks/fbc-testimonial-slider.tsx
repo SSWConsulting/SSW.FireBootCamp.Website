@@ -186,7 +186,7 @@ const SocialLink = ({ social }: { social: PageBlocksFbcTestimonialSliderTestimon
 
   return (
     <AutoLink
-      href={social.url || '#'}
+      href={social.url}
       className='bg-scheme-1-foreground border border-scheme-1-background rounded p-3 flex items-center justify-center text-scheme-1-text hover:bg-scheme-1-border transition-colors cursor-pointer'
       aria-label={platformLabel}
     >

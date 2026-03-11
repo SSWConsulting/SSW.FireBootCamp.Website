@@ -65,7 +65,18 @@ export const SocialLink = ({ platform, url, className }: SocialLinkProps) => {
   const icon = getSocialIcon(platform);
   if (!icon || !url) return null;
 
-  const label = platform ? `${platform.charAt(0).toUpperCase()}${platform.slice(1).toLowerCase()} profile` : 'Social profile';
+  const label =
+    platform?.toLowerCase() === 'linkedin'
+      ? 'LinkedIn profile'
+      : platform?.toLowerCase() === 'github'
+        ? 'GitHub profile'
+        : platform?.toLowerCase() === 'globe' || platform?.toLowerCase() === 'website'
+          ? 'Personal website'
+          : platform?.toLowerCase() === 'twitter' || platform?.toLowerCase() === 'x'
+            ? 'Twitter profile'
+            : platform?.toLowerCase() === 'dribbble'
+              ? 'Dribbble profile'
+              : 'Social link';
 
   return (
     <AutoLink href={url} aria-label={label} className={className}>

@@ -10,9 +10,9 @@ export const FbcHero = ({ data }: { data: PageBlocksFbcHero }) => {
   const hasImage = !!data.backgroundImage;
 
   return (
-    <section className='relative min-h-[80vh] flex flex-col gap-10 md:gap-16 lg:gap-20 items-start justify-center px-6 md:px-16 lg:px-16 py-16 md:py-24 lg:py-32 overflow-hidden'>
+    <section className='relative min-h-[80vh] flex flex-col gap-10 md:gap-16 lg:gap-20 items-start justify-center px-6 md:px-16 lg:px-16 py-16 md:py-24 lg:py-32'>
       {(hasVideo || hasImage) && (
-        <div className='absolute inset-0 pointer-events-none'>
+        <div className='absolute inset-0 pointer-events-none overflow-hidden'>
           <div className='absolute inset-0 bg-black' />
           {hasVideo ? (
             <video autoPlay loop muted playsInline className='absolute inset-0 w-full h-full object-cover mix-blend-luminosity opacity-50'>

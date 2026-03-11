@@ -236,7 +236,7 @@ export const fbcPricingBlockSchema: Template = {
           price: '$100',
           subtitle: 'Shadow a developer for 1 day to get a taste of the course.',
           icon: '',
-          ctaLabel: 'Apply now',
+          ctaLabel: 'Book trial day',
           ctaLink: '/apply',
           emailSubject: 'FireBootCamp \u2013 Book Trial Day',
           emailBody: "I'd like to book a 1-Day Trial Session at FireBootCamp!",

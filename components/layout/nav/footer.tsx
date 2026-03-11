@@ -13,6 +13,7 @@ export const Footer = () => {
   const contactCc = globalSettings?.contactCc || 'adamcogan@ssw.com.au';
   const siteUrl = globalSettings?.siteUrl || 'https://firebootcamp.com.au';
   const mailtoLink = `mailto:${contactEmail}?subject=${encodeURIComponent('FireBootCamp \u2013 Apply Now')}&cc=${encodeURIComponent(contactCc)}&body=${encodeURIComponent(`I'd like to apply for FireBootCamp!\n\n${siteUrl}`)}`;
+  const contactEmailLink = `mailto:${contactEmail}?subject=${encodeURIComponent('FireBootCamp \u2013 Let\u2019s Talk')}&cc=${encodeURIComponent(contactCc)}&body=${encodeURIComponent(`I'm interested in FireBootCamp, let's schedule a time to chat!\n\n${siteUrl}`)}`;
 
   return (
     <footer className='bg-scheme-2-background px-6 md:px-16 lg:px-16 py-10 md:py-16 lg:py-20'>
@@ -63,7 +64,7 @@ export const Footer = () => {
                   ) : (
                     <AutoLink
                       key={linkIndex}
-                      href={link?.href || '#'}
+                      href={link?.href?.startsWith(`mailto:${contactEmail}`) ? contactEmailLink : (link?.href || '#')}
                       className={`py-1 md:py-2 text-scheme-2-text hover:text-scheme-2-text/80 font-sans text-[14px] md:text-[16px] leading-[1.5] ${link?.isHeading ? 'font-semibold' : ''}`}
                     >
                       {link?.label}

@@ -20,7 +20,7 @@ const Global: Collection = {
       type: 'string',
       label: 'Contact Email Subject',
       name: 'contactSubject',
-      description: 'Subject line for Apply Now and Commit emails',
+      description: 'Subject line for the contact email',
     },
     {
       type: 'string',

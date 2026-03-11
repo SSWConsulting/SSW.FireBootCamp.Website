@@ -21,10 +21,10 @@ export const Footer = () => {
         <div className='flex flex-col lg:flex-row items-start justify-between gap-8 md:gap-12'>
           <div className='flex-1 max-w-full lg:max-w-[560px] flex flex-col gap-6 md:gap-8'>
             <div className='flex flex-col gap-4 md:gap-6'>
-              <h2 className='font-oswald font-bold text-[32px] sm:text-[48px] md:text-[64px] lg:text-[84px] uppercase tracking-[-0.84px] leading-none text-scheme-2-text'>
+              <h2 className='font-oswald font-bold text-[2rem] sm:text-[3rem] md:text-[4rem] lg:text-[5.25rem] uppercase tracking-[-0.84px] leading-none text-scheme-2-text'>
                 {footer?.headline || 'Start your developer journey today'}
               </h2>
-              <p className='font-sans text-[14px] md:text-[16px] lg:text-[18px] leading-[1.5] text-scheme-2-text'>
+              <p className='font-sans text-[0.875rem] md:text-[1rem] lg:text-[1.125rem] leading-[1.5] text-scheme-2-text'>
                 {footer?.description || "We're independent and Oceanic-based. We run webinars, live events, in-house and online courses."}
               </p>
             </div>
@@ -57,7 +57,7 @@ export const Footer = () => {
                           window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
                         }
                       }}
-                      className={`py-1 md:py-2 text-scheme-2-text hover:text-scheme-2-text/80 font-sans text-[14px] md:text-[16px] leading-[1.5] cursor-pointer ${link?.isHeading ? 'font-semibold' : ''}`}
+                      className={`py-1 md:py-2 text-scheme-2-text hover:text-scheme-2-text/80 font-sans text-[0.875rem] md:text-[1rem] leading-[1.5] cursor-pointer ${link?.isHeading ? 'font-semibold' : ''}`}
                     >
                       {link?.label}
                     </a>
@@ -65,7 +65,7 @@ export const Footer = () => {
                     <AutoLink
                       key={linkIndex}
                       href={link?.href?.startsWith(`mailto:${contactEmail}`) ? contactEmailLink : (link?.href || '#')}
-                      className={`py-1 md:py-2 text-scheme-2-text hover:text-scheme-2-text/80 font-sans text-[14px] md:text-[16px] leading-[1.5] ${link?.isHeading ? 'font-semibold' : ''}`}
+                      className={`py-1 md:py-2 text-scheme-2-text hover:text-scheme-2-text/80 font-sans text-[0.875rem] md:text-[1rem] leading-[1.5] ${link?.isHeading ? 'font-semibold' : ''}`}
                     >
                       {link?.label}
                     </AutoLink>
@@ -83,7 +83,7 @@ export const Footer = () => {
               {header?.logo ? (
                 <img src={header.logo} alt={header.name || 'FireBootCamp'} className='h-8 w-auto' />
               ) : (
-                <span className='text-scheme-2-text font-bold font-sans text-[20px] md:text-[26px]'>{header?.name || 'FireBootCamp'}</span>
+                <span className='text-scheme-2-text font-bold font-sans text-[1.25rem] md:text-[1.625rem]'>{header?.name || 'FireBootCamp'}</span>
               )}
             </Link>
 
@@ -94,7 +94,7 @@ export const Footer = () => {
               className='flex items-center gap-2 text-scheme-2-text hover:text-[#EC4815] transition-colors'
             >
               <img src='/uploads/tina-logo.png' alt='TinaCMS' className='h-10 w-auto' />
-              <span className='font-sans text-[12px] md:text-[14px] font-semibold uppercase tracking-wide'>Powered by TinaCMS</span>
+              <span className='font-sans text-[0.75rem] md:text-[0.875rem] font-semibold uppercase tracking-wide'>Powered by TinaCMS</span>
             </Link>
           </div>
 
@@ -102,7 +102,7 @@ export const Footer = () => {
 
           {/* Bottom row: Copyright (left) + Social links (right) */}
           <div className='flex items-center justify-between'>
-            <p className='text-scheme-2-text font-sans text-[12px] md:text-[14px] lg:text-[16px] leading-[1.5]'>
+            <p className='text-scheme-2-text font-sans text-[0.75rem] md:text-[0.875rem] lg:text-[1rem] leading-[1.5]'>
               © 2014–{new Date().getFullYear()} SSW FireBootCamp. All rights reserved.
             </p>
 

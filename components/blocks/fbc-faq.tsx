@@ -11,11 +11,11 @@ export const FbcFaq = ({ data }: { data: PageBlocksFbcFaq }) => {
         <div className='max-w-full md:max-w-[768px] text-center flex flex-col gap-4 md:gap-6 px-2 sm:px-0'>
           <h2
             data-tina-field={tinaField(data, 'title')}
-            className='font-oswald font-bold text-[32px] sm:text-[40px] md:text-[50px] lg:text-[60px] uppercase tracking-[-0.6px] leading-none text-scheme-2-text'
+            className='font-oswald font-bold text-[2rem] sm:text-[2.5rem] md:text-[3.125rem] lg:text-[3.75rem] uppercase tracking-[-0.6px] leading-none text-scheme-2-text'
           >
             {data.title}
           </h2>
-          <p data-tina-field={tinaField(data, 'description')} className='font-sans text-[14px] md:text-[16px] lg:text-[20px] leading-[1.5] text-scheme-2-text'>
+          <p data-tina-field={tinaField(data, 'description')} className='font-sans text-[0.875rem] md:text-[1rem] lg:text-[1.25rem] leading-[1.5] text-scheme-2-text'>
             {data.description}
           </p>
         </div>
@@ -38,7 +38,7 @@ const FaqItem = ({ faq }: { faq: PageBlocksFbcFaqFaqs }) => {
       <button onClick={() => setIsOpen(!isOpen)} className='w-full flex justify-between items-center gap-3 md:gap-6 px-4 md:px-6 py-4 md:py-5 cursor-pointer'>
         <p
           data-tina-field={tinaField(faq, 'question')}
-          className='font-oswald font-bold text-[20px] md:text-[24px] lg:text-[28px] uppercase tracking-[-0.28px] leading-[1.3] text-scheme-2-text text-left'
+          className='font-oswald font-bold text-[1.25rem] md:text-[1.5rem] lg:text-[1.75rem] uppercase tracking-[-0.28px] leading-[1.3] text-scheme-2-text text-left'
         >
           {faq.question}
         </p>
@@ -55,7 +55,7 @@ const FaqItem = ({ faq }: { faq: PageBlocksFbcFaqFaqs }) => {
       <div className={`grid transition-all duration-200 ease-in-out ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
         <div className='overflow-hidden'>
           <div className='px-4 md:px-6 pb-4 md:pb-6'>
-            <p data-tina-field={tinaField(faq, 'answer')} className='font-sans text-[14px] md:text-[16px] lg:text-[18px] leading-[1.5] text-scheme-2-text'>
+            <p data-tina-field={tinaField(faq, 'answer')} className='font-sans text-[0.875rem] md:text-[1rem] lg:text-[1.125rem] leading-[1.5] text-scheme-2-text'>
               {faq.answer}
             </p>
           </div>

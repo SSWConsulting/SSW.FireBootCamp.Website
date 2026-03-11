@@ -174,12 +174,22 @@ const SocialLink = ({ social }: { social: PageBlocksFbcTestimonialSliderTestimon
   const icon = getIcon(social.platform);
   if (!icon || !social.url) return null;
 
+  const platformLabel =
+    social.platform?.toLowerCase() === 'linkedin'
+      ? 'LinkedIn profile'
+      : social.platform?.toLowerCase() === 'github'
+        ? 'GitHub profile'
+        : social.platform?.toLowerCase() === 'globe'
+          ? 'Personal website'
+          : 'Social link';
+
   return (
     <a
       href={social.url}
       target='_blank'
       rel='noopener noreferrer'
       className='bg-scheme-1-foreground border border-scheme-1-background rounded p-3 flex items-center justify-center text-scheme-1-text hover:bg-scheme-1-border transition-colors cursor-pointer'
+      aria-label={platformLabel}
     >
       {icon}
     </a>

@@ -1,9 +1,15 @@
 'use client';
 import Image from 'next/image';
 import { useState } from 'react';
+import { FaChevronLeft, FaChevronRight, FaGithub, FaGlobe, FaLinkedin, FaStar } from 'react-icons/fa6';
 import type { Template } from 'tinacms';
 import { tinaField } from 'tinacms/dist/react';
-import type { PageBlocksFbcTestimonialSlider, PageBlocksFbcTestimonialSliderTestimonials } from '../../tina/__generated__/types';
+import type {
+  PageBlocksFbcTestimonialSlider,
+  PageBlocksFbcTestimonialSliderTestimonials,
+  PageBlocksFbcTestimonialSliderTestimonialsSocials,
+} from '../../tina/__generated__/types';
+import { AutoLink } from '../ui/link';
 
 export const FbcTestimonialSlider = ({ data }: { data: PageBlocksFbcTestimonialSlider }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -50,9 +56,7 @@ export const FbcTestimonialSlider = ({ data }: { data: PageBlocksFbcTestimonialS
                 <div className='w-full md:w-1/2 flex flex-col gap-4 md:gap-6 lg:gap-8'>
                   <div className='flex gap-1'>
                     {[...Array(5)].map((_, i) => (
-                      <svg key={i} className='w-4 h-4 md:w-5 md:h-5 text-yellow-400' fill='currentColor' viewBox='0 0 20 20'>
-                        <path d='M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z' />
-                      </svg>
+                      <FaStar key={i} className='w-4 h-4 md:w-5 md:h-5 text-yellow-400' aria-hidden='true' />
                     ))}
                   </div>
 
@@ -63,8 +67,8 @@ export const FbcTestimonialSlider = ({ data }: { data: PageBlocksFbcTestimonialS
                     {testimonial.quote}
                   </blockquote>
 
-                  <div className='flex gap-5 items-center'>
-                    <div className='flex flex-col'>
+                  <div className='flex gap-8 items-center'>
+                    <div className='flex flex-col whitespace-nowrap'>
                       <p
                         data-tina-field={tinaField(testimonial, 'author')}
                         className='font-sans text-[0.875rem] md:text-[1rem] lg:text-[1.125rem] font-semibold leading-[1.5] text-scheme-1-text'
@@ -78,6 +82,19 @@ export const FbcTestimonialSlider = ({ data }: { data: PageBlocksFbcTestimonialS
                         {testimonial.role}
                       </p>
                     </div>
+
+                    {testimonial.socials && testimonial.socials.length > 0 && (
+                      <>
+                        <div className='w-px h-16 bg-scheme-1-border shrink-0' />
+                        <div className='flex gap-4' data-tina-field={tinaField(testimonial, 'socials')}>
+                          {testimonial.socials.map((social, socialIndex) =>
+                            social ? (
+                              <SocialLink key={socialIndex} social={social} />
+                            ) : null
+                          )}
+                        </div>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
@@ -93,23 +110,57 @@ export const FbcTestimonialSlider = ({ data }: { data: PageBlocksFbcTestimonialS
               aria-label='Previous testimonial'
               className='p-2 md:p-3 bg-scheme-3-background hover:bg-scheme-1-border rounded transition-colors cursor-pointer'
             >
-              <svg className='w-5 h-5 md:w-6 md:h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24' aria-hidden='true'>
-                <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M15 19l-7-7 7-7' />
-              </svg>
+              <FaChevronLeft className='w-5 h-5 md:w-6 md:h-6' aria-hidden='true' />
             </button>
             <button
               onClick={goToNext}
               aria-label='Next testimonial'
               className='p-2 md:p-3 bg-scheme-3-background hover:bg-scheme-1-border rounded transition-colors cursor-pointer'
             >
-              <svg className='w-5 h-5 md:w-6 md:h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24' aria-hidden='true'>
-                <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 5l7 7-7 7' />
-              </svg>
+              <FaChevronRight className='w-5 h-5 md:w-6 md:h-6' aria-hidden='true' />
             </button>
           </div>
         </div>
       </div>
     </section>
+  );
+};
+
+const SocialLink = ({ social }: { social: PageBlocksFbcTestimonialSliderTestimonialsSocials }) => {
+  const getIcon = (platform: string | null | undefined) => {
+    switch (platform?.toLowerCase()) {
+      case 'linkedin':
+        return <FaLinkedin className='size-6' aria-hidden='true' />;
+      case 'github':
+        return <FaGithub className='size-6' aria-hidden='true' />;
+      case 'globe':
+      case 'website':
+        return <FaGlobe className='size-6' aria-hidden='true' />;
+      default:
+        return null;
+    }
+  };
+
+  const icon = getIcon(social.platform);
+  if (!icon || !social.url) return null;
+
+  const platformLabel =
+    social.platform?.toLowerCase() === 'linkedin'
+      ? 'LinkedIn profile'
+      : social.platform?.toLowerCase() === 'github'
+        ? 'GitHub profile'
+        : social.platform?.toLowerCase() === 'globe'
+          ? 'Personal website'
+          : 'Social link';
+
+  return (
+    <AutoLink
+      href={social.url}
+      className='bg-scheme-1-foreground border border-scheme-1-background rounded p-3 flex items-center justify-center text-scheme-1-text hover:bg-scheme-1-border transition-colors cursor-pointer'
+      aria-label={platformLabel}
+    >
+      {icon}
+    </AutoLink>
   );
 };
 
@@ -162,6 +213,25 @@ export const fbcTestimonialSliderBlockSchema: Template = {
           type: 'image',
           label: 'Image',
           name: 'image',
+        },
+        {
+          type: 'object',
+          label: 'Social Links',
+          name: 'socials',
+          list: true,
+          fields: [
+            {
+              type: 'string',
+              label: 'Platform',
+              name: 'platform',
+              options: ['linkedin', 'github', 'globe'],
+            },
+            {
+              type: 'string',
+              label: 'URL',
+              name: 'url',
+            },
+          ],
         },
       ],
     },

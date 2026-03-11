@@ -65,7 +65,7 @@ export const Footer = () => {
                     <AutoLink
                       key={linkIndex}
                       href={link?.href?.startsWith(`mailto:${contactEmail}`) ? contactEmailLink : (link?.href || '#')}
-                      className={`py-1 md:py-2 text-scheme-2-text hover:text-scheme-2-text/80 font-sans text-[0.875rem] md:text-[1rem] leading-[1.5] ${link?.isHeading ? 'font-semibold' : ''}`}
+                      className={`py-1 md:py-2 text-scheme-2-text hover:text-scheme-2-text/80 font-sans text-[0.875rem] md:text-[1rem] leading-[1.5] ${link?.isHeading ? 'font-semibold' : ''}`} origin/main
                     >
                       {link?.label}
                     </AutoLink>

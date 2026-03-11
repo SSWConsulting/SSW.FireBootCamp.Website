@@ -9,8 +9,11 @@ import { Button } from '../ui/button';
 export const FbcCertification = ({ data }: { data: PageBlocksFbcCertification }) => {
   const { globalSettings } = useLayout();
   const contactEmail = globalSettings?.contactEmail || 'pennywalker@ssw.com.au';
-  const contactSubject = globalSettings?.contactSubject || "SSW Firebootcamp - Let's chat";
-  const mailtoLink = `mailto:${contactEmail}?subject=${encodeURIComponent(contactSubject)}`;
+  const contactCc = globalSettings?.contactCc || 'adamcogan@ssw.com.au';
+  const siteUrl = globalSettings?.siteUrl || 'https://firebootcamp.com.au';
+  const subject = data.emailSubject || 'FireBootCamp \u2013 Let\u2019s Talk';
+  const body = data.emailBody || `I'm ready to commit to FireBootCamp and earn my certification!\n\n${siteUrl}`;
+  const mailtoLink = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&cc=${encodeURIComponent(contactCc)}&body=${encodeURIComponent(body.includes(siteUrl) ? body : `${body}\n\n${siteUrl}`)}`;
 
   return (
     <section className='bg-scheme-1-background px-6 md:px-16 lg:px-16 pt-16 md:pt-24 lg:pt-16 pb-16 md:pb-24 lg:pb-32'>
@@ -81,6 +84,8 @@ export const fbcCertificationBlockSchema: Template = {
         'After completing FireBootCamp, you will earn a certification as an SSW Qualified Developer!\nWhich can be validated, recognised and shared on social media platforms.',
       emailPlaceholder: 'Enter your email address',
       buttonLabel: 'Commit',
+      emailSubject: 'FireBootCamp \u2013 Let\u2019s Talk',
+      emailBody: "I'm ready to commit to FireBootCamp and earn my certification!",
       disclaimer: "By submitting, you're committing to a breakthrough in your software development career.",
     },
   },
@@ -112,6 +117,21 @@ export const fbcCertificationBlockSchema: Template = {
       type: 'string',
       label: 'Button Label',
       name: 'buttonLabel',
+    },
+    {
+      type: 'string',
+      label: 'Email Subject',
+      name: 'emailSubject',
+      description: 'Subject line for the mailto link',
+    },
+    {
+      type: 'string',
+      label: 'Email Body',
+      name: 'emailBody',
+      description: 'Body text for the mailto link. Site URL is appended automatically.',
+      ui: {
+        component: 'textarea',
+      },
     },
     {
       type: 'string',

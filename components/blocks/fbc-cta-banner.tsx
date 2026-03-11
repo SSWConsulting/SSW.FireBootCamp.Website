@@ -9,8 +9,11 @@ import { Button } from '../ui/button';
 export const FbcCtaBanner = ({ data }: { data: PageBlocksFbcCtaBanner }) => {
   const { globalSettings } = useLayout();
   const contactEmail = globalSettings?.contactEmail || 'pennywalker@ssw.com.au';
-  const contactSubject = globalSettings?.contactSubject || "SSW Firebootcamp - Let's chat";
-  const mailtoLink = `mailto:${contactEmail}?subject=${encodeURIComponent(contactSubject)}`;
+  const contactCc = globalSettings?.contactCc || 'adamcogan@ssw.com.au';
+  const siteUrl = globalSettings?.siteUrl || 'https://firebootcamp.com.au';
+  const subject = data.emailSubject || 'FireBootCamp \u2013 Let\u2019s Talk';
+  const body = data.emailBody || `I'm interested in FireBootCamp, let's schedule a time to chat!\n\n${siteUrl}`;
+  const mailtoLink = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&cc=${encodeURIComponent(contactCc)}&body=${encodeURIComponent(body.includes(siteUrl) ? body : `${body}\n\n${siteUrl}`)}`;
 
   return (
     <section className='bg-scheme-4-background px-6 md:px-16 lg:px-16 py-16 md:py-24 lg:py-32'>
@@ -70,6 +73,8 @@ export const fbcCtaBannerBlockSchema: Template = {
       description: 'Take the first step towards a transformative developer career',
       emailPlaceholder: 'Enter your email address',
       buttonLabel: 'Submit',
+      emailSubject: 'FireBootCamp \u2013 Let\u2019s Talk',
+      emailBody: "I'm interested in FireBootCamp, let's schedule a time to chat!",
       disclaimer: "By submitting, you're committing to a breakthrough in your software development career.",
     },
   },
@@ -96,6 +101,21 @@ export const fbcCtaBannerBlockSchema: Template = {
       type: 'string',
       label: 'Button Label',
       name: 'buttonLabel',
+    },
+    {
+      type: 'string',
+      label: 'Email Subject',
+      name: 'emailSubject',
+      description: 'Subject line for the mailto link',
+    },
+    {
+      type: 'string',
+      label: 'Email Body',
+      name: 'emailBody',
+      description: 'Body text for the mailto link. Site URL is appended automatically.',
+      ui: {
+        component: 'textarea',
+      },
     },
     {
       type: 'string',

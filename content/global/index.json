@@ -1,6 +1,8 @@
 {
   "contactEmail": "pennywalker@ssw.com.au",
   "contactSubject": "SSW Firebootcamp - Let's chat",
+  "contactCc": "adamcogan@ssw.com.au",
+  "siteUrl": "https://firebootcamp.com.au",
   "header": {
     "logo": "/uploads/fbc_logo-dm.svg",
     "name": "SSW FireBootCamp",

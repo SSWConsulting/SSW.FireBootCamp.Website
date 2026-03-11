@@ -9,6 +9,7 @@ import type {
   PageBlocksFbcTestimonialSliderTestimonials,
   PageBlocksFbcTestimonialSliderTestimonialsSocials,
 } from '../../tina/__generated__/types';
+import { AutoLink } from '../ui/link';
 
 export const FbcTestimonialSlider = ({ data }: { data: PageBlocksFbcTestimonialSlider }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -153,15 +154,13 @@ const SocialLink = ({ social }: { social: PageBlocksFbcTestimonialSliderTestimon
           : 'Social link';
 
   return (
-    <a
+    <AutoLink
       href={social.url}
-      target='_blank'
-      rel='noopener noreferrer'
       className='bg-scheme-1-foreground border border-scheme-1-background rounded p-3 flex items-center justify-center text-scheme-1-text hover:bg-scheme-1-border transition-colors cursor-pointer'
       aria-label={platformLabel}
     >
       {icon}
-    </a>
+    </AutoLink>
   );
 };
 

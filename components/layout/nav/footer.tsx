@@ -12,7 +12,7 @@ export const Footer = () => {
   const contactEmail = globalSettings?.contactEmail || 'pennywalker@ssw.com.au';
   const contactCc = globalSettings?.contactCc || 'adamcogan@ssw.com.au';
   const siteUrl = globalSettings?.siteUrl || 'https://firebootcamp.com.au';
-  const mailtoLink = `mailto:${contactEmail}?subject=${encodeURIComponent('FireBootCamp \u2013 Apply Now')}&cc=${encodeURIComponent(contactCc)}&body=${encodeURIComponent(`I'd like to apply for FireBootCamp!\n\n${siteUrl}`)}`;
+  const mailtoLink = `mailto:${contactEmail}?subject=${encodeURIComponent('FireBootCamp \u2013 Let\u2019s Talk')}&cc=${encodeURIComponent(contactCc)}&body=${encodeURIComponent(`I'm interested in FireBootCamp, let's schedule a time to chat!\n\n${siteUrl}`)}`;
   const contactEmailLink = `mailto:${contactEmail}?subject=${encodeURIComponent('FireBootCamp \u2013 Let\u2019s Talk')}&cc=${encodeURIComponent(contactCc)}&body=${encodeURIComponent(`I'm interested in FireBootCamp, let's schedule a time to chat!\n\n${siteUrl}`)}`;
 
   return (

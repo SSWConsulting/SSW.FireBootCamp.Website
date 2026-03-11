@@ -23,6 +23,7 @@ next-env.d.ts
 
 # local development
 /ai-rules
+.claude/
 
 # debug
 npm-debug.log*

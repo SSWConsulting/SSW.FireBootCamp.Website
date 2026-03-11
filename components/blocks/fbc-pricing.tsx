@@ -9,13 +9,16 @@ import { Button } from '../ui/button';
 export const FbcPricing = ({ data }: { data: PageBlocksFbcPricing }) => {
   const { globalSettings } = useLayout();
   const contactEmail = globalSettings?.contactEmail || 'pennywalker@ssw.com.au';
-  const contactSubject = globalSettings?.contactSubject || "SSW Firebootcamp - Let's chat";
+  const contactCc = globalSettings?.contactCc || 'adamcogan@ssw.com.au';
+  const siteUrl = globalSettings?.siteUrl || 'https://firebootcamp.com.au';
 
   const generateMailtoLink = (plan: PageBlocksFbcPricingPlans) => {
     const planName = plan.name || 'Pricing Plan';
+    const subject = (plan as PageBlocksFbcPricingPlans & { emailSubject?: string | null }).emailSubject || `FireBootCamp \u2013 ${planName}`;
     const emailBody = plan.emailBody ? plan.emailBody.replace('[Plan Name]', planName) : `Hi, I am interested in ${planName}.`;
+    const bodyWithUrl = emailBody.includes(siteUrl) ? emailBody : `${emailBody}\n\n${siteUrl}`;
 
-    return `mailto:${contactEmail}?subject=${encodeURIComponent(contactSubject)}&body=${encodeURIComponent(emailBody)}`;
+    return `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&cc=${encodeURIComponent(contactCc)}&body=${encodeURIComponent(bodyWithUrl)}`;
   };
 
   return (
@@ -216,7 +219,8 @@ export const fbcPricingBlockSchema: Template = {
           icon: '',
           ctaLabel: 'Apply now',
           ctaLink: '/apply',
-          emailBody: 'Hi, I am interested in [Plan Name].',
+          emailSubject: 'FireBootCamp \u2013 Apply Now',
+          emailBody: "I'd like to apply for the Full Course at FireBootCamp!",
           scholarshipNote: '*Pass the entry test to get the discounted price',
           features: [
             { text: 'Full 12-week course access' },
@@ -232,8 +236,10 @@ export const fbcPricingBlockSchema: Template = {
           price: '$100',
           subtitle: 'Shadow a developer for 1 day to get a taste of the course.',
           icon: '',
-          ctaLabel: 'Apply now',
+          ctaLabel: 'Book trial day',
           ctaLink: '/apply',
+          emailSubject: 'FireBootCamp \u2013 Book Trial Day',
+          emailBody: "I'd like to book a 1-Day Trial Session at FireBootCamp!",
           features: [{ text: '1 day shadowing a developer' }, { text: 'Attend daily team meeting' }, { text: 'Exposure to tech ecosystem' }],
         },
       ],
@@ -300,9 +306,15 @@ export const fbcPricingBlockSchema: Template = {
         },
         {
           type: 'string',
+          label: 'Email Subject',
+          name: 'emailSubject',
+          description: 'Subject line for the mailto link',
+        },
+        {
+          type: 'string',
           label: 'Email Body',
           name: 'emailBody',
-          description: 'Email body template for mailto link. Use [Plan Name] as placeholder.',
+          description: 'Email body template for mailto link. Use [Plan Name] as placeholder. Site URL is appended automatically.',
           ui: {
             component: 'textarea',
           },

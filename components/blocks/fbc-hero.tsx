@@ -55,7 +55,7 @@ export const FbcHero = ({ data }: { data: PageBlocksFbcHero }) => {
             <div className='px-0 h-full w-fit flex items-center justify-center'>
               <span
                 data-tina-field={tinaField(data, 'ctaLabel')}
-                className='font-oswald font-bold text-white text-[2.5rem] uppercase leading-none tracking-[-0.4px] w-fit h-fit'
+                className='font-oswald font-bold text-white text-[1.5rem] sm:text-[2rem] md:text-[2.25rem] lg:text-[2.5rem] uppercase leading-none tracking-[-0.4px] w-fit h-fit'
               >
                 {data.ctaLabel || 'Continue'}
               </span>

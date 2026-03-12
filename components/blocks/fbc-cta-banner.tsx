@@ -44,7 +44,7 @@ export const FbcCtaBanner = ({ data }: { data: PageBlocksFbcCtaBanner }) => {
                   id='cta-banner-email'
                   type='email'
                   placeholder={data.emailPlaceholder || 'Enter your email address'}
-                  className='flex-1 min-h-[51px] px-3 bg-white/10 rounded-md font-sans text-[1rem] md:text-[1.125rem] leading-[1.5] text-scheme-4-text border-0 placeholder:!text-white/80'
+                  className='flex-1 min-h-[51px] px-3 bg-white/10 rounded-md font-sans text-[1rem] md:text-[1.125rem] lg:text-[1.25rem] leading-[1.5] text-scheme-4-text border-0 placeholder:!text-white/80'
                 />
                 <Button asChild variant='tertiary' className='whitespace-nowrap w-full sm:w-fit sm:shrink-0'>
                   <a href={mailtoLink}>{data.buttonLabel || 'Submit'}</a>

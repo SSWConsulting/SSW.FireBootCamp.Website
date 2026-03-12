@@ -54,7 +54,7 @@ const TeamMemberCard = ({ member }: { member: PageBlocksFbcTeamMembers }) => {
           >
             {member.name}
           </p>
-          <p data-tina-field={tinaField(member, 'role')} className='font-sans text-[1rem] font-semibold uppercase leading-[150%] text-[#7F7F7F] text-center'>
+          <p data-tina-field={tinaField(member, 'role')} className='font-sans text-[0.875rem] md:text-[1rem] lg:text-[1.125rem] font-semibold uppercase leading-[150%] text-[#7F7F7F] text-center'>
             {member.role}
           </p>
         </div>

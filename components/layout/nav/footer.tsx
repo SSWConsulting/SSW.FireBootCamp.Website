@@ -57,7 +57,7 @@ export const Footer = () => {
                           window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
                         }
                       }}
-                      className={`py-1 md:py-2 text-scheme-2-text hover:text-scheme-2-text/80 font-sans text-[0.875rem] md:text-[1rem] leading-[1.5] cursor-pointer ${link?.isHeading ? 'font-semibold' : ''}`}
+                      className={`py-1 md:py-2 text-scheme-2-text hover:text-scheme-2-text/80 font-sans text-[0.875rem] md:text-[1rem] lg:text-[1.125rem] leading-[1.5] cursor-pointer ${link?.isHeading ? 'font-semibold' : ''}`}
                     >
                       {link?.label}
                     </a>
@@ -65,7 +65,7 @@ export const Footer = () => {
                     <AutoLink
                       key={linkIndex}
                       href={link?.href?.startsWith(`mailto:${contactEmail}`) ? contactEmailLink : (link?.href || '#')}
-                      className={`py-1 md:py-2 text-scheme-2-text hover:text-scheme-2-text/80 font-sans text-[0.875rem] md:text-[1rem] leading-[1.5] ${link?.isHeading ? 'font-semibold' : ''}`}
+                      className={`py-1 md:py-2 text-scheme-2-text hover:text-scheme-2-text/80 font-sans text-[0.875rem] md:text-[1rem] lg:text-[1.125rem] leading-[1.5] ${link?.isHeading ? 'font-semibold' : ''}`}
                     >
                       {link?.label}
                     </AutoLink>
@@ -83,7 +83,7 @@ export const Footer = () => {
               {header?.logo ? (
                 <img src={header.logo} alt={header.name || 'FireBootCamp'} className='h-8 w-auto' />
               ) : (
-                <span className='text-scheme-2-text font-bold font-sans text-[1.25rem] md:text-[1.625rem]'>{header?.name || 'FireBootCamp'}</span>
+                <span className='text-scheme-2-text font-bold font-sans text-[1.25rem] md:text-[1.625rem] lg:text-[2rem]'>{header?.name || 'FireBootCamp'}</span>
               )}
             </Link>
 
@@ -94,7 +94,7 @@ export const Footer = () => {
               className='flex items-center gap-2 text-scheme-2-text hover:text-[#EC4815] transition-colors'
             >
               <img src='/uploads/tina-logo.png' alt='TinaCMS' className='h-10 w-auto' />
-              <span className='font-sans text-[0.75rem] md:text-[0.875rem] font-semibold uppercase tracking-wide'>Powered by TinaCMS</span>
+              <span className='font-sans text-[0.75rem] md:text-[0.875rem] lg:text-[1rem] font-semibold uppercase tracking-wide'>Powered by TinaCMS</span>
             </Link>
           </div>
 

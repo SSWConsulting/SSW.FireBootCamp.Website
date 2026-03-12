@@ -110,7 +110,7 @@ export const FbcTabs = ({ data }: { data: PageBlocksFbcTabs }) => {
                     </div>
                     <div className='w-full md:w-1/2 flex flex-col py-8 px-6 md:py-12 md:px-10 lg:py-16 lg:px-12 gap-4 md:gap-6 lg:gap-8'>
                       <div className='flex flex-col gap-3 md:gap-4'>
-                        <span className='font-sans text-[0.875rem] md:text-[1rem] font-semibold leading-[1.5] text-scheme-3-text'>{tab.title}</span>
+                        <span className='font-sans text-[0.875rem] md:text-[1rem] lg:text-[1.125rem] font-semibold leading-[1.5] text-scheme-3-text'>{tab.title}</span>
                         <div className='flex flex-col gap-4 md:gap-6'>
                           <h3
                             data-tina-field={tinaField(tab, 'headline')}

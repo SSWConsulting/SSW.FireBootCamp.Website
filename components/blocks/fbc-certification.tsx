@@ -61,7 +61,7 @@ export const FbcCertification = ({ data }: { data: PageBlocksFbcCertification })
               </div>
               <p
                 data-tina-field={tinaField(data, 'disclaimer')}
-                className='font-sans text-[0.6875rem] md:text-[0.75rem] leading-[1.5] text-scheme-1-text text-center lg:text-left'
+                className='font-sans text-[0.6875rem] md:text-[0.75rem] lg:text-[0.875rem] leading-[1.5] text-scheme-1-text text-center lg:text-left'
               >
                 {data.disclaimer}
               </p>

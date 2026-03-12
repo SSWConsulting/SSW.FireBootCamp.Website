@@ -67,7 +67,7 @@ export const FbcTestimonialSlider = ({ data }: { data: PageBlocksFbcTestimonialS
                     {testimonial.quote}
                   </blockquote>
 
-                  <div className='flex gap-8 items-center'>
+                  <div className='flex flex-wrap gap-8 items-center'>
                     <div className='flex flex-col whitespace-nowrap'>
                       <p
                         data-tina-field={tinaField(testimonial, 'author')}
@@ -86,7 +86,7 @@ export const FbcTestimonialSlider = ({ data }: { data: PageBlocksFbcTestimonialS
                     {testimonial.socials && testimonial.socials.length > 0 && (
                       <>
                         <div className='w-px h-16 bg-scheme-1-border shrink-0' />
-                        <div className='flex gap-4' data-tina-field={tinaField(testimonial, 'socials')}>
+                        <div className='flex flex-wrap gap-4' data-tina-field={tinaField(testimonial, 'socials')}>
                           {testimonial.socials.map((social, socialIndex) =>
                             social ? (
                               <SocialLink key={socialIndex} social={social} />

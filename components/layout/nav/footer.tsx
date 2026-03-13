@@ -77,9 +77,9 @@ export const Footer = () => {
         </div>
 
         <div className='flex flex-col gap-6 md:gap-8'>
-          {/* Top row: Logo (left) + Powered by TinaCMS (right) */}
-          <div className='flex flex-col items-center gap-4 md:flex-row md:justify-between'>
-            <Link href='/' aria-label='home'>
+          {/* Top row: Logo + "Powered by TinaCMS" (stacked/centered on mobile, spaced on md+) */}
+          <div className='flex flex-col items-stretch gap-4 md:flex-row md:items-center md:justify-between'>
+            <Link href='/' aria-label='home' className='w-full'>
               {header?.logo ? (
                 <img src={header.logo} alt={header.name || 'FireBootCamp'} className='h-8 w-auto' />
               ) : (
@@ -91,7 +91,7 @@ export const Footer = () => {
               href='https://tina.io/'
               target='_blank'
               rel='noopener noreferrer'
-              className='flex items-center gap-2 text-scheme-2-text hover:text-[#EC4815] transition-colors'
+              className='flex w-full items-center gap-2 text-scheme-2-text hover:text-[#EC4815] transition-colors'
             >
               <img src='/uploads/tina-logo.png' alt='TinaCMS' className='h-10 w-auto' />
               <span className='font-sans text-[0.75rem] md:text-[0.875rem] lg:text-[1rem] font-semibold uppercase tracking-wide'>Powered by TinaCMS</span>
@@ -100,13 +100,13 @@ export const Footer = () => {
 
           <div className='h-px bg-scheme-2-border' />
 
-          {/* Bottom row: Copyright (left) + Social links (right) */}
-          <div className='flex flex-col items-center gap-4 md:flex-row md:justify-between'>
-            <p className='text-center md:text-left text-scheme-2-text font-sans text-[0.75rem] md:text-[0.875rem] lg:text-[1rem] leading-[1.5]'>
+          {/* Bottom row: Copyright + social links (stacked/centered on mobile, spaced on md+) */}
+          <div className='flex flex-col items-stretch gap-4 md:flex-row md:items-center md:justify-between'>
+            <p className='w-full md:w-auto text-center md:text-left text-scheme-2-text font-sans text-[0.75rem] md:text-[0.875rem] lg:text-[1rem] leading-[1.5]'>
               © 2014–{new Date().getFullYear()} SSW FireBootCamp. All rights reserved.
             </p>
 
-            <div className='flex gap-6'>
+            <div className='flex justify-center md:justify-end gap-6 w-full md:w-auto'>
               {footer?.social?.map((link, index) => (
                 <Link
                   key={index}

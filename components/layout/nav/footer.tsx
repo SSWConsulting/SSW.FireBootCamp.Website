@@ -20,7 +20,7 @@ export const Footer = () => {
       <div className='max-w-[1440px] mx-auto flex flex-col gap-10 md:gap-16 lg:gap-20'>
         <div className='flex flex-col lg:flex-row items-start justify-between gap-8 md:gap-12'>
           <div className='flex-1 max-w-full lg:max-w-[560px] flex flex-col gap-6 md:gap-8'>
-            <div className='flex flex-col gap-4 md:gap-6'>
+            <div className='flex flex-col gap-4 md:gap-6 text-center md:text-left'>
               <h2 className='font-oswald font-bold text-[2rem] sm:text-[3rem] md:text-[4rem] lg:text-[5.25rem] uppercase tracking-[-0.84px] leading-none text-scheme-2-text'>
                 {footer?.headline || 'Start your developer journey today'}
               </h2>
@@ -39,7 +39,7 @@ export const Footer = () => {
             </div>
           </div>
 
-          <div className='flex flex-wrap sm:flex-nowrap gap-8 md:gap-12 lg:gap-16 w-full lg:w-auto lg:max-w-[400px]'>
+          <div className='hidden md:flex flex-wrap sm:flex-nowrap gap-8 md:gap-12 lg:gap-16 w-full lg:w-auto lg:max-w-[400px]'>
             {footer?.linkColumns?.map((column, colIndex) => (
               <div key={colIndex} className='flex-1 min-w-[120px] flex flex-col'>
                 {column?.links?.map((link, linkIndex) =>
@@ -78,7 +78,7 @@ export const Footer = () => {
 
         <div className='flex flex-col gap-6 md:gap-8'>
           {/* Top row: Logo (left) + Powered by TinaCMS (right) */}
-          <div className='flex items-center justify-between'>
+          <div className='flex flex-col items-center gap-4 md:flex-row md:justify-between'>
             <Link href='/' aria-label='home'>
               {header?.logo ? (
                 <img src={header.logo} alt={header.name || 'FireBootCamp'} className='h-8 w-auto' />
@@ -101,8 +101,8 @@ export const Footer = () => {
           <div className='h-px bg-scheme-2-border' />
 
           {/* Bottom row: Copyright (left) + Social links (right) */}
-          <div className='flex items-center justify-between'>
-            <p className='text-scheme-2-text font-sans text-[0.75rem] md:text-[0.875rem] lg:text-[1rem] leading-[1.5]'>
+          <div className='flex flex-col items-center gap-4 md:flex-row md:justify-between'>
+            <p className='text-center md:text-left text-scheme-2-text font-sans text-[0.75rem] md:text-[0.875rem] lg:text-[1rem] leading-[1.5]'>
               © 2014–{new Date().getFullYear()} SSW FireBootCamp. All rights reserved.
             </p>
 

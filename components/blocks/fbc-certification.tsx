@@ -5,15 +5,14 @@ import { tinaField } from 'tinacms/dist/react';
 import type { PageBlocksFbcCertification } from '../../tina/__generated__/types';
 import { useLayout } from '../layout/layout-context';
 import { Button } from '../ui/button';
+import { MailtoLink } from '../ui/mailto-link';
 
 export const FbcCertification = ({ data }: { data: PageBlocksFbcCertification }) => {
-  const { globalSettings } = useLayout();
-  const contactEmail = globalSettings?.contactEmail || 'pennywalker@ssw.com.au';
-  const contactCc = globalSettings?.contactCc || 'adamcogan@ssw.com.au';
+  const { globalSettings, encodedContactEmail, encodedContactCc } = useLayout();
   const siteUrl = globalSettings?.siteUrl || 'https://firebootcamp.com.au';
   const subject = data.emailSubject || 'FireBootCamp \u2013 Let\u2019s Talk';
-  const body = data.emailBody || `I'm ready to commit to FireBootCamp and earn my certification!\n\n${siteUrl}`;
-  const mailtoLink = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&cc=${encodeURIComponent(contactCc)}&body=${encodeURIComponent(body.includes(siteUrl) ? body : `${body}\n\n${siteUrl}`)}`;
+  const rawBody = data.emailBody || `I'm ready to commit to FireBootCamp and earn my certification!`;
+  const body = rawBody.includes(siteUrl) ? rawBody : `${rawBody}\n\n${siteUrl}`;
 
   return (
     <section className='bg-scheme-1-background px-6 md:px-16 lg:px-16 pt-16 md:pt-24 lg:pt-16 pb-16 md:pb-24 lg:pb-32'>
@@ -56,7 +55,9 @@ export const FbcCertification = ({ data }: { data: PageBlocksFbcCertification })
                   className='w-full sm:w-full sm:min-w-0 min-h-[52px] px-3 bg-black/5 rounded-md font-sans text-[0.875rem] md:text-[1rem] lg:text-[1.125rem] leading-[1.5] border-0 placeholder:text-black/60'
                 />
                 <Button asChild className='bg-red text-white whitespace-nowrap w-full sm:w-fit sm:shrink-0'>
-                  <a href={mailtoLink}>{data.buttonLabel || 'Commit'}</a>
+                  <MailtoLink encodedEmail={encodedContactEmail} encodedCc={encodedContactCc} subject={subject} body={body}>
+                    {data.buttonLabel || 'Commit'}
+                  </MailtoLink>
                 </Button>
               </div>
               <p

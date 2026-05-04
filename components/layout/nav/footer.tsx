@@ -1,19 +1,18 @@
 'use client';
 import { Button } from '@/components/ui/button';
 import { AutoLink } from '@/components/ui/link';
+import { MailtoLink } from '@/components/ui/mailto-link';
 import Link from 'next/link';
 import React from 'react';
 import { useLayout } from '../layout-context';
 
 export const Footer = () => {
-  const { globalSettings } = useLayout();
+  const { globalSettings, encodedContactEmail, encodedContactCc } = useLayout();
   const { header, footer } = globalSettings || {};
 
-  const contactEmail = globalSettings?.contactEmail || 'pennywalker@ssw.com.au';
-  const contactCc = globalSettings?.contactCc || 'adamcogan@ssw.com.au';
   const siteUrl = globalSettings?.siteUrl || 'https://firebootcamp.com.au';
-  const mailtoLink = `mailto:${contactEmail}?subject=${encodeURIComponent('FireBootCamp \u2013 Let\u2019s Talk')}&cc=${encodeURIComponent(contactCc)}&body=${encodeURIComponent(`I'm interested in FireBootCamp, let's schedule a time to chat!\n\n${siteUrl}`)}`;
-  const contactEmailLink = `mailto:${contactEmail}?subject=${encodeURIComponent('FireBootCamp \u2013 Let\u2019s Talk')}&cc=${encodeURIComponent(contactCc)}&body=${encodeURIComponent(`I'm interested in FireBootCamp, let's schedule a time to chat!\n\n${siteUrl}`)}`;
+  const ctaSubject = 'FireBootCamp \u2013 Let\u2019s Talk';
+  const ctaBody = `I'm interested in FireBootCamp, let's schedule a time to chat!\n\n${siteUrl}`;
 
   return (
     <footer className='bg-scheme-2-background px-6 md:px-16 lg:px-16 py-10 md:py-16 lg:py-20'>
@@ -31,7 +30,9 @@ export const Footer = () => {
 
             <div className='flex flex-col sm:flex-row gap-3 md:gap-4 w-full'>
               <Button asChild className='bg-red text-white w-full sm:w-fit sm:shrink-0'>
-                <a href={mailtoLink}>{footer?.primaryCtaLabel || 'Apply now'}</a>
+                <MailtoLink encodedEmail={encodedContactEmail} encodedCc={encodedContactCc} subject={ctaSubject} body={ctaBody}>
+                  {footer?.primaryCtaLabel || 'Apply now'}
+                </MailtoLink>
               </Button>
               <Button asChild variant='secondaryAlternate' className='w-full sm:w-fit sm:shrink-0 normal-case'>
                 <AutoLink href={footer?.secondaryCtaLink || '#'}>{footer?.secondaryCtaLabel || 'Go to SSW events'}</AutoLink>
@@ -64,7 +65,7 @@ export const Footer = () => {
                   ) : (
                     <AutoLink
                       key={linkIndex}
-                      href={link?.href?.startsWith(`mailto:${contactEmail}`) ? contactEmailLink : (link?.href || '#')}
+                      href={link?.href || '#'}
                       className={`py-1 md:py-2 text-scheme-2-text hover:text-scheme-2-text/80 font-sans text-[0.875rem] md:text-[1rem] lg:text-[1.125rem] leading-[1.5] ${link?.isHeading ? 'font-semibold' : ''}`}
                     >
                       {link?.label}

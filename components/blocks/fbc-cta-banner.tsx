@@ -3,17 +3,22 @@ import Image from 'next/image';
 import type { Template } from 'tinacms';
 import { tinaField } from 'tinacms/dist/react';
 import type { PageBlocksFbcCtaBanner } from '../../tina/__generated__/types';
+import { useMailto } from '@/lib/use-mailto';
 import { useLayout } from '../layout/layout-context';
 import { Button } from '../ui/button';
 
 export const FbcCtaBanner = ({ data }: { data: PageBlocksFbcCtaBanner }) => {
   const { globalSettings } = useLayout();
-  const contactEmail = globalSettings?.contactEmail || 'pennywalker@ssw.com.au';
-  const contactCc = globalSettings?.contactCc || 'adamcogan@ssw.com.au';
+  const contactEmail = globalSettings?.contactEmail || 'reklawynnep|ua.moc.wss';
+  const contactCc = globalSettings?.contactCc || 'nagocmada|ua.moc.wss';
   const siteUrl = globalSettings?.siteUrl || 'https://firebootcamp.com.au';
   const subject = data.emailSubject || 'FireBootCamp \u2013 Let\u2019s Talk';
   const body = data.emailBody || `I'm interested in FireBootCamp, let's schedule a time to chat!\n\n${siteUrl}`;
-  const mailtoLink = `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&cc=${encodeURIComponent(contactCc)}&body=${encodeURIComponent(body.includes(siteUrl) ? body : `${body}\n\n${siteUrl}`)}`;
+  const mailtoLink = useMailto(contactEmail, {
+    subject,
+    cc: contactCc,
+    body: body.includes(siteUrl) ? body : `${body}\n\n${siteUrl}`,
+  });
 
   return (
     <section className='bg-scheme-4-background px-6 md:px-16 lg:px-16 py-16 md:py-24 lg:py-32'>
@@ -47,7 +52,7 @@ export const FbcCtaBanner = ({ data }: { data: PageBlocksFbcCtaBanner }) => {
                   className='flex-1 min-h-[51px] px-3 bg-white/10 rounded-md font-sans text-[1rem] md:text-[1.125rem] lg:text-[1.25rem] leading-[1.5] text-scheme-4-text border-0 placeholder:!text-white/80'
                 />
                 <Button asChild variant='tertiary' className='whitespace-nowrap w-full sm:w-fit sm:shrink-0'>
-                  <a href={mailtoLink}>{data.buttonLabel || 'Submit'}</a>
+                  <a href={mailtoLink || undefined}>{data.buttonLabel || 'Submit'}</a>
                 </Button>
               </div>
             </div>

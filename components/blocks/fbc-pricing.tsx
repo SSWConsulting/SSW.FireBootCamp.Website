@@ -5,20 +5,20 @@ import { tinaField } from 'tinacms/dist/react';
 import type { PageBlocksFbcPricing, PageBlocksFbcPricingPlans, PageBlocksFbcPricingPlansFeatures } from '../../tina/__generated__/types';
 import { useLayout } from '../layout/layout-context';
 import { Button } from '../ui/button';
+import { MailtoLink } from '../ui/mailto-link';
+
+type PlanMailto = { subject: string; body: string };
 
 export const FbcPricing = ({ data }: { data: PageBlocksFbcPricing }) => {
   const { globalSettings } = useLayout();
-  const contactEmail = globalSettings?.contactEmail || 'pennywalker@ssw.com.au';
-  const contactCc = globalSettings?.contactCc || 'adamcogan@ssw.com.au';
   const siteUrl = globalSettings?.siteUrl || 'https://firebootcamp.com.au';
 
-  const generateMailtoLink = (plan: PageBlocksFbcPricingPlans) => {
+  const buildPlanMailto = (plan: PageBlocksFbcPricingPlans): PlanMailto => {
     const planName = plan.name || 'Pricing Plan';
     const subject = (plan as PageBlocksFbcPricingPlans & { emailSubject?: string | null }).emailSubject || `FireBootCamp \u2013 ${planName}`;
     const emailBody = plan.emailBody ? plan.emailBody.replace('[Plan Name]', planName) : `Hi, I am interested in ${planName}.`;
-    const bodyWithUrl = emailBody.includes(siteUrl) ? emailBody : `${emailBody}\n\n${siteUrl}`;
-
-    return `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}&cc=${encodeURIComponent(contactCc)}&body=${encodeURIComponent(bodyWithUrl)}`;
+    const body = emailBody.includes(siteUrl) ? emailBody : `${emailBody}\n\n${siteUrl}`;
+    return { subject, body };
   };
 
   return (
@@ -56,7 +56,7 @@ export const FbcPricing = ({ data }: { data: PageBlocksFbcPricing }) => {
                   } as React.CSSProperties
                 }
               >
-                <PricingCard plan={plan!} generateMailtoLink={generateMailtoLink} />
+                <PricingCard plan={plan!} mailto={buildPlanMailto(plan!)} />
               </div>
             );
           })}
@@ -66,8 +66,8 @@ export const FbcPricing = ({ data }: { data: PageBlocksFbcPricing }) => {
   );
 };
 
-const PricingCard = ({ plan, generateMailtoLink }: { plan: PageBlocksFbcPricingPlans; generateMailtoLink: (plan: PageBlocksFbcPricingPlans) => string }) => {
-  const mailtoLink = generateMailtoLink(plan);
+const PricingCard = ({ plan, mailto }: { plan: PageBlocksFbcPricingPlans; mailto: PlanMailto }) => {
+  const { encodedContactEmail, encodedContactCc } = useLayout();
   const isFeatured = plan.isFeatured || false;
   const planName = plan.name || 'Pricing Plan';
   const isFullCourse = planName.toLowerCase().includes('full course');
@@ -184,7 +184,9 @@ const PricingCard = ({ plan, generateMailtoLink }: { plan: PageBlocksFbcPricingP
 
       <div className={isFeatured ? 'px-6 md:px-8' : 'h-20'}>
         <Button asChild className='w-full bg-red text-white mt-6 md:mt-8'>
-          <a href={mailtoLink}>{plan.ctaLabel || 'Apply now'}</a>
+          <MailtoLink encodedEmail={encodedContactEmail} encodedCc={encodedContactCc} subject={mailto.subject} body={mailto.body}>
+            {plan.ctaLabel || 'Apply now'}
+          </MailtoLink>
         </Button>
       </div>
     </div>

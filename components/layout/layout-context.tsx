@@ -8,6 +8,8 @@ interface LayoutState {
   pageData: {};
   setPageData: React.Dispatch<React.SetStateAction<{}>>;
   theme: GlobalQuery['global']['theme'];
+  encodedContactEmail: string;
+  encodedContactCc: string;
 }
 
 const LayoutContext = React.createContext<LayoutState | undefined>(undefined);
@@ -22,6 +24,8 @@ export const useLayout = () => {
       },
       globalSettings: undefined,
       pageData: undefined,
+      encodedContactEmail: '',
+      encodedContactCc: '',
     }
   );
 };
@@ -30,9 +34,17 @@ interface LayoutProviderProps {
   children: React.ReactNode;
   globalSettings: GlobalQuery['global'];
   pageData: {};
+  encodedContactEmail: string;
+  encodedContactCc: string;
 }
 
-export const LayoutProvider: React.FC<LayoutProviderProps> = ({ children, globalSettings: initialGlobalSettings, pageData: initialPageData }) => {
+export const LayoutProvider: React.FC<LayoutProviderProps> = ({
+  children,
+  globalSettings: initialGlobalSettings,
+  pageData: initialPageData,
+  encodedContactEmail,
+  encodedContactCc,
+}) => {
   const [globalSettings, setGlobalSettings] = useState<GlobalQuery['global']>(initialGlobalSettings);
   const [pageData, setPageData] = useState<{}>(initialPageData);
 
@@ -46,6 +58,8 @@ export const LayoutProvider: React.FC<LayoutProviderProps> = ({ children, global
         pageData,
         setPageData,
         theme,
+        encodedContactEmail,
+        encodedContactCc,
       }}
     >
       {children}

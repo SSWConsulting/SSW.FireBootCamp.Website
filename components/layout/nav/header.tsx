@@ -12,10 +12,6 @@ export const Header = () => {
   const header = globalSettings?.header;
   const megaMenu = globalSettings?.header?.megaMenu;
 
-  const contactEmail = globalSettings?.contactEmail || 'pennywalker@ssw.com.au';
-  const contactSubject = globalSettings?.contactSubject || "SSW Firebootcamp - Let's chat";
-  const mailtoLink = `mailto:${contactEmail}?subject=${encodeURIComponent(contactSubject)}`;
-
   const [menuState, setMenuState] = React.useState(false);
   const [megaMenuOpen, setMegaMenuOpen] = React.useState(false);
 

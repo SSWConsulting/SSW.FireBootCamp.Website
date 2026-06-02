@@ -9,7 +9,7 @@ type LayoutProps = PropsWithChildren & {
   rawPageData?: Record<string, unknown> | null;
 };
 
-const FALLBACK_CONTACT_EMAIL = 'pennywalker@ssw.com.au';
+const FALLBACK_CONTACT_EMAIL = 'lukecook@ssw.com.au';
 const FALLBACK_CONTACT_CC = 'adamcogan@ssw.com.au';
 
 export default async function Layout({ children, rawPageData }: LayoutProps) {

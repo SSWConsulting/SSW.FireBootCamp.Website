@@ -17,7 +17,7 @@ export const FbcSkills = ({ data }: { data: PageBlocksFbcSkills }) => {
           </h2>
           <p
             data-tina-field={tinaField(data, 'description')}
-            className='font-sans text-[0.875rem] md:text-[1rem] lg:text-[1.25rem] leading-[1.5] text-scheme-1-text text-center'
+            className='font-sans text-[0.875rem] md:text-[1rem] lg:text-[1.25rem] leading-[1.5] text-scheme-1-text text-center whitespace-pre-line'
           >
             {data.description}
           </p>

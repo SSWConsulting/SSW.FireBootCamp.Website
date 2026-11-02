@@ -3,17 +3,8 @@ import Image from 'next/image';
 import type { Template } from 'tinacms';
 import { tinaField } from 'tinacms/dist/react';
 import type { PageBlocksFbcCtaBanner } from '../../tina/__generated__/types';
-import { useLayout } from '../layout/layout-context';
-import { Button } from '../ui/button';
-import { MailtoLink } from '../ui/mailto-link';
 
 export const FbcCtaBanner = ({ data }: { data: PageBlocksFbcCtaBanner }) => {
-  const { globalSettings, encodedContactEmail, encodedContactCc } = useLayout();
-  const siteUrl = globalSettings?.siteUrl || 'https://firebootcamp.com.au';
-  const subject = data.emailSubject || 'FireBootCamp \u2013 Let\u2019s Talk';
-  const rawBody = data.emailBody || `I'm interested in FireBootCamp, let's schedule a time to chat!`;
-  const body = rawBody.includes(siteUrl) ? rawBody : `${rawBody}\n\n${siteUrl}`;
-
   return (
     <section className='bg-scheme-4-background px-6 md:px-16 lg:px-16 py-16 md:py-24 lg:py-32'>
       <div className='max-w-[1440px] mx-auto'>
@@ -34,24 +25,6 @@ export const FbcCtaBanner = ({ data }: { data: PageBlocksFbcCtaBanner }) => {
               </p>
             </div>
 
-            <div className='w-full lg:w-[513px] flex flex-col gap-4'>
-              <div className='flex flex-col sm:flex-row gap-2 w-full'>
-                <label htmlFor='cta-banner-email' className='sr-only'>
-                  Email address
-                </label>
-                <input
-                  id='cta-banner-email'
-                  type='email'
-                  placeholder={data.emailPlaceholder || 'Enter your email address'}
-                  className='flex-1 min-h-[51px] px-3 bg-white/10 rounded-md font-sans text-[1rem] md:text-[1.125rem] lg:text-[1.25rem] leading-[1.5] text-scheme-4-text border-0 placeholder:!text-white/80'
-                />
-                <Button asChild variant='tertiary' className='whitespace-nowrap w-full sm:w-fit sm:shrink-0'>
-                  <MailtoLink encodedEmail={encodedContactEmail} encodedCc={encodedContactCc} subject={subject} body={body}>
-                    {data.buttonLabel || 'Submit'}
-                  </MailtoLink>
-                </Button>
-              </div>
-            </div>
           </div>
 
           {/* SophieBot character - absolutely positioned at bottom-right */}
@@ -72,11 +45,6 @@ export const fbcCtaBannerBlockSchema: Template = {
     defaultItem: {
       title: 'Your code. Your future. Now.',
       description: 'Take the first step towards a transformative developer career',
-      emailPlaceholder: 'Enter your email address',
-      buttonLabel: 'Submit',
-      emailSubject: 'FireBootCamp \u2013 Let\u2019s Talk',
-      emailBody: "I'm interested in FireBootCamp, let's schedule a time to chat!",
-      disclaimer: "By submitting, you're committing to a breakthrough in your software development career.",
     },
   },
   fields: [
@@ -92,36 +60,6 @@ export const fbcCtaBannerBlockSchema: Template = {
       ui: {
         component: 'textarea',
       },
-    },
-    {
-      type: 'string',
-      label: 'Email Placeholder',
-      name: 'emailPlaceholder',
-    },
-    {
-      type: 'string',
-      label: 'Button Label',
-      name: 'buttonLabel',
-    },
-    {
-      type: 'string',
-      label: 'Email Subject',
-      name: 'emailSubject',
-      description: 'Subject line for the mailto link',
-    },
-    {
-      type: 'string',
-      label: 'Email Body',
-      name: 'emailBody',
-      description: 'Body text for the mailto link. Site URL is appended automatically.',
-      ui: {
-        component: 'textarea',
-      },
-    },
-    {
-      type: 'string',
-      label: 'Disclaimer',
-      name: 'disclaimer',
     },
   ],
 };

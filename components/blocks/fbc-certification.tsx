@@ -3,17 +3,8 @@ import Image from 'next/image';
 import type { Template } from 'tinacms';
 import { tinaField } from 'tinacms/dist/react';
 import type { PageBlocksFbcCertification } from '../../tina/__generated__/types';
-import { useLayout } from '../layout/layout-context';
-import { Button } from '../ui/button';
-import { MailtoLink } from '../ui/mailto-link';
 
 export const FbcCertification = ({ data }: { data: PageBlocksFbcCertification }) => {
-  const { globalSettings, encodedContactEmail, encodedContactCc } = useLayout();
-  const siteUrl = globalSettings?.siteUrl || 'https://firebootcamp.com.au';
-  const subject = data.emailSubject || 'FireBootCamp \u2013 Let\u2019s Talk';
-  const rawBody = data.emailBody || `I'm ready to commit to FireBootCamp and earn my certification!`;
-  const body = rawBody.includes(siteUrl) ? rawBody : `${rawBody}\n\n${siteUrl}`;
-
   return (
     <section className='bg-scheme-1-background px-6 md:px-16 lg:px-16 pt-16 md:pt-24 lg:pt-16 pb-16 md:pb-24 lg:pb-32'>
       <div className='max-w-[1440px] mx-auto'>
@@ -43,30 +34,6 @@ export const FbcCertification = ({ data }: { data: PageBlocksFbcCertification })
               </p>
             </div>
 
-            <div className='flex flex-col gap-3 md:gap-4 w-full max-w-[560px] items-center lg:items-start'>
-              <div className='flex flex-col sm:flex-row gap-3 md:gap-2 w-full min-w-[100px] justify-start'>
-                <label htmlFor='certification-email' className='sr-only'>
-                  Email address
-                </label>
-                <input
-                  id='certification-email'
-                  type='email'
-                  placeholder={data.emailPlaceholder || 'Enter your email address'}
-                  className='w-full sm:w-full sm:min-w-0 min-h-[52px] px-3 bg-black/5 rounded-md font-sans text-[0.875rem] md:text-[1rem] lg:text-[1.125rem] leading-[1.5] border-0 placeholder:text-black/60'
-                />
-                <Button asChild className='bg-red text-white whitespace-nowrap w-full sm:w-fit sm:shrink-0'>
-                  <MailtoLink encodedEmail={encodedContactEmail} encodedCc={encodedContactCc} subject={subject} body={body}>
-                    {data.buttonLabel || 'Commit'}
-                  </MailtoLink>
-                </Button>
-              </div>
-              <p
-                data-tina-field={tinaField(data, 'disclaimer')}
-                className='font-sans text-[0.6875rem] md:text-[0.75rem] lg:text-[0.875rem] leading-[1.5] text-scheme-1-text text-center lg:text-left'
-              >
-                {data.disclaimer}
-              </p>
-            </div>
           </div>
         </div>
       </div>
@@ -83,11 +50,6 @@ export const fbcCertificationBlockSchema: Template = {
       title: 'Get certified as an SSW Qualified Developer',
       description:
         'After completing FireBootCamp, you will earn a certification as an SSW Qualified Developer!\nWhich can be validated, recognised and shared on social media platforms.',
-      emailPlaceholder: 'Enter your email address',
-      buttonLabel: 'Commit',
-      emailSubject: 'FireBootCamp \u2013 Let\u2019s Talk',
-      emailBody: "I'm ready to commit to FireBootCamp and earn my certification!",
-      disclaimer: "By submitting, you're committing to a breakthrough in your software development career.",
     },
   },
   fields: [
@@ -108,36 +70,6 @@ export const fbcCertificationBlockSchema: Template = {
       type: 'image',
       label: 'Badge Image',
       name: 'badgeImage',
-    },
-    {
-      type: 'string',
-      label: 'Email Placeholder',
-      name: 'emailPlaceholder',
-    },
-    {
-      type: 'string',
-      label: 'Button Label',
-      name: 'buttonLabel',
-    },
-    {
-      type: 'string',
-      label: 'Email Subject',
-      name: 'emailSubject',
-      description: 'Subject line for the mailto link',
-    },
-    {
-      type: 'string',
-      label: 'Email Body',
-      name: 'emailBody',
-      description: 'Body text for the mailto link. Site URL is appended automatically.',
-      ui: {
-        component: 'textarea',
-      },
-    },
-    {
-      type: 'string',
-      label: 'Disclaimer',
-      name: 'disclaimer',
     },
   ],
 };

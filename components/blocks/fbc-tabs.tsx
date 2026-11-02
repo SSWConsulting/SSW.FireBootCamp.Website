@@ -88,6 +88,24 @@ export const FbcTabs = ({ data }: { data: PageBlocksFbcTabs }) => {
           </div>
 
           <div className='w-full relative'>
+            {/* Navigation arrows - above the content strip */}
+            <div className='flex justify-end gap-2 md:gap-4 mb-4'>
+              <button
+                onClick={goToPrevious}
+                aria-label='Previous tab'
+                className='p-2 md:p-3 bg-red rounded-[4px] transition-all cursor-pointer hover:brightness-[1.15] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-red min-w-[44px] min-h-[44px] flex items-center justify-center'
+              >
+                <ChevronLeft className='w-5 h-5 md:w-6 md:h-6 text-white' aria-hidden='true' />
+              </button>
+              <button
+                onClick={goToNext}
+                aria-label='Next tab'
+                className='p-2 md:p-3 bg-red rounded-[4px] transition-all cursor-pointer hover:brightness-[1.15] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-red min-w-[44px] min-h-[44px] flex items-center justify-center'
+              >
+                <ChevronRight className='w-5 h-5 md:w-6 md:h-6 text-white' aria-hidden='true' />
+              </button>
+            </div>
+
             <div className='w-full bg-scheme-3-background rounded-lg overflow-hidden relative'>
               {/* Scrolling content strip */}
               <div
@@ -129,24 +147,6 @@ export const FbcTabs = ({ data }: { data: PageBlocksFbcTabs }) => {
                     </div>
                   </div>
                 ))}
-              </div>
-
-              {/* Navigation arrows - fixed position, outside the scroll strip */}
-              <div className='absolute bottom-6 right-6 md:bottom-10 md:right-10 lg:bottom-16 lg:right-12 flex gap-2 md:gap-4 z-10'>
-                <button
-                  onClick={goToPrevious}
-                  aria-label='Previous tab'
-                  className='p-2 md:p-3 bg-red rounded-[4px] transition-all cursor-pointer hover:brightness-[1.15] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-red min-w-[44px] min-h-[44px] flex items-center justify-center'
-                >
-                  <ChevronLeft className='w-5 h-5 md:w-6 md:h-6 text-white' aria-hidden='true' />
-                </button>
-                <button
-                  onClick={goToNext}
-                  aria-label='Next tab'
-                  className='p-2 md:p-3 bg-red rounded-[4px] transition-all cursor-pointer hover:brightness-[1.15] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-red min-w-[44px] min-h-[44px] flex items-center justify-center'
-                >
-                  <ChevronRight className='w-5 h-5 md:w-6 md:h-6 text-white' aria-hidden='true' />
-                </button>
               </div>
             </div>
           </div>

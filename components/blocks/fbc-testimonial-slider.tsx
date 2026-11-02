@@ -30,6 +30,26 @@ export const FbcTestimonialSlider = ({ data }: { data: PageBlocksFbcTestimonialS
   return (
     <section className='bg-scheme-1-background px-6 md:px-16 lg:px-16 py-16 md:py-24 lg:py-32 overflow-hidden'>
       <div className='max-w-[1440px] mx-auto flex flex-col gap-8 md:gap-8'>
+        {/* Navigation arrows - above the carousel */}
+        <div className='flex items-center justify-end'>
+          <div className='flex gap-2 md:gap-4'>
+            <button
+              onClick={goToPrevious}
+              aria-label='Previous testimonial'
+              className='p-2 md:p-3 bg-scheme-3-background hover:bg-scheme-1-border rounded transition-colors cursor-pointer'
+            >
+              <FaChevronLeft className='w-5 h-5 md:w-6 md:h-6' aria-hidden='true' />
+            </button>
+            <button
+              onClick={goToNext}
+              aria-label='Next testimonial'
+              className='p-2 md:p-3 bg-scheme-3-background hover:bg-scheme-1-border rounded transition-colors cursor-pointer'
+            >
+              <FaChevronRight className='w-5 h-5 md:w-6 md:h-6' aria-hidden='true' />
+            </button>
+          </div>
+        </div>
+
         {/* Scrolling carousel viewport */}
         <div className='overflow-hidden'>
           <div
@@ -99,26 +119,6 @@ export const FbcTestimonialSlider = ({ data }: { data: PageBlocksFbcTestimonialS
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-
-        {/* Navigation arrows - always fixed outside scroll */}
-        <div className='flex items-center justify-end'>
-          <div className='flex gap-2 md:gap-4'>
-            <button
-              onClick={goToPrevious}
-              aria-label='Previous testimonial'
-              className='p-2 md:p-3 bg-scheme-3-background hover:bg-scheme-1-border rounded transition-colors cursor-pointer'
-            >
-              <FaChevronLeft className='w-5 h-5 md:w-6 md:h-6' aria-hidden='true' />
-            </button>
-            <button
-              onClick={goToNext}
-              aria-label='Next testimonial'
-              className='p-2 md:p-3 bg-scheme-3-background hover:bg-scheme-1-border rounded transition-colors cursor-pointer'
-            >
-              <FaChevronRight className='w-5 h-5 md:w-6 md:h-6' aria-hidden='true' />
-            </button>
           </div>
         </div>
       </div>
